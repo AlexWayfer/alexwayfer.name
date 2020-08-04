@@ -1,0 +1,42 @@
+{
+	"name": "alexwayfer.name",
+	"version": "2.0.0",
+	"description": "AlexWayfer's Site",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AlexWayfer/alexwayfer.name.git"
+	},
+	"author": "Alexander Popov",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/AlexWayfer/alexwayfer.name/issues"
+	},
+	"homepage": "https://alexwayfer.name",
+	"dependencies": {
+		"date-fns": "^2.15.0"
+	},
+	"devDependencies": {
+		"@rollup/plugin-node-resolve": "^8.4.0",
+		"autoprefixer": "^9.8.6",
+		"eslint": "^7.6.0",
+		"postcss": "^7.0.32",
+		"postcss-nested": "^4.2.3",
+		"remark-cli": "^8.0.1",
+		"remark-preset-lint-recommended": "^4.0.1",
+		"rollup": "^2.23.0",
+		"stylelint": "^13.6.1",
+		"stylelint-config-standard": "^20.0.0",
+		"stylelint-no-unsupported-browser-features": "^4.0.0"
+	},
+	"scripts": {
+		"lint:docs": "remark .",
+		"lint:styles": "stylelint styles/",
+		"lint:scripts": "eslint scripts/",
+		"lint": "npm run lint:docs; docs_lint_result=$?; npm run lint:styles; styles_lint_result=$?; npm run lint:scripts && test $styles_lint_result == 0 -a $docs_lint_result == 0",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build:styles": "postcss styles/ -d compiled/styles/ --ext=css",
+		"build:scripts": "rollup scripts/main.js -o compiled/scripts/main.js -c",
+		"build": "npm run build:styles && npm run build:scripts",
+		"compile": "npm run lint && npm run build"
+	}
+}

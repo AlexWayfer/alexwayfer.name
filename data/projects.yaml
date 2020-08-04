@@ -1,0 +1,238 @@
+- title: Simple Player
+
+  link: https://vk.com/club39765429
+
+  description: |
+    Music player for Windows, plays local files or audios from VK.com.
+    My main project on Delphi, I've learned a lot of things
+    and was trying to make a good design (via FireMonkey).
+    It was hard to make a good (in my taste) visualizer.
+
+  technologies:
+    - Delphi (FireMonkey)
+    - VK API
+
+  years: 2011–2012
+
+
+- title: Soundly
+
+  link: https://vk.com/club41593729
+
+  description: |
+    Reincornation of Simple Player as web service (site).
+    Plays local files (selected via browser) and integratation with VK (again).
+    Without visualizer, sadly.
+    But it worked with VK Audios faster (especially search, global too), than VK itself.
+    Util VK has closed their Audio API for monetization.
+    Plain JavaScript in the single file about 1500 LOC,
+    I didn't think about architecture and third-party tools (libraries) at this time.
+
+  technologies:
+    - JavaScript
+    - VK API
+
+  years: 2013–2014
+
+
+- title: BCLeaner
+
+  description: |
+    System for detecting bots among Twitter followers.
+
+    In these times there were many bots in Twitter and popular people cheated followers count.
+    But then declaring that you have no bots among your followers
+    and you're honest became fashinable. So, there was a request to make an automated tool (service)
+    for detecting bots among your followers and ban them
+    (it was the force unfollow in this time, as I remember).
+    Then you could declare that you're "clean" and "honest" too.
+
+    I was trying to make such system for money. Bots recognition algorythm was pretty good,
+    but I have not finalize this project because I was fired up for fail
+    in another parallel non-related project in the same company.
+
+  technologies:
+    - PHP
+    - Twitter API
+
+  years: 2013
+
+
+- title: RDI
+
+  link: http://www.rdi.ru/
+
+  description: |
+    Site of the development company (in Moscow region).
+    My only experience of changing layout (HTML, CSS, PNG)
+    by just a single JPEG file with target design.
+
+  technologies:
+    - PHP
+    - 1C-Bitrix
+    - GIMP
+
+  years: 2014–2015
+
+
+- title: Icons of the World
+
+  description: |
+    Presentation site of the same named books. Home page contained almost full-screen Google Maps
+    with custom markers, pop-ups and clusters.
+    It was hard to make custom optimizations of requests to database bypassing WordPress engine.
+
+  technologies:
+    - PHP
+    - WordPress
+    - CSS
+    - JavaScript
+    - Google Maps API
+
+  years: 2014–2015
+
+
+- title: KEY Group
+
+  link: https://web.archive.org/web/20150801125104/http://key-g.com/
+
+  description: |
+    It was a weird experience of making the layout with diagonal sections. Adaptive!
+    I've made it via CSS `transform` finally, although there were many different tries
+    with other approaches. Also it was my practice of making SVG icons via font characters.
+    I've learned a lot of CSS with this project.
+
+  technologies:
+    - PHP
+    - CSS
+    - JavaScript
+
+  years: 2014–2015
+
+
+- title: GetWiFi
+
+  description: |
+    Dashboard for Wi-Fi captive portals among cafes, hotels, etc.
+
+    At that time I knew PHP at high level and saw its disadvantages for me.
+    So, I wanted to learn any new programming language with more consistency
+    and better potential for project files structure.
+    Finally I was choosing between Python and Ruby,
+    and I like (more consistent) OOP approach of Ruby, `snake_case` and its philosophy.
+
+    This project was a first serious try to make it with Ruby.
+    I didn't (and don't, but already more tolerate to) Ruby on Rails, its approach and "magic",
+    so I've developed this project via [Sinatra](http://sinatrarb.com/), but was a big mistake
+    because of controllers architecture and it became the impulse to create
+    [Flame framework](https://github.com/AlexWayfer/flame)).
+
+    Although there was nice (in my opinion) horizontal-nested simple UI,
+    and pretty good database architecture.
+
+  technologies:
+    - MikroTik firmware and configs
+    - Wi-Fi Captive Portal
+    - Ruby
+    - Sinatra
+    - MySQL
+    - DataMapper (abandoned ORM)
+    - JavaScript
+
+  years: 2015
+
+
+- title: GetTransfer
+
+  link: https://gettransfer.com/
+
+  description: |
+    People transfers aggregator, between passengers and carriers.
+    It's pretty popular and successful.
+
+    The first project written via [Flame](https://github.com/AlexWayfer/flame).
+
+    There was a lot of work with:
+
+    *   SCSS architecture;
+
+    *   JavaScript plugins and custom code;
+
+    *   database architecture and optimizations;
+
+    *   form data validations;
+
+    *   client-side and server-side tight integration with Google Maps API;
+
+    *   integrations with a lot of payment systems, like PayPal or Platron;
+
+    *   translations via Crowdin and Gengo;
+
+    *   currencies exhanges;
+
+    *   timezones and time convertations;
+
+    *   comfortable dashboards for different types of users, from managers to client;
+
+    *   aggregated data exports in different formats;
+
+    *   forecasts algorythms for prices.
+
+    In all time of working on this project I was leading a team of up to 10 people,
+    they all were different and many of them were cool.
+    I've got a lot of experience in leading and talking with people,
+    especially reviewing their code. 😬 Now I'm more calm and respectful.
+
+    Honestly, I don't like what project became after my leave.
+
+  technologies:
+    - Ruby
+    - Flame
+    - PostgreSQL
+    - Sequel
+    - ERB
+    - JavaScript
+    - SCSS
+    - Google Maps API
+    - GeoNames API
+    - PayPal API
+    - Platron API
+    - Crowdin
+    - Money gem
+    - Sentry
+
+  years: 2015–2017
+
+- title: GetTransport
+
+  link: http://gettransport.com/
+
+  description: |
+    Cargo transportation aggregator, between shippers and carriers.
+    Another project written via [Flame](https://github.com/AlexWayfer/flame).
+
+    I've tried to make this project taking into account my architecture errors of GetTransfer.
+    So, it's using a next version of Flame, 5, with a lot of improvements.
+    Also we have started to use service objects instead of fat controllers and models.
+    Then I service objects turned into [Formalism](https://github.com/AlexWayfer/formalism) forms.
+
+    This project was pretty similar to GetTransfer, so I was working with similar technologies,
+    sometimes with a better or cleaner approach.
+
+  technologies:
+    - Ruby
+    - Flame
+    - PostgreSQL
+    - Formalism
+    - ERB
+    - JavaScript
+    - SCSS
+    - Google Maps API
+    - GeoNames API
+    - PayPal API
+    - Platron API
+    - Crowdin
+    - Money gem
+    - Sentry
+
+  years: 2017-2020

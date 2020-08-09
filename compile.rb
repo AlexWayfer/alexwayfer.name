@@ -33,7 +33,7 @@ require 'fileutils'
 compiled_directory = "#{__dir__}/compiled"
 
 puts "Cleaning #{compiled_directory.sub(Dir.getwd, '')}..."
-FileUtils.rm_r "#{compiled_directory}/*"
+FileUtils.rm_r Dir.glob "#{compiled_directory}/*"
 
 unless Dir.exist? compiled_directory
 	puts "Creating #{compiled_directory.sub(Dir.getwd, '')}..."

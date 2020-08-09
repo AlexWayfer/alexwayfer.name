@@ -32,8 +32,13 @@ require 'fileutils'
 
 compiled_directory = "#{__dir__}/compiled"
 
-puts "Creating #{compiled_directory.sub(Dir.getwd, '')}..."
-FileUtils.mkdir_p compiled_directory
+puts "Cleaning #{compiled_directory.sub(Dir.getwd, '')}..."
+FileUtils.rm_r "#{compiled_directory}/*"
+
+unless Dir.exist? compiled_directory
+	puts "Creating #{compiled_directory.sub(Dir.getwd, '')}..."
+	FileUtils.mkdir_p compiled_directory
+end
 
 ## Compile pages
 

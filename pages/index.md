@@ -49,7 +49,7 @@ I love open-source too much, here is my [GitHub profile](https://github.com/Alex
 
 ### Projects (experience)
 
-[Section on this site](projects.html).
+[Complete list on this site](projects.html).
 
 ## Tastes
 

@@ -39,15 +39,15 @@ I'm Software Engineer. I were leading a team with up to 10 members.
 I can design application architecture. Also usually I communicate with other teams
 (like Mobile Development) and departaments (like Marketing).
 
-### Tech experience, skills, charts
+### Skills levels
 
 [CodersRank profile](https://profile.codersrank.io/user/alexwayfer){:target="_blank" rel="noreferrer noopener"}.
 
 ### Open-source projects and activity
 
-[GitHub profile](https://github.com/AlexWayfer){:target="_blank" rel="noreferrer noopener"}.
+I love open-source too much, here is my [GitHub profile](https://github.com/AlexWayfer){:target="_blank" rel="noreferrer noopener"}.
 
-### Projects
+### Projects (experience)
 
 [Section on this site](projects.html).
 

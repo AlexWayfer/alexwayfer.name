@@ -60,6 +60,6 @@ I love open-source too much, here is my [GitHub profile](https://github.com/Alex
 ## Contacts
 
 <% data.contacts.each do |contact| %>
-*   [<%= contact.title %>](<%= contact.link %>){:target="_blank" rel="noreferrer noopener"}
+*   [<%= contact.title %>](<%= contact.link %>){:target="_blank" rel="noreferrer noopener"}<br>
     <%= contact.description %>
 <% end %>

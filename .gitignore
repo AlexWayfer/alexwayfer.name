@@ -1,3 +1,9 @@
-node_modules/
+/node_modules/
 
-compiled/
+/compiled/
+
+# configuration
+/config/**/*
+!/config/**/*.example*
+!/config/**/*.rb
+!/config/**/*.erb

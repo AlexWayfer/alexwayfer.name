@@ -110,6 +110,7 @@
     - MySQL
     - CSS
     - JavaScript
+    - Fontello
     - BitBucket
     - Basecamp
 
@@ -201,6 +202,7 @@
     - ERB
     - JavaScript
     - SCSS
+    - Fontello
     - Google Maps API
     - GeoNames API
     - PayPal API
@@ -238,6 +240,7 @@
     - ERB
     - JavaScript
     - SCSS
+    - IcoMoon
     - Google Maps API
     - GeoNames API
     - PayPal API

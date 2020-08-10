@@ -1,5 +1,4 @@
 extends: stylelint-config-standard
-ignorePath: .gitignore
 
 plugins:
   - stylelint-no-unsupported-browser-features

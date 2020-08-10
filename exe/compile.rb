@@ -2,8 +2,7 @@
 
 # frozen_string_literal: true
 
-require 'bundler/setup'
-Bundler.setup
+require_relative '_common'
 
 ## Load data from YAML files and make `OpenStruct` object (for a prettier code)
 
@@ -17,10 +16,10 @@ def initialize_open_struct_deeply(value)
 	end
 end
 
-require 'yaml'
+root_dir = "#{__dir__}/.."
 
 data = OpenStruct.new(
-	Dir.glob("#{__dir__}/data/*.y{a,}ml").each_with_object({}) do |data_file_name, result|
+	Dir.glob("#{root_dir}/data/*.y{a,}ml").each_with_object({}) do |data_file_name, result|
 		key = File.basename data_file_name, '.*'
 		result[key] = initialize_open_struct_deeply YAML.load_file data_file_name
 	end
@@ -30,7 +29,7 @@ data = OpenStruct.new(
 
 require 'fileutils'
 
-compiled_directory = "#{__dir__}/compiled"
+compiled_directory = "#{root_dir}/compiled"
 
 puts "Cleaning #{compiled_directory.sub(Dir.getwd, '')}..."
 FileUtils.rm_r Dir.glob "#{compiled_directory}/*"
@@ -40,12 +39,29 @@ unless Dir.exist? compiled_directory
 	FileUtils.mkdir_p compiled_directory
 end
 
+## Copy third-party assets
+
+assets_directory = "#{root_dir}/assets"
+
+%w[scripts/lib/*.js images/**/*.svg].each do |files_pattern|
+	Dir.glob("#{assets_directory}/#{files_pattern}") do |file_name|
+		relative_path = Pathname.new(file_name).relative_path_from(assets_directory)
+		target_file_path = "#{compiled_directory}/#{relative_path}"
+		FileUtils.mkdir_p File.dirname target_file_path
+		FileUtils.cp file_name, target_file_path
+	end
+end
+
+## Compile assets
+
+system 'npm run compile'
+
 ## Compile pages
 
 require 'kramdown'
 require 'erb'
 
-pages_directory = "#{__dir__}/pages"
+pages_directory = "#{root_dir}/pages"
 layout_erb = ERB.new File.read "#{pages_directory}/layout.html.erb"
 
 require 'date'
@@ -61,12 +77,9 @@ Dir.glob("#{pages_directory}/*.md{,.erb}").each do |page_file_name|
 	File.write(
 		"#{compiled_directory}/#{File.basename(page_file_name, '.*')}.html",
 		layout_erb.result_with_hash(
+			url_with_mtime: ->(path) { "#{path}?v=#{File.mtime("#{compiled_directory}/#{path}").to_i}" },
 			page_content: Kramdown::Document.new(rendered_page).to_html,
 			birthday: birthday
 		)
 	)
 end
-
-## Compile assets
-
-system 'npm run compile'

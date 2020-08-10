@@ -7,19 +7,30 @@
 
 		<title>AlexWayfer's Site</title>
 
-		<link rel="stylesheet" href="styles/main.css" />
+		<link rel="stylesheet" href="<%= url_with_mtime.call 'styles/main.css' %>" />
 
 		<script type="text/javascript">
 			window.birthday = Date.parse('<%= birthday.iso8601 %>')
 		</script>
 
-		<script type="text/javascript" src="scripts/main.js" /></script>
+		<script type="text/javascript" src="<%= url_with_mtime.call 'scripts/lib/svgxuse.min.js' %>" />
+		</script>
+
+		<script type="text/javascript" src="<%= url_with_mtime.call 'scripts/main.js' %>" /></script>
 	</head>
 
 	<body>
 		<header>
 			<div class="container">
 				<h1>AlexWayfer's Site</h1>
+
+				<button type="button" class="theme-toggle">
+					<svg class="icon icon-brightness baseline">
+						<use
+							xlink:href="<%= url_with_mtime.call 'images/icons/symbol-defs.svg' %>#icon-brightness"
+						></use>
+					</svg>
+				</button>
 			</div>
 		</header>
 

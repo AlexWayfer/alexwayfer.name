@@ -9,4 +9,7 @@ gem 'moments', github: 'excpt/moments'
 group :development do
 	gem 'rubocop'
 	gem 'rubocop-performance'
+
+	gem 'config_toys'
+	gem 'icomoon_toys'
 end

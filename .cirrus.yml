@@ -40,7 +40,7 @@ stylelint_task:
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(
       '.cirrus.yml', '.gitignore', 'package.json', 'package-lock.json', 'browserslist',
-      '.stylelintrc.yaml', 'styles/**'
+      '.stylelintrc.yaml', 'assets/styles/**'
     )
 
 eslint_task:
@@ -53,7 +53,7 @@ eslint_task:
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(
       '.cirrus.yml', '.gitignore', 'package.json', 'package-lock.json', 'browserslist',
-      '.eslintrc.yaml', '.eslintignore', 'styles/**'
+      '.eslintrc.yaml', '.eslintignore', 'assets/scripts/**'
     )
 
 rubocop_task:
@@ -61,7 +61,7 @@ rubocop_task:
     image: ruby:latest
   <<: *bundle_cache
 
-  lint_script: bundle exec rubocop --format=json --out=rubocop.json
+  lint_script: toys rubocop --format=json --out=rubocop.json
 
   always:
     rubocop_artifacts:

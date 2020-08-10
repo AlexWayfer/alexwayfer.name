@@ -29,12 +29,12 @@
 	},
 	"scripts": {
 		"lint:docs": "remark .",
-		"lint:styles": "stylelint styles/",
-		"lint:scripts": "eslint scripts/",
+		"lint:styles": "stylelint assets/styles/",
+		"lint:scripts": "eslint assets/scripts/",
 		"lint": "npm run lint:docs; docs_lint_result=$?; npm run lint:styles; styles_lint_result=$?; npm run lint:scripts && test $styles_lint_result == 0 -a $docs_lint_result == 0",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build:styles": "postcss styles/ -d compiled/styles/ --ext=css",
-		"build:scripts": "rollup scripts/main.js -o compiled/scripts/main.js -c",
+		"build:styles": "postcss assets/styles/ -d compiled/styles/ --base assets/styles/ --ext=css",
+		"build:scripts": "rollup assets/scripts/main.js -o compiled/scripts/main.js -c",
 		"build": "npm run build:styles && npm run build:scripts",
 		"compile": "npm run lint && npm run build"
 	}

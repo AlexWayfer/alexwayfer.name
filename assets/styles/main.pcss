@@ -2,14 +2,38 @@
 @import 'dark-theme.css';
 @import 'projects.css';
 
+:root {
+	/* `em` brokes `calc` inside `@media`: https://stackoverflow.com/a/61140118/2630849 */
+
+	--container-max-width: 700px;
+	--container-horizontal-padding: 15px;
+
+	--back-to-top-icon-size: 40px;
+	--back-to-top-bottom: 25px;
+	--back-to-top-right: calc(-60px - var(--back-to-top-icon-size));
+
+	--max-width-for-narrow-media: calc(
+		var(--container-max-width) +
+		var(--container-horizontal-padding) * 2
+	);
+	--max-width-for-narrow-media-of-back-to-top: calc(
+		var(--max-width-for-narrow-media) +
+		(
+			var(--back-to-top-right) * -1 +
+			var(--back-to-top-bottom)
+		) * 2
+	);
+}
+
 body {
-	margin: 1em;
+	margin: 0;
 	font-family: sans-serif;
 	background-color: #f5f5f5;
 
 	.container {
-		max-width: 700px;
+		max-width: var(--container-max-width);
 		margin: 0 auto;
+		padding: 0 var(--container-horizontal-padding);
 	}
 
 	.hidden {
@@ -72,6 +96,7 @@ body {
 
 	> footer {
 		text-align: center;
+		padding-bottom: 15px;
 	}
 
 	> .back-to-top {
@@ -81,17 +106,21 @@ body {
 		right: 0;
 
 		> a {
-			--icon-size: 3em;
-
 			position: absolute;
-			bottom: 1.5em;
-			right: calc(-3em - var(--icon-size));
+			bottom: var(--back-to-top-bottom);
+			right: var(--back-to-top-right);
 			color: inherit;
 			opacity: 0.7;
 
+			@media (max-width: var(--max-width-for-narrow-media-of-back-to-top)) {
+				right: 15px;
+				bottom: 15px;
+			}
+
 			> .icon {
-				width: var(--icon-size);
-				height: var(--icon-size);
+				display: block; /* to remove a space below */
+				width: var(--back-to-top-icon-size);
+				height: var(--back-to-top-icon-size);
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 module.exports = {
 	plugins: [
+		require('postcss-nested'),
 		require('autoprefixer'),
-		require('postcss-nested')
+		require('postcss-at-rules-variables')({ atRules: ['media'] })
 	]
 }

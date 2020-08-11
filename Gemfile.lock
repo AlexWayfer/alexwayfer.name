@@ -65,8 +65,7 @@ DEPENDENCIES
   moments!
   rubocop
   rubocop-performance
-  toys (= 0.10.5)
-  toys-core (= 0.10.5)
+  toys
 
 BUNDLED WITH
    2.1.4

@@ -56,9 +56,3 @@ rules:
   plugin/no-unsupported-browser-features:
     - true
     - severity: warning
-      ignore:
-        - flexbox
-        - css3-cursors
-        ## https://github.com/anandthakker/doiuse/issues/70
-        - outline
-        - css-appearance

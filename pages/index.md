@@ -16,10 +16,17 @@ But I'm ready for Computer Science in a good university (guess in another countr
 
 ## English language
 
-Yes, my level in English around Intermediate, but I do my best, and I like it more than Russian,
-probably because of its laconism and simplicity.
+As you might have notice, my level of English not so good, around Intermediate,
+but I do my best and I like it more than Russian, probably because of its laconism and simplicity.
 
 And I want to learn it more, but it's easier when living (or communicating) with English speakers.
+
+I use my gadgets (smartphone, PC, etc.) and all services (sites) in English,
+I search any information in English,
+and I use English for open-source discussions and all commits.
+
+[My streams](http://twitch.tv/AlexWayfer) mostly in Russian because I want to raise
+the culture of software development in Russian-speaking community.
 
 ## Software development
 

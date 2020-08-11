@@ -1,4 +1,26 @@
 body {
+	@define-mixin theme-transition $property {
+		transition-property: $(property);
+		transition-duration: 450ms;
+		transition-timing-function: ease-in-out;
+	}
+
+	--theme-transition-property: background-color, color;
+
+	@mixin theme-transition var(--theme-transition-property);
+
+	svg {
+		@mixin theme-transition fill;
+	}
+
+	a {
+		@mixin theme-transition color;
+	}
+
+	code {
+		@mixin theme-transition background-color;
+	}
+
 	&.dark-theme {
 		background-color: #111;
 		color: white;
@@ -12,7 +34,7 @@ body {
 		}
 
 		code {
-			background: #3a3a3a;
+			background-color: #3a3a3a;
 		}
 	}
 }

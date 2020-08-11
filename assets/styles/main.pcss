@@ -12,6 +12,10 @@ body {
 		margin: 0 auto;
 	}
 
+	.hidden {
+		display: none;
+	}
+
 	h2 {
 		font-size: 1.7em;
 	}
@@ -66,5 +70,27 @@ body {
 
 	> footer {
 		text-align: center;
+	}
+
+	> .back-to-top {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		> a {
+			--icon-size: 3em;
+
+			position: absolute;
+			bottom: 1.5em;
+			right: calc(-3em - var(--icon-size));
+			color: inherit;
+			opacity: 0.7;
+
+			> .icon {
+				width: var(--icon-size);
+				height: var(--icon-size);
+			}
+		}
 	}
 }

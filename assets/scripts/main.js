@@ -19,4 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
 			localStorage.setItem('dark-theme', document.body.classList.contains('dark-theme'))
 		})
 	})
+
+	window.addEventListener('scroll', () => {
+		const
+			pageOffset = document.documentElement.scrollTop || document.body.scrollTop,
+			threshold = window.innerHeight / 2,
+			backToTop = document.querySelector('body > .back-to-top')
+
+		if (pageOffset >= threshold && backToTop.classList.contains('hidden')) {
+			backToTop.classList.remove('hidden')
+		} else if (pageOffset < threshold && !backToTop.classList.contains('hidden')) {
+			backToTop.classList.add('hidden')
+		}
+	})
 })

@@ -14,3 +14,7 @@ Single-colored icons can be modified like so:
   color: red;
 }
 ========================================== */
+
+.icon-arrow-circle-up {
+  width: 0.857421875em;
+}

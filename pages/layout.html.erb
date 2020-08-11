@@ -25,11 +25,7 @@
 				<h1>AlexWayfer's Site</h1>
 
 				<button type="button" class="theme-toggle">
-					<svg class="icon icon-brightness baseline">
-						<use
-							xlink:href="<%= url_with_mtime.call 'images/icons/symbol-defs.svg' %>#icon-brightness"
-						></use>
-					</svg>
+					<%= render_partial.call :svg_icon, name: :brightness %>
 				</button>
 			</div>
 		</header>
@@ -45,5 +41,11 @@
 				Compiled in <%= Date.today.year %>. <a href="https://github.com/AlexWayfer/alexwayfer.name" target="_blank" rel="noreferrer noopener">Source code</a>.
 			</div>
 		</footer>
+
+		<div class="container back-to-top hidden">
+			<a href="#">
+				<%= render_partial.call :svg_icon, name: 'arrow-circle-up' %>
+			</a>
+		</div>
 	</body>
 </html>

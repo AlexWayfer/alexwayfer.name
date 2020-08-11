@@ -68,6 +68,8 @@ require 'date'
 require 'moments'
 birthday = Date.new(1994, 9, 1)
 
+url_with_mtime = ->(path) { "#{path}?v=#{File.mtime("#{compiled_directory}/#{path}").to_i}" }
+
 Dir.glob("#{pages_directory}/*.md{,.erb}").each do |page_file_name|
 	puts "Rendering #{page_file_name.sub(Dir.getwd, '')}..."
 
@@ -77,7 +79,12 @@ Dir.glob("#{pages_directory}/*.md{,.erb}").each do |page_file_name|
 	File.write(
 		"#{compiled_directory}/#{File.basename(page_file_name, '.*')}.html",
 		layout_erb.result_with_hash(
-			url_with_mtime: ->(path) { "#{path}?v=#{File.mtime("#{compiled_directory}/#{path}").to_i}" },
+			url_with_mtime: url_with_mtime,
+			render_partial: (lambda do |file_name, **variables|
+				ERB.new(File.read("#{pages_directory}/_#{file_name}.html.erb")).result_with_hash(
+					url_with_mtime: url_with_mtime, **variables
+				)
+			end),
 			page_content: Kramdown::Document.new(rendered_page).to_html,
 			birthday: birthday
 		)

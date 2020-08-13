@@ -1,3 +1,5 @@
+![Photo of me](/images/photo.jpg){: class="photo-of-me" }
+
 Hello. My name is Alexander (Aleksandr) Popov.
 
 I'm <span class="age"><%= Moments.difference(Date.new(2013, 8, 31), birthday).in_years %></span>

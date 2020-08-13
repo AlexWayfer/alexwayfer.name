@@ -43,7 +43,7 @@ end
 
 assets_directory = "#{root_dir}/assets"
 
-%w[scripts/lib/*.js images/**/*.svg].each do |files_pattern|
+%w[scripts/lib/*.js images/**/*.{jpg,svg}].each do |files_pattern|
 	Dir.glob("#{assets_directory}/#{files_pattern}") do |file_name|
 		relative_path = Pathname.new(file_name).relative_path_from(assets_directory)
 		target_file_path = "#{compiled_directory}/#{relative_path}"

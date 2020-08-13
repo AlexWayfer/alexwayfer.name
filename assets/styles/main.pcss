@@ -92,6 +92,21 @@ body {
 
 	> main {
 		margin-bottom: 2em;
+
+		.photo-of-me {
+			display: block;
+			float: right;
+			height: 300px;
+			margin-left: 30px;
+			margin-bottom: 30px;
+			border-radius: 15px;
+
+			@media (max-width: var(--container-max-width)) {
+				float: none;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
 	}
 
 	> footer {

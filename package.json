@@ -30,10 +30,10 @@
 		"stylelint-no-unsupported-browser-features": "^4.0.0"
 	},
 	"scripts": {
-		"lint:markdown": "remark .",
+		"lint:markdown": "remark",
 		"lint:styles": "stylelint assets/styles/",
 		"lint:scripts": "eslint assets/scripts/",
-		"lint": "npm run lint:markdown; markdown_lint_result=$?; npm run lint:styles; styles_lint_result=$?; npm run lint:scripts && test $styles_lint_result == 0 -a $markdown_lint_result == 0",
+		"lint": "npm run lint:markdown -- .; markdown_lint_result=$?; npm run lint:styles; styles_lint_result=$?; npm run lint:scripts && test $styles_lint_result == 0 -a $markdown_lint_result == 0",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build:styles": "postcss assets/styles/ -d compiled/styles/ --base assets/styles/ --ext=css",
 		"build:scripts": "rollup assets/scripts/main.js -o compiled/scripts/main.js -c",

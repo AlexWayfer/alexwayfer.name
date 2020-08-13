@@ -95,6 +95,12 @@ Dir.glob("#{PAGES_DIRECTORY}/*.md{,.erb}").each do |page_file_name|
 
 	rendered_page = render_file page_file_name, data: data, birthday: birthday
 
+	## Lint Markdown
+	markdown_temp_file_name = "#{COMPILED_DIRECTORY}/#{File.basename(page_file_name, '.*')}.md"
+	File.write markdown_temp_file_name, rendered_page
+	system "npm run lint:markdown -- #{markdown_temp_file_name} --no-stdout"
+	File.delete markdown_temp_file_name
+
 	File.write(
 		"#{COMPILED_DIRECTORY}/#{File.basename(page_file_name, '.*')}.html",
 		layout_erb.result_with_hash(

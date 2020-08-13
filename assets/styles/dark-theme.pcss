@@ -22,15 +22,23 @@ body {
 	}
 
 	&.dark-theme {
+		--color: white;
+
 		background-color: #111;
-		color: white;
+		color: var(--color);
 
 		svg {
-			fill: white;
+			fill: var(--color);
 		}
 
 		a {
-			color: skyblue;
+			--color: skyblue;
+
+			color: var(--color);
+
+			svg {
+				fill: var(--color);
+			}
 		}
 
 		code {

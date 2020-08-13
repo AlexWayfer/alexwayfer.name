@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.addEventListener('scroll', () => {
 		const
 			pageOffset = document.documentElement.scrollTop || document.body.scrollTop,
-			threshold = window.innerHeight / 2,
+			threshold = window.innerHeight / 4,
 			backToTop = document.querySelector('body > .back-to-top')
 
 		if (pageOffset >= threshold && backToTop.classList.contains('hidden')) {

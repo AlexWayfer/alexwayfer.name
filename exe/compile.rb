@@ -83,11 +83,15 @@ end
 
 def render_partial(file_name, **variables)
 	file_name = Dir.glob("#{PAGES_DIRECTORY}/partials/#{file_name}.*.erb").first
-	render_file(file_name, **variables).chomp
+	render_file(file_name, **variables).gsub(/\n[\t ]*/, '')
 end
 
-def external_link(markdown_link)
-	render_partial :external_link, markdown_link: markdown_link
+def svg_icon(name)
+	render_partial :svg_icon, name: name
+end
+
+def external_link(text, href)
+	render_partial :external_link, text: text, href: href
 end
 
 Dir.glob("#{PAGES_DIRECTORY}/*.md{,.erb}").each do |page_file_name|
@@ -95,14 +99,16 @@ Dir.glob("#{PAGES_DIRECTORY}/*.md{,.erb}").each do |page_file_name|
 
 	rendered_page = render_file page_file_name, data: data, birthday: birthday
 
+	page_file_basename = File.basename(page_file_name).split('.', 2).first
+
 	## Lint Markdown
-	markdown_temp_file_name = "#{COMPILED_DIRECTORY}/#{File.basename(page_file_name, '.*')}.md"
+	markdown_temp_file_name = "#{COMPILED_DIRECTORY}/#{page_file_basename}.md"
 	File.write markdown_temp_file_name, rendered_page
 	system "npm run lint:markdown -- #{markdown_temp_file_name} --no-stdout"
 	File.delete markdown_temp_file_name
 
 	File.write(
-		"#{COMPILED_DIRECTORY}/#{File.basename(page_file_name, '.*')}.html",
+		"#{COMPILED_DIRECTORY}/#{page_file_basename}.html",
 		layout_erb.result_with_hash(
 			page_content: Kramdown::Document.new(rendered_page).to_html,
 			birthday: birthday

@@ -25,7 +25,7 @@
 				<h1>AlexWayfer's Site</h1>
 
 				<button type="button" class="theme-toggle">
-					<%= render_partial :svg_icon, name: :brightness %>
+					<%= svg_icon :brightness %>
 				</button>
 			</div>
 		</header>
@@ -38,12 +38,13 @@
 
 		<footer>
 			<div class="container">
-				Compiled in <%= Date.today.year %>. <a href="https://github.com/AlexWayfer/alexwayfer.name" target="_blank" rel="noreferrer noopener">Source code</a>.
+				Compiled in <%= Date.today.year %>.
+				<%= external_link 'Source code', 'https://github.com/AlexWayfer/alexwayfer.name' %>.
 			</div>
 		</footer>
 
 		<div class="container back-to-top hidden">
-			<a href="#"><%= render_partial :svg_icon, name: 'arrow-circle-up' %></a>
+			<a href="#"><%= svg_icon 'arrow-circle-up' %></a>
 		</div>
 	</body>
 </html>

@@ -5,7 +5,7 @@
 <% data.projects.each do |project| %>
 *   ### <%
       if project.link
-    %><%= external_link "[#{project.title}](#{project.link})" %><%
+    %><%= external_link project.title, project.link %><%
       else
     %><%= project.title %><%
       end

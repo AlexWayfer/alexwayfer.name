@@ -130,9 +130,9 @@
 
     This project was a first serious try to make it with Ruby.
     I didn't like Ruby on Rails, mostly because of its approaches and "magic",
-    so I've developed this project via <%= external_link '[Sinatra](http://sinatrarb.com/)' %>,
+    so I've developed this project via <%= external_link 'Sinatra', 'http://sinatrarb.com/' %>,
     but was a big mistake because of controllers architecture and it became the impulse to create
-    <%= external_link '[Flame framework](https://github.com/AlexWayfer/flame)' %>.
+    <%= external_link 'Flame framework', 'https://github.com/AlexWayfer/flame' %>.
 
     Although there was nice (in my opinion) horizontal-nested simple UI,
     and pretty good database architecture.
@@ -159,7 +159,7 @@
     People transfers aggregator, between passengers and carriers.
     It's pretty popular and successful.
 
-    The first project written via <%= external_link '[Flame](https://github.com/AlexWayfer/flame)' %>.
+    The first project written via <%= external_link 'Flame', 'https://github.com/AlexWayfer/flame' %>.
 
     There was a lot of work with:
 
@@ -225,12 +225,12 @@
 
   description: |
     Cargo transportation aggregator, between shippers and carriers.
-    Another project written via <%= external_link '[Flame](https://github.com/AlexWayfer/flame)' %>.
+    Another project written via <%= external_link 'Flame', 'https://github.com/AlexWayfer/flame' %>.
 
     I've tried to make this project taking into account my architecture errors of GetTransfer.
     So, it's using a next version of Flame, 5, with a lot of improvements.
     Also we have started to use service objects instead of fat controllers and models.
-    Then I service objects turned into <%= external_link '[Formalism](https://github.com/AlexWayfer/formalism)' %> forms.
+    Then I service objects turned into <%= external_link 'Formalism', 'https://github.com/AlexWayfer/formalism' %> forms.
 
     This project was pretty similar to GetTransfer, so I was working with similar technologies,
     sometimes with a better or cleaner approach.
@@ -266,22 +266,22 @@
     Works via regular expressions.
     Right now only in Russian, but other languages in plans.
 
-    There is still no site for it, sadly, because of <%= external_link "[Puma's issue](https://github.com/puma/puma/issues/2319)" %>.
+    There is still no site for it, sadly, because of <%= external_link "Puma's issue", 'https://github.com/puma/puma/issues/2319' %>.
 
-    I've integrated it with YouTube at first, via <%= external_link "[official Google's gem](https://github.com/googleapis/google-api-ruby-client)" %>,
+    I've integrated it with YouTube at first, via <%= external_link "official Google's gem", 'https://github.com/googleapis/google-api-ruby-client' %>,
     then I've integrated it with Twitch via gem for API and another gem for chat.
     They're pretty abandoned, there are PRs for them:
 
-    *   <%= external_link '[PR to `twitch-rb`](https://github.com/dustinlakin/twitch-rb/pull/34)' %>
-    *   <%= external_link '[PR to `twitch-chat`](https://github.com/EnotPoloskun/twitch-chat/pull/6)' %>
+    *   <%= external_link 'PR to `twitch-rb`', 'https://github.com/dustinlakin/twitch-rb/pull/34' %>
+    *   <%= external_link 'PR to `twitch-chat`', 'https://github.com/EnotPoloskun/twitch-chat/pull/6' %>
 
-    Also I've created a separated gem for auithentication: <%= external_link "[`twitch_oauth2`](https://github.com/AlexWayfer/twitch_oauth2)" %>.
+    Also I've created a separated gem for auithentication: <%= external_link '`twitch_oauth2`', 'https://github.com/AlexWayfer/twitch_oauth2' %>.
 
     Also it has integrations with third-party services, like Steam,
-    I've created <%= external_link '[a PR to the gem](https://github.com/bhaberer/steam-api/pull/10)' %> with improvements.
+    I've created <%= external_link 'a PR to the gem', 'https://github.com/bhaberer/steam-api/pull/10' %> with improvements.
 
-    For time difference I was trying many gems and chose <%= external_link '[`moments`](https://github.com/excpt/moments)' %>,
-    but <%= external_link "[I've made some improvements for it](https://github.com/excpt/moments/pulls?q=is%3Apr+author%3AAlexWayfer+is%3Aclosed)" %>
+    For time difference I was trying many gems and chose <%= external_link '`moments`', 'https://github.com/excpt/moments' %>,
+    but <%= external_link "I've made some improvements for it", 'https://github.com/excpt/moments/pulls?q=is%3Apr+author%3AAlexWayfer+is%3Aclosed' %>
     (it looks maintained, PRs were merged).
 
   technologies:
@@ -304,13 +304,13 @@
 
   description: |
     Simple application with configuration window (page)
-    and a page with configured timer for streaming application, like <%= external_link '[OBS](https://obsproject.com/)' %>.
+    and a page with configured timer for streaming application, like <%= external_link 'OBS', 'https://obsproject.com/' %>.
 
     Useful for scenes of AFK (stream pauses), just configurable time countdown.
 
     Currently it built only via Vue.js and static, but I have plans to make
     a complete web-application via Flame, database (configuration saving) and web-sockets.
-    But there is still <%= external_link '[the issue of Puma](https://github.com/puma/puma/issues/2319)' %>.
+    But there is still <%= external_link 'the issue of Puma', 'https://github.com/puma/puma/issues/2319' %>.
 
   technologies:
     - JavaScript
@@ -328,7 +328,7 @@
     (just because they're more important for me).
 
     Core (algorythm in a Ruby gem) and CLI tool are ready, but there is no site version
-    still because of <%= external_link "[the Puma's issue](https://github.com/puma/puma/issues/2319)" %>.
+    still because of <%= external_link "the Puma's issue", 'https://github.com/puma/puma/issues/2319' %>.
 
   technologies:
     - Ruby

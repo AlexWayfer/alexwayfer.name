@@ -35,10 +35,10 @@ and I use English for open-source discussions and all commits.
 
 ### General
 
-I love <%= external_link '[Ruby Language](https://www.ruby-lang.org/)' %>.
+I love <%= external_link 'Ruby Language', 'https://www.ruby-lang.org/' %>.
 
-I like <%= external_link '[`snake_case`](https://en.wikipedia.org/wiki/Snake_case)' %>
-and <%= external_link '[OOP](https://en.wikipedia.org/wiki/Object-oriented_programming)' %>.
+I like <%= external_link '`snake_case`', 'https://en.wikipedia.org/wiki/Snake_case' %>
+and <%= external_link 'OOP', 'https://en.wikipedia.org/wiki/Object-oriented_programming' %>.
 
 But I can write a code in any language.
 My experience includes C, C++, Qt, Pascal, Delphi, Go, PHP, Java, JavaScript.
@@ -52,12 +52,12 @@ I can design application architecture. Also usually I communicate with other tea
 
 ### Skills levels
 
-<%= external_link '[CodersRank profile](https://profile.codersrank.io/user/alexwayfer)' %>.
+<%= external_link 'CodersRank profile', 'https://profile.codersrank.io/user/alexwayfer' %>.
 
 ### Open-source projects and activity
 
 I love open-source too much,
-here is my <%= external_link '[GitHub profile](https://github.com/AlexWayfer)' %>.
+here is my <%= external_link 'GitHub profile', 'https://github.com/AlexWayfer' %>.
 
 ### Projects (experience)
 
@@ -72,6 +72,6 @@ here is my <%= external_link '[GitHub profile](https://github.com/AlexWayfer)' %
 ## Contacts
 
 <% data.contacts.each do |contact| %>
-*   <%= external_link "[#{contact.title}](#{contact.link})" %><br>
+*   <%= external_link contact.title, contact.link %><br>
     <%= contact.description %>
 <% end %>

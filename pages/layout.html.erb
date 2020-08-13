@@ -7,16 +7,16 @@
 
 		<title>AlexWayfer's Site</title>
 
-		<link rel="stylesheet" href="<%= url_with_mtime.call 'styles/main.css' %>" />
+		<link rel="stylesheet" href="<%= url_with_mtime 'styles/main.css' %>" />
 
 		<script type="text/javascript">
 			window.birthday = Date.parse('<%= birthday.iso8601 %>')
 		</script>
 
-		<script type="text/javascript" src="<%= url_with_mtime.call 'scripts/lib/svgxuse.min.js' %>" />
+		<script type="text/javascript" src="<%= url_with_mtime 'scripts/lib/svgxuse.min.js' %>" />
 		</script>
 
-		<script type="text/javascript" src="<%= url_with_mtime.call 'scripts/main.js' %>" /></script>
+		<script type="text/javascript" src="<%= url_with_mtime 'scripts/main.js' %>" /></script>
 	</head>
 
 	<body>
@@ -25,7 +25,7 @@
 				<h1>AlexWayfer's Site</h1>
 
 				<button type="button" class="theme-toggle">
-					<%= render_partial.call :svg_icon, name: :brightness %>
+					<%= render_partial :svg_icon, name: :brightness %>
 				</button>
 			</div>
 		</header>
@@ -43,7 +43,7 @@
 		</footer>
 
 		<div class="container back-to-top hidden">
-			<a href="#"><%= render_partial.call :svg_icon, name: 'arrow-circle-up' %></a>
+			<a href="#"><%= render_partial :svg_icon, name: 'arrow-circle-up' %></a>
 		</div>
 	</body>
 </html>

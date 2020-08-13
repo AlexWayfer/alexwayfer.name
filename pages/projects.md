@@ -5,7 +5,7 @@
 <% data.projects.each do |project| %>
 *   ### <%
       if project.link
-    %>[<%= project.title %>](<%= project.link %>){:target="_blank" rel="noreferrer noopener"}<%
+    %><%= external_link "[#{project.title}](#{project.link})" %><%
       else
     %><%= project.title %><%
       end
@@ -13,7 +13,7 @@
 
     **<%= project.years %>**
 
-    <%= project.description.split("\n").join("\n    ") %>
+    <%= render project.description.split("\n").join("\n    ") %>
 
     Technologies:
     <% project.technologies.each do |technology| %>

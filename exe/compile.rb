@@ -16,7 +16,7 @@ def initialize_open_struct_deeply(value)
 	end
 end
 
-root_dir = "#{__dir__}/.."
+root_dir = File.expand_path "#{__dir__}/.."
 
 data = OpenStruct.new(
 	Dir.glob("#{root_dir}/data/*.y{a,}ml").each_with_object({}) do |data_file_name, result|
@@ -29,14 +29,14 @@ data = OpenStruct.new(
 
 require 'fileutils'
 
-compiled_directory = "#{root_dir}/compiled"
+COMPILED_DIRECTORY = "#{root_dir}/compiled"
 
-puts "Cleaning #{compiled_directory.sub(Dir.getwd, '')}..."
-FileUtils.rm_r Dir.glob "#{compiled_directory}/*"
+puts "Cleaning #{COMPILED_DIRECTORY.sub(Dir.getwd, '')}..."
+FileUtils.rm_r Dir.glob "#{COMPILED_DIRECTORY}/*"
 
-unless Dir.exist? compiled_directory
-	puts "Creating #{compiled_directory.sub(Dir.getwd, '')}..."
-	FileUtils.mkdir_p compiled_directory
+unless Dir.exist? COMPILED_DIRECTORY
+	puts "Creating #{COMPILED_DIRECTORY.sub(Dir.getwd, '')}..."
+	FileUtils.mkdir_p COMPILED_DIRECTORY
 end
 
 ## Copy third-party assets
@@ -46,7 +46,7 @@ assets_directory = "#{root_dir}/assets"
 %w[scripts/lib/*.js images/**/*.{jpg,svg}].each do |files_pattern|
 	Dir.glob("#{assets_directory}/#{files_pattern}") do |file_name|
 		relative_path = Pathname.new(file_name).relative_path_from(assets_directory)
-		target_file_path = "#{compiled_directory}/#{relative_path}"
+		target_file_path = "#{COMPILED_DIRECTORY}/#{relative_path}"
 		FileUtils.mkdir_p File.dirname target_file_path
 		FileUtils.cp file_name, target_file_path
 	end
@@ -55,36 +55,49 @@ end
 ## Compile assets
 
 system 'npm run compile'
+puts
 
 ## Compile pages
 
 require 'kramdown'
 require 'erb'
 
-pages_directory = "#{root_dir}/pages"
-layout_erb = ERB.new File.read "#{pages_directory}/layout.html.erb"
+PAGES_DIRECTORY = "#{root_dir}/pages"
+layout_erb = ERB.new File.read "#{PAGES_DIRECTORY}/layout.html.erb"
 
 require 'date'
 require 'moments'
 birthday = Date.new(1994, 9, 1)
 
-url_with_mtime = ->(path) { "#{path}?v=#{File.mtime("#{compiled_directory}/#{path}").to_i}" }
+def url_with_mtime(path)
+	"#{path}?v=#{File.mtime("#{COMPILED_DIRECTORY}/#{path}").to_i}"
+end
 
-Dir.glob("#{pages_directory}/*.md{,.erb}").each do |page_file_name|
+def render(content, **variables)
+	ERB.new(content).result_with_hash(variables)
+end
+
+def render_file(file_name, **variables)
+	render File.read(file_name), **variables
+end
+
+def render_partial(file_name, **variables)
+	file_name = Dir.glob("#{PAGES_DIRECTORY}/partials/#{file_name}.*.erb").first
+	render_file(file_name, **variables).chomp
+end
+
+def external_link(markdown_link)
+	render_partial :external_link, markdown_link: markdown_link
+end
+
+Dir.glob("#{PAGES_DIRECTORY}/*.md{,.erb}").each do |page_file_name|
 	puts "Rendering #{page_file_name.sub(Dir.getwd, '')}..."
 
-	rendered_page =
-		ERB.new(File.read(page_file_name)).result_with_hash(data: data, birthday: birthday)
+	rendered_page = render_file page_file_name, data: data, birthday: birthday
 
 	File.write(
-		"#{compiled_directory}/#{File.basename(page_file_name, '.*')}.html",
+		"#{COMPILED_DIRECTORY}/#{File.basename(page_file_name, '.*')}.html",
 		layout_erb.result_with_hash(
-			url_with_mtime: url_with_mtime,
-			render_partial: (lambda do |file_name, **variables|
-				ERB.new(File.read("#{pages_directory}/_#{file_name}.html.erb")).result_with_hash(
-					url_with_mtime: url_with_mtime, **variables
-				)
-			end),
 			page_content: Kramdown::Document.new(rendered_page).to_html,
 			birthday: birthday
 		)

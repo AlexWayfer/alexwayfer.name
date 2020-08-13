@@ -5,12 +5,23 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<title>AlexWayfer's Site</title>
+		<title><%= SITE_TITLE %></title>
+
+		<meta property="og:title" content="<%= SITE_TITLE %>" />
+		<meta property="og:description" content="Hello, my name is <%= PROFILE[:first_name] %> <%= PROFILE[:last_name] %> and I'm a Software Developer, mostly in Ruby." />
+		<meta property="og:type" content="profile" />
+		<meta property="og:profile:first_name" content="<%= PROFILE[:first_name] %>" />
+		<meta property="og:profile:last_name" content="<%= PROFILE[:last_name] %>" />
+		<meta property="og:profile:username" content="<%= PROFILE[:username] %>" />
+		<meta property="og:profile:gender" content="<%= PROFILE[:gender] %>" />
+		<meta property="og:image" content="<%= url_with_mtime PHOTO_PATH %>" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:url" content="https://alexwayfer.name/" />
 
 		<link rel="stylesheet" href="<%= url_with_mtime 'styles/main.css' %>" />
 
 		<script type="text/javascript">
-			window.birthday = Date.parse('<%= birthday.iso8601 %>')
+			window.birthday = Date.parse('<%= BIRTHDAY.iso8601 %>')
 		</script>
 
 		<script type="text/javascript" defer src="<%= url_with_mtime 'scripts/lib/svgxuse.min.js' %>" />
@@ -22,7 +33,7 @@
 	<body>
 		<header>
 			<div class="container">
-				<h1>AlexWayfer's Site</h1>
+				<h1><%= SITE_TITLE %></h1>
 
 				<button type="button" class="theme-toggle">
 					<%= svg_icon :brightness %>

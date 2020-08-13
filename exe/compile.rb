@@ -67,7 +67,19 @@ layout_erb = ERB.new File.read "#{PAGES_DIRECTORY}/layout.html.erb"
 
 require 'date'
 require 'moments'
-birthday = Date.new(1994, 9, 1)
+BIRTHDAY = Date.new(1994, 9, 1)
+
+PROFILE = {
+	first_name: 'Alexander',
+	raw_first_name: 'Aleksandr',
+	last_name: 'Popov',
+	username: 'AlexWayfer',
+	gender: 'male'
+}.freeze
+
+SITE_TITLE = "#{PROFILE[:username]}'s Site"
+
+PHOTO_PATH = '/images/photo.jpeg'
 
 def url_with_mtime(path)
 	"#{path}?v=#{File.mtime("#{COMPILED_DIRECTORY}/#{path}").to_i}"
@@ -97,7 +109,7 @@ end
 Dir.glob("#{PAGES_DIRECTORY}/*.md{,.erb}").each do |page_file_name|
 	puts "Rendering #{page_file_name.sub(Dir.getwd, '')}..."
 
-	rendered_page = render_file page_file_name, data: data, birthday: birthday
+	rendered_page = render_file page_file_name, data: data
 
 	page_file_basename = File.basename(page_file_name).split('.', 2).first
 
@@ -110,8 +122,7 @@ Dir.glob("#{PAGES_DIRECTORY}/*.md{,.erb}").each do |page_file_name|
 	File.write(
 		"#{COMPILED_DIRECTORY}/#{page_file_basename}.html",
 		layout_erb.result_with_hash(
-			page_content: Kramdown::Document.new(rendered_page).to_html,
-			birthday: birthday
+			page_content: Kramdown::Document.new(rendered_page).to_html
 		)
 	)
 end

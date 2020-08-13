@@ -1,4 +1,12 @@
-![Photo of me](<%= url_with_mtime '/images/photo.jpeg' %>){:class="photo-of-me"}
+<picture>
+	<% photo_basename_path = '/images/photo' %>
+	<source type="image/webp" srcset="<%= url_with_mtime "#{photo_basename_path}.webp" %>">
+	<img
+		src="<%= url_with_mtime "#{photo_basename_path}.jpeg" %>"
+		class="photo-of-me"
+		alt="Photo of me"
+	/>
+</picture>
 
 Hello. My name is Alexander (Aleksandr) Popov.
 

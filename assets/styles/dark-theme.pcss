@@ -24,26 +24,14 @@ body {
 	&.dark-theme {
 		@media not print {
 			--color: white;
-
-			background-color: #111;
-			color: var(--color);
-
-			svg {
-				fill: var(--color);
-			}
+			--background-color: #111;
 
 			a {
 				--color: skyblue;
-
-				color: var(--color);
-
-				svg {
-					fill: var(--color);
-				}
 			}
 
 			code {
-				background-color: #3a3a3a;
+				--background-color: #3a3a3a;
 			}
 		}
 	}

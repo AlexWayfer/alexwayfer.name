@@ -26,9 +26,13 @@
 }
 
 body {
+	--color: black;
+	--background-color: #f5f5f5;
+
 	margin: 0;
 	font-family: sans-serif;
-	background-color: #f5f5f5;
+	color: var(--color);
+	background-color: var(--background-color);
 
 	.container {
 		max-width: var(--container-max-width);
@@ -54,7 +58,9 @@ body {
 	}
 
 	a {
-		color: mediumblue;
+		--color: mediumblue;
+
+		color: var(--color);
 
 		> .icon-external-link {
 			--size: 0.8em;
@@ -66,9 +72,15 @@ body {
 		}
 	}
 
+	button {
+		color: var(--color);
+	}
+
 	code {
+		--background-color: #e5e5e5;
+
 		padding: 0.25em;
-		background: #e5e5e5;
+		background-color: var(--background-color);
 		border-radius: 3px;
 	}
 

@@ -93,17 +93,19 @@ def render_file(file_name, **variables)
 	render File.read(file_name), **variables
 end
 
-def render_partial(file_name, **variables)
+def render_partial(file_name, remove_newlines: false, **variables)
 	file_name = Dir.glob("#{PAGES_DIRECTORY}/partials/#{file_name}.*.erb").first
-	render_file(file_name, **variables).gsub(/\n[\t ]*/, '')
+	result = render_file(file_name, **variables)
+	result.gsub!(/\n[\t ]*/, '') if remove_newlines
+	result
 end
 
 def svg_icon(name)
-	render_partial :svg_icon, name: name
+	render_partial :svg_icon, name: name, remove_newlines: true
 end
 
 def external_link(text, href)
-	render_partial :external_link, text: text, href: href
+	render_partial :external_link, text: text, href: href, remove_newlines: true
 end
 
 Dir.glob("#{PAGES_DIRECTORY}/*.md{,.erb}").each do |page_file_name|

@@ -73,7 +73,13 @@ here is my <%= external_link 'GitHub profile', 'https://github.com/AlexWayfer' %
 
 ### Projects (experience)
 
+{:refdef: .not-for-print}
 [Complete list on this site](projects.html).
+{:refdef}
+
+<%=
+	render_partial :projects_list, projects: data.projects, additional_classes: %w[only-for-print]
+%>
 
 ## Tastes
 

@@ -76,6 +76,20 @@ body {
 		line-height: 1.4em;
 	}
 
+	.only-for-print {
+		display: none;
+
+		@media print {
+			display: block;
+		}
+	}
+
+	.not-for-print {
+		@media print {
+			display: none;
+		}
+	}
+
 	> header {
 		> .container {
 			display: flex;
@@ -95,6 +109,10 @@ body {
 					width: var(--size);
 					height: var(--size);
 				}
+
+				@media print {
+					display: none;
+				}
 			}
 		}
 	}
@@ -110,7 +128,7 @@ body {
 			margin-bottom: 30px;
 			border-radius: 15px;
 
-			@media (max-width: var(--container-max-width)) {
+			@media screen and (max-width: var(--container-max-width)) {
 				float: none;
 				margin-left: auto;
 				margin-right: auto;
@@ -128,6 +146,10 @@ body {
 		bottom: 0;
 		left: 0;
 		right: 0;
+
+		@media print {
+			display: none;
+		}
 
 		> a {
 			position: absolute;

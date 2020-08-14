@@ -22,27 +22,29 @@ body {
 	}
 
 	&.dark-theme {
-		--color: white;
+		@media not print {
+			--color: white;
 
-		background-color: #111;
-		color: var(--color);
-
-		svg {
-			fill: var(--color);
-		}
-
-		a {
-			--color: skyblue;
-
+			background-color: #111;
 			color: var(--color);
 
 			svg {
 				fill: var(--color);
 			}
-		}
 
-		code {
-			background-color: #3a3a3a;
+			a {
+				--color: skyblue;
+
+				color: var(--color);
+
+				svg {
+					fill: var(--color);
+				}
+			}
+
+			code {
+				background-color: #3a3a3a;
+			}
 		}
 	}
 }

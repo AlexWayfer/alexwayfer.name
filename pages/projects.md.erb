@@ -2,20 +2,4 @@
 
 ## Projects
 
-<% data.projects.each do |project| %>
-*   ### <%
-      if project.link
-    %><%= external_link project.title, project.link %><%
-      else
-    %><%= project.title %><%
-      end
-    %>
-
-    **<%= project.years %>**
-
-    <%= render project.description.split("\n").join("\n    ") %>
-
-    Technologies:
-    <% project.technologies.each do |technology| %>
-    *   <%= technology %><% end %>
-<% end %>{: .projects }
+<%= render_partial :projects_list, projects: data.projects, additional_classes: [] %>

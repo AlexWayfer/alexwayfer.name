@@ -1,38 +1,42 @@
-body {
+html {
+	&.dark-theme {
+		@media not print {
+			body {
+				--color: white;
+				--background-color: #111;
+
+				a {
+					--color: skyblue;
+				}
+
+				code {
+					--background-color: #3a3a3a;
+				}
+			}
+		}
+	}
+
 	@define-mixin theme-transition $property {
 		transition-property: $(property);
 		transition-duration: 300ms;
 		transition-timing-function: ease-in-out;
 	}
 
-	--theme-transition-property: background-color, color;
+	body {
+		--theme-transition-property: background-color, color;
 
-	@mixin theme-transition var(--theme-transition-property);
+		@mixin theme-transition var(--theme-transition-property);
 
-	svg {
-		@mixin theme-transition fill;
-	}
+		svg {
+			@mixin theme-transition fill;
+		}
 
-	a {
-		@mixin theme-transition color;
-	}
+		a {
+			@mixin theme-transition color;
+		}
 
-	code {
-		@mixin theme-transition background-color;
-	}
-
-	&.dark-theme {
-		@media not print {
-			--color: white;
-			--background-color: #111;
-
-			a {
-				--color: skyblue;
-			}
-
-			code {
-				--background-color: #3a3a3a;
-			}
+		code {
+			@mixin theme-transition background-color;
 		}
 	}
 }

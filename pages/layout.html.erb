@@ -22,6 +22,13 @@
 
 		<script type="text/javascript">
 			window.birthday = Date.parse('<%= BIRTHDAY.iso8601 %>')
+
+			const osDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+			const savedDarkMode = localStorage.getItem('dark-theme')
+			if (savedDarkMode == 'true' || (savedDarkMode == null && osDarkMode)) {
+				document.documentElement.classList.add('dark-theme')
+			}
 		</script>
 
 		<script type="text/javascript" defer src="<%= url_with_mtime 'scripts/main.js' %>" /></script>

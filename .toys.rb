@@ -9,7 +9,6 @@ require 'icomoon_toys'
 expand IcoMoonToys::Template,
 	extract_map: {
 		'selection.json' => 'assets/icomoon/selection.json',
-		'svgxuse.min.js' => 'assets/scripts/lib/svgxuse.min.js',
 		'style.css' => 'assets/styles/lib/icomoon.css',
 		'symbol-defs.svg' => 'assets/images/icons/symbol-defs.svg'
 	}

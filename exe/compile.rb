@@ -4,6 +4,8 @@
 
 require_relative '_common'
 
+require 'gorilla_patch/symbolize'
+
 ## Load data from YAML files and make `OpenStruct` object (for a prettier code)
 
 require 'ostruct'
@@ -27,16 +29,35 @@ data = OpenStruct.new(
 
 ## Compilation preparations
 
+def operation(description)
+	puts
+	puts "#{description}..."
+	yield
+	puts 'Done.'
+end
+
 require 'fileutils'
 
 COMPILED_DIRECTORY = "#{root_dir}/compiled"
 
-puts "Cleaning #{COMPILED_DIRECTORY.sub(Dir.getwd, '')}..."
-FileUtils.rm_r Dir.glob "#{COMPILED_DIRECTORY}/*"
+def relative_path(full_path, base_path = Dir.getwd)
+	Pathname.new(full_path).relative_path_from(base_path)
+end
+
+operation "Cleaning #{relative_path COMPILED_DIRECTORY}" do
+	FileUtils.rm_r Dir.glob "#{COMPILED_DIRECTORY}/*"
+end
 
 unless Dir.exist? COMPILED_DIRECTORY
-	puts "Creating #{COMPILED_DIRECTORY.sub(Dir.getwd, '')}..."
-	FileUtils.mkdir_p COMPILED_DIRECTORY
+	operation "Creating #{relative_path COMPILED_DIRECTORY}" do
+		FileUtils.mkdir_p COMPILED_DIRECTORY
+	end
+end
+
+COMPILED_TMP_DIRECTORY = "#{COMPILED_DIRECTORY}/tmp"
+
+operation "Creating #{relative_path COMPILED_TMP_DIRECTORY}" do
+	FileUtils.mkdir_p COMPILED_TMP_DIRECTORY
 end
 
 ## Copy third-party assets
@@ -45,41 +66,54 @@ assets_directory = "#{root_dir}/assets"
 
 %w[scripts/lib/*.js images/**/*.{jp{,e}g,webp,svg}].each do |files_pattern|
 	Dir.glob("#{assets_directory}/#{files_pattern}") do |file_name|
-		relative_path = Pathname.new(file_name).relative_path_from(assets_directory)
-		target_file_path = "#{COMPILED_DIRECTORY}/#{relative_path}"
-		FileUtils.mkdir_p File.dirname target_file_path
-		FileUtils.cp file_name, target_file_path
+		relative_file_path = relative_path file_name, assets_directory
+
+		operation "Copying #{relative_file_path}" do
+			target_file_path = "#{COMPILED_DIRECTORY}/#{relative_file_path}"
+			FileUtils.mkdir_p File.dirname target_file_path
+			FileUtils.cp file_name, target_file_path
+		end
 	end
 end
 
 ## Compile assets
 
-system 'npm run compile'
-puts
+abort unless system 'npm run compile'
 
 ## Compile pages
 
 require 'kramdown'
 require 'erb'
 
-PAGES_DIRECTORY = "#{root_dir}/pages"
-layout_erb = ERB.new File.read "#{PAGES_DIRECTORY}/layout.html.erb"
+TEMPLATES_DIRECTORY = "#{root_dir}/templates"
+SITE_TEMPLATES_DIRECTORY = "#{TEMPLATES_DIRECTORY}/site"
+PAGES_DIRECTORY = "#{SITE_TEMPLATES_DIRECTORY}/pages"
+
+def initialize_layout(directory)
+	ERB.new File.read "#{directory}/layout.html.erb"
+end
+
+site_layout_erb = initialize_layout PAGES_DIRECTORY
 
 require 'date'
 require 'moments'
 BIRTHDAY = Date.new(1994, 9, 1)
 
-PROFILE = {
-	first_name: 'Alexander',
-	raw_first_name: 'Aleksandr',
-	last_name: 'Popov',
-	username: 'AlexWayfer',
-	gender: 'male'
-}.freeze
+profile_config_file_path = "#{root_dir}/config/profile.yaml"
+
+unless File.exist? profile_config_file_path
+	abort unless system 'toys config check'
+end
+
+using GorillaPatch::Symbolize
+
+PROFILE = YAML.load_file(profile_config_file_path).symbolize_keys
 
 SITE_TITLE = "#{PROFILE[:username]}'s Site"
 
-PHOTO_PATH = '/images/photo.jpeg'
+PHOTO_PATH = 'images/photo.jpeg'
+
+## Helper methods for rendering
 
 def url_with_mtime(path)
 	"#{path}?v=#{File.mtime("#{COMPILED_DIRECTORY}/#{path}").to_i}"
@@ -93,8 +127,10 @@ def render_file(file_name, **variables)
 	render File.read(file_name), **variables
 end
 
-def render_partial(file_name, remove_newlines: false, **variables)
-	file_name = Dir.glob("#{PAGES_DIRECTORY}/partials/#{file_name}.*.erb").first
+def render_partial(
+	file_name, base_dir: SITE_TEMPLATES_DIRECTORY, remove_newlines: false, **variables
+)
+	file_name = Dir.glob("#{base_dir}/partials/#{file_name}.*.erb").first
 	result = render_file(file_name, **variables)
 	result.gsub!(/\n[\t ]*/, '') if remove_newlines
 	result
@@ -108,23 +144,35 @@ def external_link(text, href)
 	render_partial :external_link, text: text, href: href, remove_newlines: true
 end
 
+def basename_without_extensions(full_name)
+	File.basename(full_name).split('.', 2).first
+end
+
+## Render Markdown pages
+
 Dir.glob("#{PAGES_DIRECTORY}/*.md{,.erb}").each do |page_file_name|
-	puts "Rendering #{page_file_name.sub(Dir.getwd, '')}..."
+	operation "Rendering #{relative_path page_file_name}" do
+		rendered_page = render_file page_file_name, data: data
 
-	rendered_page = render_file page_file_name, data: data
+		page_file_basename = basename_without_extensions page_file_name
 
-	page_file_basename = File.basename(page_file_name).split('.', 2).first
+		## Lint Markdown
+		markdown_temp_file_name = "#{COMPILED_DIRECTORY}/#{page_file_basename}.md"
+		File.write markdown_temp_file_name, rendered_page
+		system "npm run lint:markdown -- #{markdown_temp_file_name} --no-stdout"
+		File.delete markdown_temp_file_name
 
-	## Lint Markdown
-	markdown_temp_file_name = "#{COMPILED_DIRECTORY}/#{page_file_basename}.md"
-	File.write markdown_temp_file_name, rendered_page
-	system "npm run lint:markdown -- #{markdown_temp_file_name} --no-stdout"
-	File.delete markdown_temp_file_name
-
-	File.write(
-		"#{COMPILED_DIRECTORY}/#{page_file_basename}.html",
-		layout_erb.result_with_hash(
-			page_content: Kramdown::Document.new(rendered_page).to_html
+		File.write(
+			"#{COMPILED_DIRECTORY}/#{page_file_basename}.html",
+			site_layout_erb.result_with_hash(
+				page_content: Kramdown::Document.new(rendered_page).to_html
+			)
 		)
-	)
+	end
+end
+
+## Clear temp directory
+
+operation "Deleting #{COMPILED_TMP_DIRECTORY}" do
+	FileUtils.rm_r COMPILED_TMP_DIRECTORY
 end

@@ -1,9 +1,5 @@
 extends: 'eslint:recommended'
 
-env:
-  browser: true
-  es6: true
-
 rules:
   indent:
     - error
@@ -74,14 +70,10 @@ rules:
   no-var:
     - error
 
-parserOptions:
-  sourceType: module
-
 overrides:
   - files:
       - "*.config.js"
     env:
-      browser: false
       node: true
       es6: true
     parserOptions:

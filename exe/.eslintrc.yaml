@@ -1,0 +1,13 @@
+extends: '../.eslintrc.yaml'
+
+env:
+  node: true
+  es2017: true
+
+rules:
+  no-console:
+    - warn
+    - allow:
+      - error
+      - warn
+      - info

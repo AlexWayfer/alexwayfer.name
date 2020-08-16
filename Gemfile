@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org/'
 
+gem 'gorilla_patch'
 gem 'kramdown'
 ## https://github.com/excpt/moments/issues/7
 gem 'moments', github: 'excpt/moments'

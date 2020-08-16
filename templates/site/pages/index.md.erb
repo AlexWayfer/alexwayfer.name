@@ -1,20 +1,16 @@
 <picture>
 	<source
 		type="image/webp"
-		srcset="<%=
-			url_with_mtime "#{File.dirname(PHOTO_PATH)}/#{File.basename(PHOTO_PATH, '.*')}.webp"
-		%>"
+		srcset="<%= url_with_mtime profile[:photo_path].sub(/\.\w+$/, '.webp') %>"
 	>
-	<img
-		src="<%= url_with_mtime PHOTO_PATH %>"
-		class="photo-of-me"
-		alt="Photo of me"
-	/>
+	<img src="<%= url_with_mtime profile[:photo_path] %>" class="photo-of-me" alt="Photo of me" />
 </picture>
 
-Hello. My name is <%= PROFILE[:first_name] %> (<%= PROFILE[:raw_first_name] %>) <%= PROFILE[:last_name] %>.
+Hello. My name is <%= profile[:first_name] %> (<%= profile[:raw_first_name] %>) <%= profile[:last_name] %>.
 
-I'm <span class="age"><%= Moments.difference(Date.new(2013, 8, 31), BIRTHDAY).in_years %></span>
+I'm <span class="age"><%=
+	Moments.difference(Date.new(2013, 8, 31), profile[:birthday]).in_years
+%></span>
 years old, but I think person experience and opinions are more important than age.
 
 I'm from Moscow (Russia), but I can relocate and make the same things in a lot of places.

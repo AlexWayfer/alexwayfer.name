@@ -5,23 +5,23 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<title><%= SITE_TITLE %></title>
+		<title><%= site_title %></title>
 
-		<meta property="og:title" content="<%= SITE_TITLE %>" />
-		<meta property="og:description" content="Hello, my name is <%= PROFILE[:first_name] %> <%= PROFILE[:last_name] %> and I'm a Software Developer, mostly in Ruby." />
+		<meta property="og:title" content="<%= site_title %>" />
+		<meta property="og:description" content="Hello, my name is <%= profile[:first_name] %> <%= profile[:last_name] %> and I'm a Software Developer, mostly in Ruby." />
 		<meta property="og:type" content="profile" />
-		<meta property="og:profile:first_name" content="<%= PROFILE[:first_name] %>" />
-		<meta property="og:profile:last_name" content="<%= PROFILE[:last_name] %>" />
-		<meta property="og:profile:username" content="<%= PROFILE[:username] %>" />
-		<meta property="og:profile:gender" content="<%= PROFILE[:gender] %>" />
-		<meta property="og:image" content="<%= url_with_mtime PHOTO_PATH %>" />
+		<meta property="og:profile:first_name" content="<%= profile[:first_name] %>" />
+		<meta property="og:profile:last_name" content="<%= profile[:last_name] %>" />
+		<meta property="og:profile:username" content="<%= profile[:username] %>" />
+		<meta property="og:profile:gender" content="<%= profile[:gender] %>" />
+		<meta property="og:image" content="<%= url_with_mtime profile[:photo_path] %>" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:url" content="https://alexwayfer.name/" />
 
 		<link rel="stylesheet" href="<%= url_with_mtime 'styles/main.css' %>" />
 
 		<script type="text/javascript">
-			window.birthday = Date.parse('<%= BIRTHDAY.iso8601 %>')
+			window.birthday = Date.parse('<%= profile[:birthday].iso8601 %>')
 
 			const osDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
 
@@ -35,16 +35,9 @@
 	</head>
 
 	<body>
-		<div class="container only-for-print">
-			<p>
-				This is a snapshot of the site.
-				Actual information on the <a href="https://alexwayfer.name/">alexwayfer.name</a>.
-			</p>
-		</div>
-
 		<header>
 			<div class="container">
-				<h1><%= SITE_TITLE %></h1>
+				<h1><%= site_title %></h1>
 
 				<button type="button" class="theme-toggle">
 					<%= svg_icon :brightness %>
@@ -60,19 +53,13 @@
 
 		<footer>
 			<div class="container">
-				Compiled in <%= Date.today.year %>.
+				Compiled in <%= Date.today.strftime('%B %Y') %>.
 
 				<%= external_link 'Source code', 'https://github.com/AlexWayfer/alexwayfer.name' %>.
 
-				<p class="not-for-print">
-					Do you want to download it as PDF file?
-					<br />
-					Sorry, but as pre-rendered it's not so good due to <%= external_link 'this issue', 'https://github.com/puppeteer/puppeteer/issues/2556' %>.
-					<br />
-					So, I offer you <button onclick="window.print()">to open print dialog</button>
-					and choose an option like "Save as PDF".
-				</p>
-			</div>
+				<span class="not-for-print">
+					<a href="<%= pdf_path %>" download>Download as PDF file</a>.
+				</span>
 		</footer>
 
 		<div class="container back-to-top hidden">

@@ -27,7 +27,8 @@
 		"rollup": "^2.26.4",
 		"stylelint": "^13.6.1",
 		"stylelint-config-standard": "^20.0.0",
-		"stylelint-no-unsupported-browser-features": "^4.0.0"
+		"stylelint-no-unsupported-browser-features": "^4.0.0",
+		"yaml": "^1.10.0"
 	},
 	"scripts": {
 		"lint:markdown": "remark",

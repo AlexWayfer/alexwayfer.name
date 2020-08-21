@@ -88,7 +88,7 @@ module Compile
 				site_title: @site_title,
 				profile: PROFILE,
 				page_content: Kramdown::Document.new(rendered_page).to_html,
-				pdf_path: PDF_PATH
+				pdf_path: relative_path(PDF_PATH, COMPILED_DIR)
 			}
 		end
 

@@ -1,9 +1,8 @@
 <picture>
-	<source
-		type="image/webp"
-		srcset="<%= url_with_mtime profile[:photo_path].sub(/\.\w+$/, '.webp') %>"
-	>
-	<img src="<%= url_with_mtime profile[:photo_path] %>" class="photo-of-me" alt="Photo of me" />
+	<% profile[:photo][:additional].each do |format, relative_path| %>
+		<source type="image/<%= format %>" srcset="<%= url_with_mtime relative_path %>">
+	<% end %>
+	<img src="<%= url_with_mtime profile[:photo][:main] %>" class="photo-of-me" alt="Photo of me" />
 </picture>
 
 Hello. My name is <%= profile[:first_name] %> (<%= profile[:raw_first_name] %>) <%= profile[:last_name] %>.

@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-require_relative 'site_command'
+require_relative '_base_command'
 
 module Compile
 	## CLI command for PDF compiling
-	class PDFCommand < SiteCommand
+	class PDFCommand < BaseCommand
 		PDF_TEMPLATES_DIR = "#{TEMPLATES_DIR}/pdf"
+		PDF_PARTIALS_TEMPLATES_DIR = "#{PDF_TEMPLATES_DIR}/partials"
 
 		STATIC_PDF_OPTIONS = {
 			path: PDF_PATH,
@@ -16,7 +17,7 @@ module Compile
 		}.freeze
 
 		def execute
-			@pdf_layout_erb = initialize_layout PDF_TEMPLATES_DIR
+			@pdf_layout_erb = initialize_layout PDF_PARTIALS_TEMPLATES_DIR
 
 			operation 'Saving HTML as PDF' do
 				require 'ferrum'
@@ -36,30 +37,30 @@ module Compile
 
 		private
 
-		def render_pdf_templates
-			Dir.glob("#{PDF_TEMPLATES_DIR}/*.html{,.erb}")
-				.each_with_object({}) do |template_file_name, result|
-					next if basename_without_extensions(template_file_name) == 'layout'
+		def render_pdf_partials_templates
+			Dir.glob("#{PDF_PARTIALS_TEMPLATES_DIR}/*.html{,.erb}")
+				.each_with_object({}) do |partial_template_file_name, result|
+					next if basename_without_extensions(partial_template_file_name) == 'layout'
 
-					operation "Rendering #{relative_path template_file_name}" do
-						template_file_basename = basename_without_extensions template_file_name
+					operation "Rendering #{relative_path partial_template_file_name}" do
+						partial_template_file_basename = basename_without_extensions partial_template_file_name
 
-						result[template_file_basename.to_sym] =
+						result[partial_template_file_basename.to_sym] =
 							view_object_class.render_erb @pdf_layout_erb,
-								content: view_object_class.render_file(template_file_name)
+								content: view_object_class.render_file(partial_template_file_name)
 					end
 				end
 		end
 
 		def pdf_options
-			pdf_templates = render_pdf_templates
+			pdf_partials_templates = render_pdf_partials_templates
 
 			{
 				**STATIC_PDF_OPTIONS,
-				header_template: pdf_templates.fetch(:header, ' '),
-				footer_template: pdf_templates.fetch(:footer, ' '),
-				margin_top: pdf_vertical_margin(pdf_templates.key?(:header)),
-				margin_bottom: pdf_vertical_margin(pdf_templates.key?(:footer))
+				header_template: pdf_partials_templates.fetch(:header, ' '),
+				footer_template: pdf_partials_templates.fetch(:footer, ' '),
+				margin_top: pdf_vertical_margin(pdf_partials_templates.key?(:header)),
+				margin_bottom: pdf_vertical_margin(pdf_partials_templates.key?(:footer))
 			}
 		end
 

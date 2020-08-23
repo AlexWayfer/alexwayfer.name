@@ -1,23 +1,18 @@
 # frozen_string_literal: true
 
 require 'date'
-require 'fileutils'
 require 'forwardable'
 require 'kramdown'
 require 'moments'
-require 'yaml'
 
 require_relative 'data'
-require_relative 'assets_command'
-require_relative 'pdf_command'
 
 module Compile
-	## CLI command for site compiling
-	class SiteCommand < BaseCommand
+	## CLI command for pages compiling
+	class PagesCommand < BaseCommand
 		extend Forwardable
 
-		SITE_TEMPLATES_DIR = "#{TEMPLATES_DIR}/site"
-		PAGES_DIR = "#{SITE_TEMPLATES_DIR}/pages"
+		PAGES_TEMPLATES_DIR = "#{TEMPLATES_DIR}/pages"
 		PROFILE[:birthday] = Date.new(1994, 9, 1)
 
 		PROFILE_PHOTO_PATH_JPEG = 'images/photo.jpeg'
@@ -25,31 +20,7 @@ module Compile
 		def_delegators :view_object_class, :render_partial
 
 		def execute
-			create_compiled_dir
-
-			AssetsCommand.run
-
-			compile_pages
-
-			PDFCommand.run
-		end
-
-		private
-
-		def create_compiled_dir
-			operation "Cleaning #{relative_path COMPILED_DIR}" do
-				FileUtils.rm_r Dir.glob "#{COMPILED_DIR}/*"
-			end
-
-			return if Dir.exist? COMPILED_DIR
-
-			operation "Creating #{relative_path COMPILED_DIR}" do
-				FileUtils.mkdir_p COMPILED_DIR
-			end
-		end
-
-		def compile_pages
-			@pages_layout_erb = initialize_layout PAGES_DIR
+			@pages_layout_erb = initialize_layout PAGES_TEMPLATES_DIR
 
 			@data = operation 'Loading YAML data' do
 				Data.new Dir.glob("#{ROOT_DIR}/data/*.y{a,}ml")
@@ -59,10 +30,12 @@ module Compile
 
 			fill_profile_photo_data
 
-			Dir.glob("#{PAGES_DIR}/*.md{,.erb}").each do |page_file_name|
+			Dir.glob("#{PAGES_TEMPLATES_DIR}/*.md{,.erb}").each do |page_file_name|
 				render_page page_file_name
 			end
 		end
+
+		private
 
 		def fill_profile_photo_data
 			PROFILE[:photo] = {
@@ -113,7 +86,7 @@ module Compile
 		class ViewObject < Compile::ViewObject
 			private
 
-			def render_partial(file_name, base_dir: SITE_TEMPLATES_DIR, **options)
+			def render_partial(file_name, base_dir: PAGES_TEMPLATES_DIR, **options)
 				super
 			end
 
@@ -122,7 +95,7 @@ module Compile
 			end
 
 			def url_with_mtime(path)
-				"#{path}?v=#{File.mtime("#{SiteCommand::COMPILED_DIR}/#{path}").to_i}"
+				"#{path}?v=#{File.mtime("#{BaseCommand::COMPILED_DIR}/#{path}").to_i}"
 			end
 		end
 	end

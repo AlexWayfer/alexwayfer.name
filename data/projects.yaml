@@ -2,6 +2,10 @@
 
   link: https://vk.com/club39765429
 
+  years: 2011–2012
+
+  position: My personal project
+
   description: |
     Music player for Windows, plays local files or audios from VK.com.
     My main project on Delphi, I've learned a lot of things
@@ -12,12 +16,14 @@
     - Delphi (FireMonkey)
     - VK API
 
-  years: 2011–2012
-
 
 - title: Soundly
 
   link: https://vk.com/club41593729
+
+  years: 2013–2014
+
+  position: My personal project
 
   description: |
     Reincornation of Simple Player as web service (site).
@@ -32,10 +38,12 @@
     - JavaScript
     - VK API
 
-  years: 2013–2014
-
 
 - title: BCLeaner
+
+  years: 2013
+
+  position: Single software developer
 
   description: |
     System for detecting bots among Twitter followers.
@@ -55,12 +63,14 @@
     - PHP
     - Twitter API
 
-  years: 2013
-
 
 - title: RDI
 
   link: http://www.rdi.ru/
+
+  years: 2014–2015
+
+  position: Front-end developer
 
   description: |
     Site of the development company (in Moscow region).
@@ -73,10 +83,12 @@
     - GIMP
     - Basecamp
 
-  years: 2014–2015
-
 
 - title: Icons of the World
+
+  years: 2014–2015
+
+  position: CTO, team of 2–4 developers
 
   description: |
     Presentation site of the same named books. Home page contained almost full-screen Google Maps
@@ -92,12 +104,14 @@
     - Google Maps API
     - Basecamp
 
-  years: 2014–2015
-
 
 - title: KEY Group
 
   link: https://web.archive.org/web/20150801125104/http://key-g.com/
+
+  years: 2014–2015
+
+  position: CTO, team of 2–3 developers and out-source
 
   description: |
     It was a weird experience of making the layout with diagonal sections. Adaptive!
@@ -114,10 +128,12 @@
     - BitBucket
     - Basecamp
 
-  years: 2014–2015
-
 
 - title: GetWiFi
+
+  years: 2015
+
+  position: CTO, team of 2–4 developers
 
   description: |
     Dashboard for Wi-Fi captive portals among cafes, hotels, etc.
@@ -148,12 +164,14 @@
     - BitBucket
     - Basecamp
 
-  years: 2015
-
 
 - title: GetTransfer
 
   link: https://gettransfer.com/
+
+  years: 2015–2017
+
+  position: CTO, team of 2–10 developers, including remote
 
   description: |
     People transfers aggregator, between passengers and carriers.
@@ -216,12 +234,14 @@
     - Scaleway
     - Basecamp
 
-  years: 2015–2017
-
 
 - title: GetTransport
 
   link: http://gettransport.com/
+
+  years: 2017-2020
+
+  position: CTO, team of 2–5 developers, including remote
 
   description: |
     Cargo transportation aggregator, between shippers and carriers.
@@ -255,10 +275,12 @@
     - Hetzner
     - Basecamp
 
-  years: 2017-2020
-
 
 - title: Stream Assistant
+
+  years: 2018-2020
+
+  position: My personal project
 
   description: |
     Bot for assisting broadcaster and moderators in stream chats.
@@ -295,12 +317,14 @@
     - Scaleway
     - Hetzner
 
-  years: 2018-2020
-
 
 - title: Stream Timer
 
   link: https://github.com/AlexWayfer/stream_timer
+
+  years: 2020
+
+  position: My personal project
 
   description: |
     Simple application with configuration window (page)
@@ -317,10 +341,12 @@
     - Vue.js
     - GitHub
 
-  years: 2020
-
 
 - title: Who2Follow
+
+  years: 2020
+
+  position: My personal project
 
   description: |
     A try to create my own algorythm of follows/friends/etc. suggestions.
@@ -335,5 +361,3 @@
     - Clamp
     - Twitch API
     - GitLab
-
-  years: 2020

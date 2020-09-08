@@ -18,9 +18,9 @@ module Compile
 		using GorillaPatch::Symbolize
 
 		profile_config_file_path = "#{CONFIG_DIR}/profile.yaml"
-		unless File.exist? profile_config_file_path
-			abort unless system 'toys config check'
-		end
+
+		abort unless File.exist?(profile_config_file_path) || system('toys config check')
+
 		PROFILE = YAML.load_file(profile_config_file_path).symbolize_keys
 
 		PDF_PATH = "#{COMPILED_DIR}/#{PROFILE[:first_name]} #{PROFILE[:last_name]}.pdf"

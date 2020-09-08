@@ -12,7 +12,7 @@
 	},
 	"homepage": "https://alexwayfer.name",
 	"dependencies": {
-		"date-fns": "^2.16.0"
+		"date-fns": "^2.16.1"
 	},
 	"devDependencies": {
 		"@rollup/plugin-node-resolve": "^9.0.0",

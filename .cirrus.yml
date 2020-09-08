@@ -7,7 +7,7 @@ bundle_cache: &bundle_cache
       - cat Gemfile.lock
   install_script:
     - gem install bundler
-    - bundle update
+    - bundle install
 
 node_modules_cache: &node_modules_cache
   node_modules_cache:

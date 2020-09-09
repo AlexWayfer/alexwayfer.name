@@ -71,5 +71,5 @@ rubocop_task:
 
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(
-      '.cirrus.yml', '.gitignore', 'Gemfile', '.rubocop.yml', '**.rb'
+      '.cirrus.yml', '.gitignore', 'Gemfile', 'Gemfile.lock', '.rubocop.yml', '**.rb'
     )

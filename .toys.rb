@@ -12,5 +12,3 @@ expand IcoMoonToys::Template,
 		'style.css' => 'assets/styles/lib/icomoon.css',
 		'symbol-defs.svg' => 'assets/images/icons/symbol-defs.svg'
 	}
-
-expand :rubocop

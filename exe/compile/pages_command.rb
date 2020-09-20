@@ -86,12 +86,9 @@ module Compile
 		class ViewObject < Compile::ViewObject
 			private
 
-			## https://github.com/rubocop-hq/rubocop/issues/8626#issuecomment-685403057
-			# rubocop:disable Lint/UselessMethodDefinition
 			def render_partial(file_name, base_dir: PAGES_TEMPLATES_DIR, **options)
 				super
 			end
-			# rubocop:enable Lint/UselessMethodDefinition
 
 			def svg_icon(name)
 				render_partial :svg_icon, name: name, remove_newlines: true

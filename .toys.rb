@@ -13,12 +13,4 @@ expand IcoMoonToys::Template,
 		'symbol-defs.svg' => 'assets/images/icons/symbol-defs.svg'
 	}
 
-tool :rubocop do
-	include :exec, exit_on_nonzero_status: true, log_level: Logger::UNKNOWN unless include? :exec
-
-	disable_argument_parsing
-
-	def run
-		exec ['rubocop', *args]
-	end
-end
+expand :rubocop

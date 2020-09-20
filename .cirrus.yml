@@ -61,7 +61,7 @@ rubocop_task:
     image: ruby:latest
   <<: *bundle_cache
 
-  lint_script: toys rubocop --format=json --out=rubocop.json
+  lint_script: bundle exec rubocop --format=json --out=rubocop.json
 
   always:
     rubocop_artifacts:

@@ -24,7 +24,7 @@
 		"postcss-nested": "^4.2.3",
 		"remark-cli": "^8.0.1",
 		"remark-preset-lint-recommended": "^4.0.1",
-		"rollup": "^2.30.0",
+		"rollup": "^2.32.0",
 		"stylelint": "^13.7.2",
 		"stylelint-config-standard": "^20.0.0",
 		"stylelint-no-unsupported-browser-features": "^4.0.0",

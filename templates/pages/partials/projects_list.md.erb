@@ -11,6 +11,11 @@
 
     #### <%= project.position %>
 
+    <% if project.team %>
+    #### Team of <%= project.team %>
+    {: .team }
+    <% end %>
+
     <%= render project.description.split("\n").join("\n    ") %>
 
     Technologies:

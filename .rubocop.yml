@@ -1,6 +1,11 @@
 require:
   - rubocop-performance
 
+inherit_mode:
+  merge:
+    - Include
+    - Exclude
+
 Layout/IndentationStyle:
   EnforcedStyle: tabs
   IndentationWidth: 2
@@ -32,3 +37,9 @@ Layout/MultilineHashBraceLayout:
 AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable
+
+Metrics/BlockLength:
+  Exclude:
+    - .toys.rb
+    - .toys/.toys.rb
+    - .toys/*.rb

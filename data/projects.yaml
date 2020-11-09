@@ -2,7 +2,8 @@
 
   link: https://vk.com/club39765429
 
-  dates: June 2011 – July 2012
+  begin_date: June 2011
+  end_date: July 2012
 
   position: My personal project
 
@@ -21,7 +22,8 @@
 
   link: https://vk.com/club41593729
 
-  dates: February 2013 – February 2014
+  begin_date: February 2013
+  end_date: February 2014
 
   position: My personal project
 
@@ -41,7 +43,8 @@
 
 - title: BCLeaner
 
-  dates: January 2013 – March 2013
+  begin_date: January 2013
+  end_date: March 2013
 
   position: Single software developer
 
@@ -68,7 +71,8 @@
 
   link: http://www.rdi.ru/
 
-  dates: July 2014 – March 2015
+  begin_date: July 2014
+  end_date: March 2015
 
   position: Front-end developer
 
@@ -86,7 +90,8 @@
 
 - title: Icons of the World
 
-  dates: March 2014 – January 2015
+  begin_date: March 2014
+  end_date: January 2015
 
   position: Lead Website Developer
   team: 2–4 developers
@@ -110,7 +115,8 @@
 
   link: https://web.archive.org/web/20150801125104/http://key-g.com/
 
-  dates: April 2014 – March 2015
+  begin_date: April 2014
+  end_date: March 2015
 
   position: Lead Website Developer
   team: 2–3 developers and outsource
@@ -133,7 +139,8 @@
 
 - title: GetWiFi
 
-  dates: April 2015 – November 2015
+  begin_date: April 2015
+  end_date: November 2015
 
   position: CIO + Software Architect + Lead Website Developer
   team: 2–4 developers
@@ -172,7 +179,8 @@
 
   link: https://gettransfer.com/
 
-  dates: September 2015 – August 2017
+  begin_date: September 2015
+  end_date: August 2017
 
   position: CIO + Software Architect + Lead Website Developer
   team: 2–10 developers, including remote
@@ -243,7 +251,8 @@
 
   link: https://gettransport.com/
 
-  dates: August 2017 – March 2020
+  begin_date: August 2017
+  end_date: March 2020
 
   position: CIO + Software Architect + Lead Website Developer
   team: 2–5 developers, including remote
@@ -284,7 +293,8 @@
 
 - title: Stream Assistant
 
-  dates: October 2018 – now
+  begin_date: October 2018
+  end_date: now
 
   position: My personal project
 
@@ -329,7 +339,8 @@
 
   link: https://streamtimer.app/
 
-  dates: February 2020 – now
+  begin_date: February 2020
+  end_date: now
 
   position: My personal project
 
@@ -358,7 +369,8 @@
 
 - title: Who2Follow
 
-  dates: October 2019 – now
+  begin_date: October 2019
+  end_date: now
 
   position: My personal project
 

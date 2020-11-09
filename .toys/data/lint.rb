@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-self::REQUIRED_PROJECT_FIELDS = %w[title description technologies dates].freeze
+self::REQUIRED_PROJECT_FIELDS = %w[title description technologies begin_date end_date].freeze
 
 def run
 	require 'yaml'
@@ -13,7 +13,7 @@ def run
 
 		result &&= lint_required_fields project, title
 
-		result &&= lint_dates title, project['dates']
+		result &&= lint_dates title, project.slice('begin_date', 'end_date')
 	end
 
 	puts 'Everything is OK.' if result
@@ -40,14 +40,26 @@ def lint_required_fields(project, title)
 	result
 end
 
-date_regexp = <<~TEXT.chomp
-	(January|February|March|April|May|June|July|August|September|October|November|December) 20[1-9][0-9]
-TEXT
-self::DATES_REGEXP = /^#{date_regexp} – (#{date_regexp}|now)$/.freeze
+self::DATE_REGEXP = /
+	^
+		(
+			(January|February|March|April|May|June|July|August|September|October|November|December)
+			\ 20[1-9][0-9]
+			|
+			now
+		)
+	$
+/x.freeze
 
 def lint_dates(title, dates)
-	return true if dates.match? self.class::DATES_REGEXP
+	result = true
 
-	warn "#{title} has incorrect dates format"
-	false
+	dates.each do |key, value|
+		next if value.match? self.class::DATE_REGEXP
+
+		result = false
+		warn "#{title} has incorrect #{key.tr('_', ' ')} format"
+	end
+
+	result
 end

@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/excpt/moments.git
-  revision: 092cc55d89feac59f5b70a10754dd8f02fb1bd6f
-  specs:
-    moments (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,6 +32,7 @@ GEM
     kramdown (2.3.0)
       rexml
     module_methods (0.1.0)
+    moments (0.1.0)
     paint (2.2.0)
     parallel (1.20.0)
     parser (2.7.2.0)
@@ -81,7 +76,7 @@ DEPENDENCIES
   gorilla_patch
   icomoon_toys
   kramdown
-  moments!
+  moments
   rubocop
   rubocop-performance
   toys

@@ -6,8 +6,7 @@ gem 'clamp'
 gem 'ferrum'
 gem 'gorilla_patch'
 gem 'kramdown'
-## https://github.com/excpt/moments/issues/7
-gem 'moments', github: 'excpt/moments'
+gem 'moments'
 
 group :development do
 	gem 'rubocop'

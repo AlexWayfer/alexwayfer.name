@@ -264,6 +264,7 @@
     - Ruby
     - Flame
     - PostgreSQL
+    - Sequel
     - Formalism
     - ERB
     - JavaScript
@@ -314,6 +315,7 @@
   technologies:
     - Ruby
     - PostgreSQL
+    - Sequel
     - YouTube API
     - Twitch API
     - Twitch IRC
@@ -344,6 +346,7 @@
     - Ruby
     - Flame
     - PostgreSQL
+    - Sequel
     - Formalism
     - ERB
     - JavaScript

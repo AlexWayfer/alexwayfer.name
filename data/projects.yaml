@@ -1,177 +1,141 @@
-- title: Simple Player
+- title: Stream Timer
 
-  link: https://vk.com/club39765429
+  link: https://streamtimer.app/
 
-  begin_date: June 2011
-  end_date: July 2012
-
-  position: My personal project
-
-  description: |
-    Music player for Windows, plays local files or audios from VK.com.
-    My main project on Delphi, I've learned a lot of things
-    and was trying to make a good design (via FireMonkey).
-    It was hard to make a good (in my taste) visualizer.
-
-  technologies:
-    - Delphi (FireMonkey)
-    - VK API
-
-
-- title: Soundly
-
-  link: https://vk.com/club41593729
-
-  begin_date: February 2013
-  end_date: February 2014
+  begin_date: February 2020
+  end_date: now
 
   position: My personal project
 
   description: |
-    Reincornation of Simple Player as web service (site).
-    Plays local files (selected via browser) and integratation with VK (again).
-    Without visualizer, sadly.
-    But it worked with VK Audios faster (especially search, global too), than VK itself.
-    Util VK has closed their Audio API for monetization.
-    Single file of plain JavaScript with about 1500 LOC:
-    I didn't think about architecture and third-party tools (libraries) at this time.
+    Application with configuring timer for streaming application,
+    like <%= external_link 'OBS', 'https://obsproject.com/' %>.
+
+    Useful for AFK (stream pauses), some events (like rocket launches or draws), etc.
+
+    Previously it was built only via Vue.js and static, but I've made a complete web-application
+    via Flame and database (configuration and users saving).
 
   technologies:
+    - Ruby
+    - Flame
+    - PostgreSQL
+    - Sequel
+    - Formalism
+    - ERB
     - JavaScript
-    - VK API
+    - <del>Vue.js</del>
+    - SCSS
+    - IcoMoon
+    - GitHub
 
 
-- title: BCLeaner
+- title: Who2Follow
 
-  begin_date: January 2013
-  end_date: March 2013
+  begin_date: October 2019
+  end_date: now
 
-  position: Single software developer
-
-  description: |
-    System for detecting bots among Twitter followers.
-
-    In these times there were many bots in Twitter and popular people cheated followers count.
-    But then declaring that you have no bots among your followers
-    and you're honest became fashinable. So, there was a request to make an automated tool (service)
-    for detecting bots among your followers and ban them
-    (it was the force unfollow in this time, as I remember).
-    Then you could declare that you're "clean" and "honest" too.
-
-    I was trying to make such system for money. Bots recognition algorythm was pretty good,
-    but I have not finalize this project because I was fired up for fail
-    in another parallel non-related project in the same company.
-
-  technologies:
-    - PHP
-    - Twitter API
-
-
-- title: RDI
-
-  link: http://www.rdi.ru/
-
-  begin_date: July 2014
-  end_date: March 2015
-
-  position: Front-end developer
+  position: My personal project
 
   description: |
-    Site of the development company (in Moscow region).
-    My only experience of changing layout (HTML, CSS, PNG)
-    by just a single JPEG file with target design.
+    A try to create my own algorythm of follows/friends/etc. suggestions.
+    Platform-independent, but Twitch and Twitter are first in the plan
+    (just because they're more important for me).
+
+    Core (algorythm in a Ruby gem) and CLI tool are ready, site will be soon.
 
   technologies:
-    - PHP
-    - 1C-Bitrix
-    - GIMP
-    - Basecamp
+    - Ruby
+    - Clamp
+    - Twitch API
+    - GitLab
 
 
-- title: Icons of the World
+- title: Stream Assistant
 
-  begin_date: March 2014
-  end_date: January 2015
+  begin_date: October 2018
+  end_date: now
 
-  position: Lead Website Developer
-  team: 2–4 developers
+  position: My personal project
 
   description: |
-    Presentation site of the same named books. Home page contained almost full-screen Google Maps
-    with custom markers, pop-ups and clusters.
-    It was hard to make custom optimizations of requests to database bypassing WordPress engine.
+    Bot for assisting broadcaster and moderators in stream chats.
+    It answers to frequently asked questions.
+    Works via regular expressions.
+    Right now only in Russian, but other languages in plans.
+
+    I've integrated it with YouTube at first, via <%= external_link "official Google's gem", 'https://github.com/googleapis/google-api-ruby-client' %>,
+    then I've integrated it with Twitch via gem for API and another gem for chat.
+    They're pretty abandoned, there are PRs for them:
+
+    *   <%= external_link 'PR to `twitch-rb`', 'https://github.com/dustinlakin/twitch-rb/pull/34' %>
+    *   <%= external_link 'PR to `twitch-chat`', 'https://github.com/EnotPoloskun/twitch-chat/pull/6' %>
+
+    Also I've created a separated gem for auithentication: <%= external_link '`twitch_oauth2`', 'https://github.com/AlexWayfer/twitch_oauth2' %>.
+
+    Also it has integrations with third-party services, like Steam,
+    I've created <%= external_link 'a PR to the gem', 'https://github.com/bhaberer/steam-api/pull/10' %> with improvements.
+
+    For time difference I was trying many gems and chose <%= external_link '`moments`', 'https://github.com/excpt/moments' %>,
+    but <%= external_link "I've made some improvements for it", 'https://github.com/excpt/moments/pulls?q=is%3Apr+author%3AAlexWayfer+is%3Aclosed' %>
+    (it looks maintained, PRs were merged).
+
+    Site with description and dashboard for streamers will be soon.
 
   technologies:
-    - PHP
-    - WordPress
-    - MySQL
-    - CSS
-    - JavaScript
-    - Google Maps API
-    - Basecamp
+    - Ruby
+    - PostgreSQL
+    - Sequel
+    - YouTube API
+    - Twitch API
+    - Twitch IRC
+    - Steam API
+    - GitLab
+    - Scaleway
+    - Hetzner
 
 
-- title: KEY Group
+- title: GetTransport
 
-  link: https://web.archive.org/web/20150801125104/http://key-g.com/
+  link: https://gettransport.com/
 
-  begin_date: April 2014
-  end_date: March 2015
-
-  position: Lead Website Developer
-  team: 2–3 developers and outsource
-
-  description: |
-    It was a weird experience of making the layout with diagonal sections. Adaptive!
-    I've made it via CSS `transform` finally, although there were many different tries
-    with other approaches. Also it was my practice of making SVG icons via font characters.
-    I've learned a lot of CSS with this project.
-
-  technologies:
-    - PHP
-    - MySQL
-    - CSS
-    - JavaScript
-    - Fontello
-    - BitBucket
-    - Basecamp
-
-
-- title: GetWiFi
-
-  begin_date: April 2015
-  end_date: November 2015
+  begin_date: August 2017
+  end_date: March 2020
 
   position: CIO + Software Architect + Lead Website Developer
-  team: 2–4 developers
+  team: 2–5 developers, including remote
 
   description: |
-    Dashboard for Wi-Fi captive portals among cafes, hotels, etc.
+    Cargo transportation aggregator, between shippers and carriers.
+    Another project written via <%= external_link 'Flame', 'https://github.com/AlexWayfer/flame' %>.
 
-    At that time I knew PHP at high level and saw its disadvantages for me.
-    So, I wanted to learn any new programming language with more consistency
-    and better potential for project files structure.
-    Finally I was choosing between Python and Ruby,
-    and I like (more consistent) OOP approach of Ruby, `snake_case` and its philosophy.
+    I've tried to make this project taking into account my architecture errors of GetTransfer.
+    So, it's using a next version of Flame, 5, with a lot of improvements.
+    Also we have started to use service objects instead of fat controllers and models.
+    Then I service objects turned into <%= external_link 'Formalism', 'https://github.com/AlexWayfer/formalism' %> forms.
 
-    This project was a first serious try to make it with Ruby.
-    I didn't like Ruby on Rails, mostly because of its approaches and "magic",
-    so I've developed this project via <%= external_link 'Sinatra', 'http://sinatrarb.com/' %>,
-    but was a big mistake because of controllers architecture and it became the impulse to create
-    <%= external_link 'Flame framework', 'https://github.com/AlexWayfer/flame' %>.
-
-    Although there was nice (in my opinion) horizontal-nested simple UI,
-    and pretty good database architecture.
+    This project was pretty similar to GetTransfer, so I was working with similar technologies,
+    sometimes with a better or cleaner approach.
 
   technologies:
-    - MikroTik firmware and configs
-    - Wi-Fi Captive Portal
     - Ruby
-    - Sinatra
-    - MySQL
-    - DataMapper (abandoned ORM)
+    - Flame
+    - PostgreSQL
+    - Sequel
+    - Formalism
+    - ERB
     - JavaScript
-    - BitBucket
+    - SCSS
+    - IcoMoon
+    - Google Maps API
+    - GeoNames API
+    - PayPal API
+    - Platron API
+    - Crowdin
+    - Money gem
+    - Sentry
+    - GitLab
+    - Hetzner
     - Basecamp
 
 
@@ -247,142 +211,178 @@
     - Basecamp
 
 
-- title: GetTransport
+- title: GetWiFi
 
-  link: https://gettransport.com/
-
-  begin_date: August 2017
-  end_date: March 2020
+  begin_date: April 2015
+  end_date: November 2015
 
   position: CIO + Software Architect + Lead Website Developer
-  team: 2–5 developers, including remote
+  team: 2–4 developers
 
   description: |
-    Cargo transportation aggregator, between shippers and carriers.
-    Another project written via <%= external_link 'Flame', 'https://github.com/AlexWayfer/flame' %>.
+    Dashboard for Wi-Fi captive portals among cafes, hotels, etc.
 
-    I've tried to make this project taking into account my architecture errors of GetTransfer.
-    So, it's using a next version of Flame, 5, with a lot of improvements.
-    Also we have started to use service objects instead of fat controllers and models.
-    Then I service objects turned into <%= external_link 'Formalism', 'https://github.com/AlexWayfer/formalism' %> forms.
+    At that time I knew PHP at high level and saw its disadvantages for me.
+    So, I wanted to learn any new programming language with more consistency
+    and better potential for project files structure.
+    Finally I was choosing between Python and Ruby,
+    and I like (more consistent) OOP approach of Ruby, `snake_case` and its philosophy.
 
-    This project was pretty similar to GetTransfer, so I was working with similar technologies,
-    sometimes with a better or cleaner approach.
+    This project was a first serious try to make it with Ruby.
+    I didn't like Ruby on Rails, mostly because of its approaches and "magic",
+    so I've developed this project via <%= external_link 'Sinatra', 'http://sinatrarb.com/' %>,
+    but was a big mistake because of controllers architecture and it became the impulse to create
+    <%= external_link 'Flame framework', 'https://github.com/AlexWayfer/flame' %>.
+
+    Although there was nice (in my opinion) horizontal-nested simple UI,
+    and pretty good database architecture.
 
   technologies:
+    - MikroTik firmware and configs
+    - Wi-Fi Captive Portal
     - Ruby
-    - Flame
-    - PostgreSQL
-    - Sequel
-    - Formalism
-    - ERB
+    - Sinatra
+    - MySQL
+    - DataMapper (abandoned ORM)
     - JavaScript
-    - SCSS
-    - IcoMoon
-    - Google Maps API
-    - GeoNames API
-    - PayPal API
-    - Platron API
-    - Crowdin
-    - Money gem
-    - Sentry
-    - GitLab
-    - Hetzner
+    - BitBucket
     - Basecamp
 
 
-- title: Stream Assistant
+- title: KEY Group
 
-  begin_date: October 2018
-  end_date: now
+  link: https://web.archive.org/web/20150801125104/http://key-g.com/
 
-  position: My personal project
+  begin_date: April 2014
+  end_date: March 2015
 
-  description: |
-    Bot for assisting broadcaster and moderators in stream chats.
-    It answers to frequently asked questions.
-    Works via regular expressions.
-    Right now only in Russian, but other languages in plans.
-
-    I've integrated it with YouTube at first, via <%= external_link "official Google's gem", 'https://github.com/googleapis/google-api-ruby-client' %>,
-    then I've integrated it with Twitch via gem for API and another gem for chat.
-    They're pretty abandoned, there are PRs for them:
-
-    *   <%= external_link 'PR to `twitch-rb`', 'https://github.com/dustinlakin/twitch-rb/pull/34' %>
-    *   <%= external_link 'PR to `twitch-chat`', 'https://github.com/EnotPoloskun/twitch-chat/pull/6' %>
-
-    Also I've created a separated gem for auithentication: <%= external_link '`twitch_oauth2`', 'https://github.com/AlexWayfer/twitch_oauth2' %>.
-
-    Also it has integrations with third-party services, like Steam,
-    I've created <%= external_link 'a PR to the gem', 'https://github.com/bhaberer/steam-api/pull/10' %> with improvements.
-
-    For time difference I was trying many gems and chose <%= external_link '`moments`', 'https://github.com/excpt/moments' %>,
-    but <%= external_link "I've made some improvements for it", 'https://github.com/excpt/moments/pulls?q=is%3Apr+author%3AAlexWayfer+is%3Aclosed' %>
-    (it looks maintained, PRs were merged).
-
-    Site with description and dashboard for streamers will be soon.
-
-  technologies:
-    - Ruby
-    - PostgreSQL
-    - Sequel
-    - YouTube API
-    - Twitch API
-    - Twitch IRC
-    - Steam API
-    - GitLab
-    - Scaleway
-    - Hetzner
-
-
-- title: Stream Timer
-
-  link: https://streamtimer.app/
-
-  begin_date: February 2020
-  end_date: now
-
-  position: My personal project
+  position: Lead Website Developer
+  team: 2–3 developers and outsource
 
   description: |
-    Application with configuring timer for streaming application,
-    like <%= external_link 'OBS', 'https://obsproject.com/' %>.
-
-    Useful for AFK (stream pauses), some events (like rocket launches or draws), etc.
-
-    Previously it was built only via Vue.js and static, but I've made a complete web-application
-    via Flame and database (configuration and users saving).
+    It was a weird experience of making the layout with diagonal sections. Adaptive!
+    I've made it via CSS `transform` finally, although there were many different tries
+    with other approaches. Also it was my practice of making SVG icons via font characters.
+    I've learned a lot of CSS with this project.
 
   technologies:
-    - Ruby
-    - Flame
-    - PostgreSQL
-    - Sequel
-    - Formalism
-    - ERB
+    - PHP
+    - MySQL
+    - CSS
     - JavaScript
-    - <del>Vue.js</del>
-    - SCSS
-    - IcoMoon
-    - GitHub
+    - Fontello
+    - BitBucket
+    - Basecamp
 
 
-- title: Who2Follow
+- title: Icons of the World
 
-  begin_date: October 2019
-  end_date: now
+  begin_date: March 2014
+  end_date: January 2015
+
+  position: Lead Website Developer
+  team: 2–4 developers
+
+  description: |
+    Presentation site of the same named books. Home page contained almost full-screen Google Maps
+    with custom markers, pop-ups and clusters.
+    It was hard to make custom optimizations of requests to database bypassing WordPress engine.
+
+  technologies:
+    - PHP
+    - WordPress
+    - MySQL
+    - CSS
+    - JavaScript
+    - Google Maps API
+    - Basecamp
+
+
+- title: RDI
+
+  link: http://www.rdi.ru/
+
+  begin_date: July 2014
+  end_date: March 2015
+
+  position: Front-end developer
+
+  description: |
+    Site of the development company (in Moscow region).
+    My only experience of changing layout (HTML, CSS, PNG)
+    by just a single JPEG file with target design.
+
+  technologies:
+    - PHP
+    - 1C-Bitrix
+    - GIMP
+    - Basecamp
+
+
+- title: BCLeaner
+
+  begin_date: January 2013
+  end_date: March 2013
+
+  position: Single software developer
+
+  description: |
+    System for detecting bots among Twitter followers.
+
+    In these times there were many bots in Twitter and popular people cheated followers count.
+    But then declaring that you have no bots among your followers
+    and you're honest became fashinable. So, there was a request to make an automated tool (service)
+    for detecting bots among your followers and ban them
+    (it was the force unfollow in this time, as I remember).
+    Then you could declare that you're "clean" and "honest" too.
+
+    I was trying to make such system for money. Bots recognition algorythm was pretty good,
+    but I have not finalize this project because I was fired up for fail
+    in another parallel non-related project in the same company.
+
+  technologies:
+    - PHP
+    - Twitter API
+
+
+- title: Soundly
+
+  link: https://vk.com/club41593729
+
+  begin_date: February 2013
+  end_date: February 2014
 
   position: My personal project
 
   description: |
-    A try to create my own algorythm of follows/friends/etc. suggestions.
-    Platform-independent, but Twitch and Twitter are first in the plan
-    (just because they're more important for me).
-
-    Core (algorythm in a Ruby gem) and CLI tool are ready, site will be soon.
+    Reincornation of Simple Player as web service (site).
+    Plays local files (selected via browser) and integratation with VK (again).
+    Without visualizer, sadly.
+    But it worked with VK Audios faster (especially search, global too), than VK itself.
+    Util VK has closed their Audio API for monetization.
+    Single file of plain JavaScript with about 1500 LOC:
+    I didn't think about architecture and third-party tools (libraries) at this time.
 
   technologies:
-    - Ruby
-    - Clamp
-    - Twitch API
-    - GitLab
+    - JavaScript
+    - VK API
+
+
+- title: Simple Player
+
+  link: https://vk.com/club39765429
+
+  begin_date: June 2011
+  end_date: July 2012
+
+  position: My personal project
+
+  description: |
+    Music player for Windows, plays local files or audios from VK.com.
+    My main project on Delphi, I've learned a lot of things
+    and was trying to make a good design (via FireMonkey).
+    It was hard to make a good (in my taste) visualizer.
+
+  technologies:
+    - Delphi (FireMonkey)
+    - VK API

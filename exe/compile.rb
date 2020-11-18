@@ -4,6 +4,8 @@
 
 require_relative '_bundler_setup'
 
+require 'pry-byebug'
+
 require_relative 'compile/_base_command'
 require_relative 'compile/assets_command'
 require_relative 'compile/pages_command'

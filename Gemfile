@@ -14,5 +14,6 @@ group :development do
 
 	gem 'config_toys'
 	gem 'icomoon_toys'
+	gem 'pry-byebug'
 	gem 'toys'
 end

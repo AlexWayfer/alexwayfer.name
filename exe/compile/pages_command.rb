@@ -22,9 +22,7 @@ module Compile
 		def execute
 			@pages_layout_erb = initialize_layout PAGES_TEMPLATES_DIR
 
-			@data = operation 'Loading YAML data' do
-				Data.new Dir.glob("#{ROOT_DIR}/data/*.y{a,}ml")
-			end
+			load_data
 
 			@site_title = "#{PROFILE[:username]}'s Site"
 
@@ -36,6 +34,17 @@ module Compile
 		end
 
 		private
+
+		def load_data
+			@data = operation 'Loading YAML data' do
+				Data.new(
+					Dir.glob("#{ROOT_DIR}/data/*.y{a,}ml").each_with_object({}) do |file_name, result|
+						key = File.basename file_name, '.*'
+						result[key] = YAML.load_file file_name
+					end
+				)
+			end
+		end
 
 		def fill_profile_photo_data
 			PROFILE[:photo] = {

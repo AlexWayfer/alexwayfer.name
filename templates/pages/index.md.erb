@@ -75,9 +75,17 @@ here is my <%= external_link 'GitHub profile', 'https://github.com/AlexWayfer' %
 
 I've made a long path from Delphi in 2011 through PHP and JavaScript to Ruby at the current time.
 
-{:refdef: .not-for-print}
+{::options parse_block_html="true" /}
+<div class="recent-projects not-for-print">
+Recent commercial projects I was working on:
+
+<% data.projects['Commercial projects'].first(2).each do |project| %>
+*   #### <%= project.title %>
+<% end %>
+
 [Complete list of significant projects](projects.html).
-{:refdef}
+</div>
+{::options parse_block_html="false" /}
 
 <%=
 	render_partial :projects_list, projects: data.projects, section_classes: %w[only-for-print]

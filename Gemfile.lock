@@ -23,6 +23,9 @@ GEM
       cliver (~> 0.3)
       concurrent-ruby (~> 1.1)
       websocket-driver (>= 0.6, < 0.8)
+    filewatcher (2.0.0.beta2)
+    filewatcher-matrix (0.1.1)
+      filewatcher (~> 2.0.0.beta1)
     gorilla_patch (4.0.0)
     highline (2.0.3)
     icomoon_toys (0.2.0)
@@ -73,6 +76,7 @@ DEPENDENCIES
   clamp
   config_toys
   ferrum
+  filewatcher-matrix
   gorilla_patch
   icomoon_toys
   kramdown

@@ -2,6 +2,7 @@
 
 require 'fileutils'
 
+require_relative '_base_command'
 require_relative 'assets_command'
 require_relative 'pages_command'
 require_relative 'pdf_command'
@@ -12,11 +13,11 @@ module Compile
 		def execute
 			create_compiled_dir
 
-			AssetsCommand.run
+			AssetsCommand.run nil, []
 
-			PagesCommand.run
+			PagesCommand.run nil, []
 
-			PDFCommand.run
+			PDFCommand.run nil, []
 		end
 
 		private

@@ -9,6 +9,8 @@ gem 'kramdown'
 gem 'moments'
 
 group :development do
+	gem 'filewatcher-matrix'
+
 	gem 'rubocop'
 	gem 'rubocop-performance'
 

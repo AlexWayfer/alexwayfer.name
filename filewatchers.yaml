@@ -1,0 +1,31 @@
+- :pattern:
+    - assets/{images}/**/*
+    - exe/compile/assets_command/copy_command.rb
+  :command: exe/compile.rb assets copy && exe/compile.rb pdf
+
+- :pattern:
+    - assets/{scripts,styles}/**/{,.}*
+    - .eslint*
+    - .node-version
+    - .remark*
+    - .stylelint*
+    - browserslist
+    - package{,-lock}.json
+    - postcss*
+    - rollup*
+    - exe/compile/assets_command/compile_command.rb
+  :command: exe/compile.rb assets compile && exe/compile.rb pdf
+
+- :pattern:
+    - config/profile.yaml
+    - data/
+    - templates/pages/
+    - .ruby-version
+    - Gemfile{,.lock}
+    - exe/compile/pages_command.rb
+  :command: exe/compile.rb pages && exe/compile.rb pdf
+
+- :pattern:
+    - templates/pdf/
+    - exe/compile/pdf_command.rb
+  :command: exe/compile.rb pdf

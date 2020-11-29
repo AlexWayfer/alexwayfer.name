@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '_base_command'
-
 module Compile
 	## CLI command for PDF compiling
 	class PDFCommand < BaseCommand

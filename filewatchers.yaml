@@ -1,5 +1,6 @@
 - :pattern:
     - assets/{images}/**/*
+    - exe/compile/_base_command.rb
     - exe/compile/assets_command/copy_command.rb
   :command: exe/compile.rb assets copy && exe/compile.rb pdf
 
@@ -13,6 +14,7 @@
     - package{,-lock}.json
     - postcss*
     - rollup*
+    - exe/compile/_base_command.rb
     - exe/compile/assets_command/compile_command.rb
   :command: exe/compile.rb assets compile && exe/compile.rb pdf
 
@@ -22,10 +24,14 @@
     - templates/pages/
     - .ruby-version
     - Gemfile{,.lock}
+    - exe/compile/_base_command.rb
+    - exe/compile/data.rb
+    - exe/compile/view_object.rb
     - exe/compile/pages_command.rb
   :command: exe/compile.rb pages && exe/compile.rb pdf
 
 - :pattern:
     - templates/pdf/
+    - exe/compile/_base_command.rb
     - exe/compile/pdf_command.rb
   :command: exe/compile.rb pdf

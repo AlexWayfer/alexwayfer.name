@@ -1,5 +1,5 @@
 {
-	"name": "alexwayfer.name",
+	"private": true,
 	"description": "AlexWayfer's Site",
 	"repository": {
 		"type": "git",

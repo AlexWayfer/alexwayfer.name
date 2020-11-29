@@ -2,4 +2,8 @@
 
 ## Projects
 
-<%= render_partial :projects_list, projects: data.projects, additional_classes: [] %>
+<% data.projects.each_pair do |projects_type, _projects| %>
+*   [<%= projects_type %>](#<%= projects_type.to_s.downcase.tr(' ', '-') %>)
+<% end %>
+
+<%= render_partial :projects_list, projects: data.projects, section_classes: %w[page projects] %>

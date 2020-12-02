@@ -27,7 +27,7 @@ remark_task:
 
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(
-      '.cirrus.yml', '.gitignore', 'package.json', 'package-lock.json', '.remarkrc.yaml', '**.md'
+      '.cirrus.yaml', '.gitignore', 'package.json', 'package-lock.json', '.remarkrc.yaml', '**.md'
     )
 
 stylelint_task:
@@ -39,7 +39,7 @@ stylelint_task:
 
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(
-      '.cirrus.yml', '.gitignore', 'package.json', 'package-lock.json', 'browserslist',
+      '.cirrus.yaml', '.gitignore', 'package.json', 'package-lock.json', 'browserslist',
       '.stylelintrc.yaml', 'assets/styles/**'
     )
 
@@ -52,7 +52,7 @@ eslint_task:
 
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(
-      '.cirrus.yml', '.gitignore', 'package.json', 'package-lock.json', 'browserslist',
+      '.cirrus.yaml', '.gitignore', 'package.json', 'package-lock.json', 'browserslist',
       '.eslintrc.yaml', '.eslintignore', 'assets/scripts/**'
     )
 
@@ -71,5 +71,5 @@ rubocop_task:
 
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(
-      '.cirrus.yml', '.gitignore', 'Gemfile', 'Gemfile.lock', '.rubocop.yml', '**.rb'
+      '.cirrus.yaml', '.gitignore', 'Gemfile', 'Gemfile.lock', '.rubocop.yml', '**.rb'
     )

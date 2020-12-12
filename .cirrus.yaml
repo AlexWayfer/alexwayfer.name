@@ -15,8 +15,11 @@ rbenv_cache: &rbenv_cache
     folder: $HOME/.rbenv
     fingerprint_script:
       - source ~/.bashrc
+      - cat .cirrus.yaml
       - echo $CIRRUS_OS
-      - ruby -v
+      - cat .ruby-version
+      ## https://github.com/cirruslabs/cirrus-ci-docs/issues/379
+      - echo cache_validation_work-around-1
     populate_script:
       - git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 
@@ -33,8 +36,11 @@ nodenv_cache: &nodenv_cache
     folder: $HOME/.nodenv
     fingerprint_script:
       - source ~/.bashrc
+      - cat .cirrus.yaml
       - echo $CIRRUS_OS
-      - node -v
+      - cat .node-version
+      ## https://github.com/cirruslabs/cirrus-ci-docs/issues/379
+      - echo cache_validation_work-around-1
     populate_script:
       - git clone https://github.com/nodenv/nodenv.git ~/.nodenv
 

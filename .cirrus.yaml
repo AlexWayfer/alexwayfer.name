@@ -1,11 +1,59 @@
+os_setup: &os_setup
+  container:
+    image: archlinux
+  os_setup_script:
+    - pacman -Sy # --noconfirm
+    - pacman -S --noconfirm git gcc make
+
+    - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    - echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+
+    - echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.bashrc
+    - echo 'eval "$(nodenv init -)"' >> ~/.bashrc
+
+rbenv_cache: &rbenv_cache
+  rbenv_cache:
+    folder: $HOME/.rbenv
+    fingerprint_script:
+      - echo $CIRRUS_OS
+      - cat .ruby-version
+    populate_script:
+      - git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+
+      - source ~/.bashrc
+
+      ## https://github.com/rbenv/ruby-build#installation
+      - mkdir -p "$(rbenv root)"/plugins
+      - git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+
+      - rbenv install -s
+
+nodenv_cache: &nodenv_cache
+  nodenv_cache:
+    folder: $HOME/.nodenv
+    fingerprint_script:
+      - echo $CIRRUS_OS
+      - cat .node-version
+    populate_script:
+      - git clone https://github.com/nodenv/nodenv.git ~/.nodenv
+
+      - source ~/.bashrc
+
+      ## https://github.com/nodenv/node-build#installation
+      - mkdir -p "$(nodenv root)"/plugins
+      - git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
+
+      - nodenv install -s
+
 bundle_cache: &bundle_cache
   bundle_cache:
     folder: /usr/local/bundle
     fingerprint_script:
       - echo $CIRRUS_OS
-      - ruby -v
+      - cat .ruby-version
       - cat Gemfile.lock
   install_script:
+    - source ~/.bashrc
     - gem install bundler
     - bundle install
 
@@ -14,16 +62,24 @@ node_modules_cache: &node_modules_cache
     folder: node_modules
     fingerprint_script:
       - echo $CIRRUS_OS
-      - node -v
+      - cat .node-version
       - cat package.json
-  install_script: npm install
+  install_script:
+    - source ~/.bashrc
+    - npm install
+
 
 remark_task:
-  container:
-    image: node
+  <<: *os_setup
+
+  always:
+    <<: *nodenv_cache
+
   <<: *node_modules_cache
 
-  lint_script: npm run lint:markdown
+  lint_script:
+    - source ~/.bashrc
+    - npm run lint:markdown
 
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(
@@ -31,11 +87,16 @@ remark_task:
     )
 
 stylelint_task:
-  container:
-    image: node
+  <<: *os_setup
+
+  always:
+    <<: *nodenv_cache
+
   <<: *node_modules_cache
 
-  lint_script: npm run lint:styles
+  lint_script:
+    - source ~/.bashrc
+    - npm run lint:styles
 
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(
@@ -44,11 +105,16 @@ stylelint_task:
     )
 
 eslint_task:
-  container:
-    image: node
+  <<: *os_setup
+
+  always:
+    <<: *nodenv_cache
+
   <<: *node_modules_cache
 
-  lint_script: npm run lint:scripts
+  lint_script:
+    - source ~/.bashrc
+    - npm run lint:scripts
 
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(
@@ -57,17 +123,21 @@ eslint_task:
     )
 
 rubocop_task:
-  container:
-    image: ruby:latest
-  <<: *bundle_cache
-
-  lint_script: bundle exec rubocop --format=json --out=rubocop.json
+  <<: *os_setup
 
   always:
+    <<: *rbenv_cache
+
     rubocop_artifacts:
       path: rubocop.json
       type: text/json
       format: rubocop
+
+  <<: *bundle_cache
+
+  lint_script:
+    - source ~/.bashrc
+    - bundle exec rubocop --format=json --out=rubocop.json
 
   only_if: ($CIRRUS_BRANCH == 'master') ||
     changesInclude(

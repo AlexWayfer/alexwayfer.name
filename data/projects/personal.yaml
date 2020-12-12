@@ -15,17 +15,20 @@
     via Flame and database (configuration and users saving).
 
   technologies:
-    - Ruby
-    - Flame
-    - PostgreSQL
-    - Sequel
-    - Formalism
-    - ERB
-    - JavaScript
-    - <del>Vue.js</del>
-    - SCSS
-    - IcoMoon
-    - GitHub
+    Back-end:
+      - Ruby
+      - Flame
+      - PostgreSQL
+      - Sequel
+      - Formalism
+      - ERB
+    Front-end:
+      - JavaScript
+      - <del>Vue.js</del>
+      - SCSS
+      - IcoMoon
+    Code management:
+      - GitHub
 
 
 - title: Who2Follow
@@ -41,10 +44,14 @@
     Core (algorythm in a Ruby gem) and CLI tool are ready, site will be soon.
 
   technologies:
-    - Ruby
-    - Clamp
-    - Twitch API
-    - GitLab
+    Back-end:
+      - Ruby
+      - Clamp
+      - Twitch API
+    Tests:
+      - RSpec
+    Code management:
+      - GitLab
 
 
 - title: Stream Assistant
@@ -77,16 +84,22 @@
     Site with description and dashboard for streamers will be soon.
 
   technologies:
-    - Ruby
-    - PostgreSQL
-    - Sequel
-    - YouTube API
-    - Twitch API
-    - Twitch IRC
-    - Steam API
-    - GitLab
-    - Scaleway
-    - Hetzner
+    Back-end:
+      - Ruby
+      - PostgreSQL
+      - Sequel
+    Integrations:
+      - YouTube API
+      - Twitch API
+      - Twitch IRC
+      - Steam API
+    Tests:
+      - RSpec
+    Code management:
+      - GitLab
+    Hosting:
+      - Scaleway
+      - Hetzner
 
 - title: Soundly
 
@@ -105,8 +118,10 @@
     I didn't think about architecture and third-party tools (libraries) at this time.
 
   technologies:
-    - JavaScript
-    - VK API
+    Front-end:
+      - JavaScript
+    Integrations:
+      - VK API
 
 
 - title: Simple Player
@@ -123,5 +138,7 @@
     It was hard to make a good (in my taste) visualizer.
 
   technologies:
-    - Delphi (FireMonkey)
-    - VK API
+    General:
+      - Delphi (FireMonkey)
+    Integrations:
+      - VK API

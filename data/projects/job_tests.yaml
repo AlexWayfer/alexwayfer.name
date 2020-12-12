@@ -13,13 +13,16 @@
     but I've tried [Grape](https://github.com/ruby-grape/grape) just for <del>fun</del> education.
 
   technologies:
-    - Ruby
-    - Grape
-    - PostgreSQL
-    - Sequel
-    - Faraday
-    - RSpec
-    - GitHub
+    Back-end:
+      - Ruby
+      - Grape
+      - PostgreSQL
+      - Sequel
+      - Faraday
+    Tests:
+      - RSpec
+    Code management:
+      - GitHub
 
 
 - title: Ruby Developer at Realy
@@ -37,11 +40,14 @@
     Emphasis on RSpec tests, fabrication.
 
   technologies:
-    - Ruby
-    - Ruby on Rails
-    - PostgreSQL
-    - ActiveRecord
-    - Elasticsearch
-    - RSpec
-    - Factory Bot
-    - GitHub
+    Back-end:
+      - Ruby
+      - Ruby on Rails
+      - PostgreSQL
+      - ActiveRecord
+      - Elasticsearch
+    Tests:
+      - RSpec
+      - Factory Bot
+    Code management:
+      - GitHub

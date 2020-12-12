@@ -21,25 +21,33 @@
     sometimes with a better or cleaner approach.
 
   technologies:
-    - Ruby
-    - Flame
-    - PostgreSQL
-    - Sequel
-    - Formalism
-    - ERB
-    - JavaScript
-    - SCSS
-    - IcoMoon
-    - Google Maps API
-    - GeoNames API
-    - PayPal API
-    - Platron API
-    - Crowdin
-    - Money gem
-    - Sentry
-    - GitLab
-    - Hetzner
-    - Basecamp
+    Back-end:
+      - Ruby
+      - Flame
+      - PostgreSQL
+      - Sequel
+      - Formalism
+      - ERB
+      - Money gem
+    Front-end:
+      - JavaScript
+      - SCSS
+      - IcoMoon
+    Integrations:
+      - Google Maps API
+      - GeoNames API
+      - PayPal API
+      - Platron API
+    Localization:
+      - Crowdin
+    Error tracking:
+      - Sentry
+    Code management:
+      - GitLab
+    Hosting:
+      - Hetzner
+    Task management:
+      - Basecamp
 
 
 - title: GetTransfer.com
@@ -92,26 +100,34 @@
     Honestly, I don't like what project became after my leave.
 
   technologies:
-    - Ruby
-    - Flame
-    - PostgreSQL
-    - Sequel
-    - ERB
-    - JavaScript
-    - SCSS
-    - Fontello
-    - Google Maps API
-    - GeoNames API
-    - PayPal API
-    - Platron API
-    - Crowdin
-    - Money gem
-    - Sentry
-    - GitLab
-    - AWS
-    - DigitalOcean
-    - Scaleway
-    - Basecamp
+    Back-end:
+      - Ruby
+      - Flame
+      - PostgreSQL
+      - Sequel
+      - ERB
+      - Money gem
+    Front-end:
+      - JavaScript
+      - SCSS
+      - Fontello
+    Integrations:
+      - Google Maps API
+      - GeoNames API
+      - PayPal API
+      - Platron API
+    Localization:
+      - Crowdin
+    Error tracking:
+      - Sentry
+    Code management:
+      - GitLab
+    Hosting:
+      - AWS
+      - DigitalOcean
+      - Scaleway
+    Task management:
+      - Basecamp
 
 
 - title: GetWiFi
@@ -141,15 +157,20 @@
     and pretty good database architecture.
 
   technologies:
-    - MikroTik firmware and configs
-    - Wi-Fi Captive Portal
-    - Ruby
-    - Sinatra
-    - MySQL
-    - DataMapper (abandoned ORM)
-    - JavaScript
-    - BitBucket
-    - Basecamp
+    General:
+      - MikroTik firmware and configs
+      - Wi-Fi Captive Portal
+    Back-end:
+      - Ruby
+      - Sinatra
+      - MySQL
+      - DataMapper (abandoned ORM)
+    Front-end:
+      - JavaScript
+    Code management:
+      - BitBucket
+    Task management:
+      - Basecamp
 
 
 - title: KEY Group
@@ -169,13 +190,17 @@
     I've learned a lot of CSS with this project.
 
   technologies:
-    - PHP
-    - MySQL
-    - CSS
-    - JavaScript
-    - Fontello
-    - BitBucket
-    - Basecamp
+    Back-end:
+      - PHP
+      - MySQL
+    Front-end:
+      - CSS
+      - JavaScript
+      - Fontello
+    Code management:
+      - BitBucket
+    Task management:
+      - Basecamp
 
 
 - title: Icons of the World
@@ -192,13 +217,17 @@
     It was hard to make custom optimizations of requests to database bypassing WordPress engine.
 
   technologies:
-    - PHP
-    - WordPress
-    - MySQL
-    - CSS
-    - JavaScript
-    - Google Maps API
-    - Basecamp
+    Back-end:
+      - PHP
+      - WordPress
+      - MySQL
+    Front-end:
+      - CSS
+      - JavaScript
+    Integrations:
+      - Google Maps API
+    Task management:
+      - Basecamp
 
 
 - title: RDI
@@ -217,10 +246,13 @@
     by just a single JPEG file with target design.
 
   technologies:
-    - PHP
-    - 1C-Bitrix
-    - GIMP
-    - Basecamp
+    General:
+      - GIMP
+    Back-end:
+      - PHP
+      - 1C-Bitrix
+    Task management:
+      - Basecamp
 
 
 - title: BCLeaner
@@ -246,5 +278,7 @@
     in another parallel non-related project in the same company.
 
   technologies:
-    - PHP
-    - Twitter API
+    Back-end:
+      - PHP
+    Integrations:
+      - Twitter API

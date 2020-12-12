@@ -2,7 +2,7 @@ os_setup: &os_setup
   container:
     image: debian
   os_setup_script:
-    - apt update && apt upgrade -y && apt install curl git make gcc -y
+    - apt update && apt upgrade -y && apt install curl bzip2 git make gcc -y
 
     - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
     - echo 'eval "$(rbenv init -)"' >> ~/.bashrc

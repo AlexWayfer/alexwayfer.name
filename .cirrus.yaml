@@ -2,7 +2,7 @@ os_setup: &os_setup
   container:
     image: archlinux
   os_setup_script:
-    - pacman -Syu --noconfirm && pacman -S --noconfirm git
+    - pacman -Syu --noconfirm && pacman -S --noconfirm git gcc make
 
     - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
     - echo 'eval "$(rbenv init -)"' >> ~/.bashrc

@@ -12,6 +12,11 @@ module Compile
 		# def_delegators 'self.class', :render
 
 		class << self
+			def inherited(subclass)
+				super
+				subclass.define_bind_method
+			end
+
 			def render_file(file_name, **variables)
 				render File.read(file_name), **variables
 			end
@@ -24,6 +29,14 @@ module Compile
 			def render(content, **variables)
 				render_erb ERB.new(content), **variables
 			end
+
+			def define_bind_method
+				class_eval <<~SRC, __FILE__, __LINE__ + 1
+					def bind
+						binding
+					end
+				SRC
+			end
 		end
 
 		def initialize(**data)
@@ -31,9 +44,7 @@ module Compile
 			super
 		end
 
-		def bind
-			binding
-		end
+		define_bind_method
 
 		private
 

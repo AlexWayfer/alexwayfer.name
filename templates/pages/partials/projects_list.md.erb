@@ -1,36 +1,17 @@
 {::options parse_block_html="true" /}
 
 <section class="<%= section_classes.join(' ') %>">
-<% data.projects.each_pair do |projects_type, projects| %>
 
-### <%= projects_type %>
+<% PROJECTS_TYPES.each do |projects_type, projects_type_title| %>
 
-<% projects.each do |project| %>
-*   ### <%
-      if project.link
-    %><%= external_link project.title, project.link %><%
-      else
-    %><%= project.title %><%
-      end
-    %>
+### <%= projects_type_title %>
 
-    #### <%= project.begin_date %> – <%= project.end_date %>
+<% data.projects[projects_type].each do |project| %>
 
-    <% if project.position %>
-    #### <%= project.position %>
-    <% end %>
+<%= render_partial "projects_list/#{projects_type}", project: project %>
 
-    <% if project.team %>
-    #### Team of <%= project.team %>
-    {: .team }
-    <% end %>
-
-    <%= render project.description.split("\n").join("\n    ") %>
-
-    Technologies:
-    <% project.technologies.each do |technology| %>
-    *   <%= technology %><% end %>
 <% end %>{: .projects }
+
 <% end %>
 </section>
 

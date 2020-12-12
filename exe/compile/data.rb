@@ -6,11 +6,14 @@ require 'yaml'
 module Compile
 	## Load data from YAML files and make `OpenStruct` object (for a prettier code)
 	class Data < OpenStruct
-		def initialize(yaml_files)
+		def initialize(yaml_files_directory)
 			super(
-				yaml_files.each_with_object({}) do |file_name, result|
-					key = File.basename file_name, '.*'
-					result[key] = initialize_open_struct_deeply YAML.load_file file_name
+				Dir.glob("#{yaml_files_directory}/**/*.y{a,}ml").each_with_object({}) do |file_name, result|
+					keys = file_name.match(%r{^#{yaml_files_directory}/(.+)\.ya?ml$})[1].split('/')
+					end_point_result = keys[..-2].reduce(result) do |nested_result, key|
+						nested_result[key] ||= initialize_open_struct_deeply({})
+					end
+					end_point_result[keys.last] = initialize_open_struct_deeply YAML.load_file file_name
 				end
 			)
 		end

@@ -23,7 +23,7 @@ module Compile
 			@pages_layout_erb = initialize_layout PAGES_TEMPLATES_DIR
 
 			@data = operation 'Loading YAML data' do
-				Data.new Dir.glob("#{ROOT_DIR}/data/*.y{a,}ml")
+				Data.new "#{ROOT_DIR}/data"
 			end
 
 			@site_title = "#{PROFILE[:username]}'s Site"
@@ -86,6 +86,12 @@ module Compile
 		class ViewObject < Compile::ViewObject
 			private
 
+			PROJECTS_TYPES = {
+				commercial: 'Commercial projects',
+				personal: 'Personal projects',
+				job_tests: 'Job tests'
+			}.freeze
+
 			def render_partial(file_name, base_dir: PAGES_TEMPLATES_DIR, **options)
 				super
 			end
@@ -96,6 +102,11 @@ module Compile
 
 			def url_with_mtime(path)
 				"#{path}?v=#{File.mtime("#{BaseCommand::COMPILED_DIR}/#{path}").to_i}"
+			end
+
+			def render_project_part(part_name, project)
+				result = render_partial "project/#{part_name}", project: project
+				result.split("\n").join("\n    ")
 			end
 		end
 	end

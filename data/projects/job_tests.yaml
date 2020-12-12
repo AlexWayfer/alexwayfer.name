@@ -1,0 +1,47 @@
+- title: Ruby Developer at PayApp
+
+  link: https://github.com/AlexWayfer/payapp_job_test
+
+  date: December 2020
+  duration: 6.5 hours
+
+  description: |
+    Two miscroservices, communicating via HTTP API, for solving square equation
+    and for checking results.
+
+    Not too much new for me, I was expecting something like Kafka or RabbitMQ,
+    but I've tried [Grape](https://github.com/ruby-grape/grape) just for <del>fun</del> education.
+
+  technologies:
+    - Ruby
+    - Grape
+    - PostgreSQL
+    - Sequel
+    - Faraday
+    - RSpec
+    - GitHub
+
+
+- title: Ruby Developer at Realy
+
+  link: https://github.com/AlexWayfer/realy_job_test
+
+  date: December 2020
+  duration: 12.5 hours
+
+  description: |
+    Ruby on Rails application (I had not too much experience with it),
+    feed of `User` records from PostgreSQL via Elasticsearch
+    ([gem `chewy`](https://github.com/toptal/chewy)).
+
+    Emphasis on RSpec tests, fabrication.
+
+  technologies:
+    - Ruby
+    - Ruby on Rails
+    - PostgreSQL
+    - ActiveRecord
+    - Elasticsearch
+    - RSpec
+    - Factory Bot
+    - GitHub

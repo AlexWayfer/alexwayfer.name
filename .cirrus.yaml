@@ -63,7 +63,7 @@ node_modules_cache: &node_modules_cache
     fingerprint_script:
       - echo $CIRRUS_OS
       - cat .node-version
-      - cat package.json
+      - cat package-lock.json
   install_script:
     - source ~/.bashrc
     - npm install

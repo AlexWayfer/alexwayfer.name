@@ -110,6 +110,7 @@
     Front-end:
       - JavaScript
       - SCSS
+      - Bootstrap
       - Fontello
     Integrations:
       - Google Maps API

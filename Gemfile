@@ -11,6 +11,8 @@ gem 'moments'
 group :development do
 	gem 'filewatcher-matrix'
 
+	gem 'bundler-audit'
+
 	gem 'rubocop'
 	gem 'rubocop-performance'
 

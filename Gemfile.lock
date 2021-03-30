@@ -34,7 +34,7 @@ GEM
       alt_memery (~> 2.0)
       rubyzip (~> 2.0)
       toys-core (~> 0.11.0)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     method_source (1.0.0)
     module_methods (0.1.0)

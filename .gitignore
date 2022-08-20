@@ -7,3 +7,5 @@
 !/config/**/*.example*
 !/config/**/*.rb
 !/config/**/*.erb
+
+/.idea/

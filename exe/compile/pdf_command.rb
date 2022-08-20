@@ -27,7 +27,7 @@ module Compile
 				## https://github.com/rubycdp/ferrum/issues/106
 				browser.goto "http://#{domain}"
 
-				browser.pdf pdf_options
+				browser.pdf(**pdf_options)
 
 				browser.quit
 			end

@@ -74,12 +74,11 @@ module Compile
 		end
 
 		def render_page_with_layout(rendered_page)
-			view_object_class.render_erb @pages_layout_erb, {
+			view_object_class.render_erb @pages_layout_erb,
 				site_title: @site_title,
 				profile: PROFILE,
 				page_content: Kramdown::Document.new(rendered_page).to_html,
 				pdf_path: relative_path(PDF_PATH, COMPILED_DIR)
-			}
 		end
 
 		## Private class for view objects

@@ -6,10 +6,10 @@ os_setup: &os_setup
     - pacman -S --noconfirm git gcc make
 
     - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-    - echo '(command -v rbenv) && eval "$(rbenv init -)"' >> ~/.bashrc
+    - echo 'if command -v rbenv; then eval "$(rbenv init -)"; fi' >> ~/.bashrc
 
     - echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.bashrc
-    - echo '(command -v nodenv) && eval "$(nodenv init -)"' >> ~/.bashrc
+    - echo 'if command -v nodenv; then eval "$(nodenv init -)"; fi' >> ~/.bashrc
 
 rbenv_cache: &rbenv_cache
   rbenv_cache:

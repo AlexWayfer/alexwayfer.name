@@ -91,6 +91,29 @@ Recent commercial projects I was working on:
 I love open-source too much,
 here is my <%= external_link 'GitHub profile', 'https://github.com/AlexWayfer' %>.
 
+{::options parse_block_html="true" /}
+<div class="recent-projects">
+Most significant projects:
+
+*   #### <%= external_link 'Flame', 'https://github.com/AlexWayfer/flame' %>
+    My own Ruby back-end framework, based on hooks-by-inheritance
+    and created for <%= external_link 'Rack', 'https://github.com/rack/rack' %> stack learning.
+
+*   #### <%= external_link 'Gorilla Patch', 'https://github.com/AlexWayfer/gorilla_patch' %>
+    My own ActiveSupport,
+    but via <%= external_link 'refinements', 'https://ruby-doc.org/core/doc/syntax/refinements_rdoc.html' %>
+    instead of <%= external_link 'monkey-patching', 'https://en.wikipedia.org/wiki/Monkey_patch' %>.
+
+*   #### <%= external_link 'Formalism', 'https://github.com/AlexWayfer/formalism' %>
+    My own form/service-objects, but with inifinity nesting and plugins.
+
+Also I've taken a maintance over projects like
+<%= external_link 'R18n', 'https://github.com/r18n' %>,
+<%= external_link 'Filewatcher', 'https://github.com/filewatcher' %>,
+etc.
+</div>
+{::options parse_block_html="false" /}
+
 ## Tastes
 
 <% data[:tastes].each do |taste| %>

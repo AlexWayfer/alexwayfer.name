@@ -1,3 +1,45 @@
+- title: Yasno.live
+
+  link: https://yasno.live/
+
+  begin_date: June 2021
+  end_date: Jule 2022
+
+  position: Back-end developer, DevOps assistant
+  team: 5–8 developers, including remote
+
+  description: |
+    Aggregator for mental health, between psychologists and clients.
+    The first large commercial project on <%= external_link 'Ruby on Rails', 'https://rubyonrails.org/' %>.
+
+    I've done a lot of work for Docker (Kubernetes), CI (GitHub Actions),
+    payment systems (YooMoney), custom SQL aggregation statistics in Admin Panel.
+
+  technologies:
+    Back-end:
+      - Ruby
+      - Ruby on Rails
+      - PostgreSQL
+      - ActiveRecord
+      - Redis
+    Front-end:
+      - JavaScript
+      - CoffeeScript
+      - Bootstrap
+      - SCSS
+    Integrations:
+      - YooMoney API
+    Localization:
+      - I18n
+    Error tracking:
+      - Bugsnag
+    Code management:
+      - GitHub
+    Hosting:
+      - Yandex Cloud
+    Task management:
+      - Notion + GH Issues
+
 - title: GetTransport.com
 
   link: https://gettransport.com/

@@ -62,8 +62,7 @@ module Compile
 				lint_markdown_page page_file_basename, rendered_page
 
 				File.write(
-					"#{COMPILED_DIR}/#{page_file_basename}.html",
-					render_page_with_layout(rendered_page)
+					"#{COMPILED_DIR}/#{page_file_basename}.html", render_page_with_layout(rendered_page)
 				)
 			end
 		end

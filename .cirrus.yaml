@@ -5,6 +5,12 @@ os_setup: &os_setup
     - pacman -Sy # --noconfirm
     - pacman -S --noconfirm git gcc make
 
+    - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    - echo '(command -v rbenv) && eval "$(rbenv init -)"' >> ~/.bashrc
+
+    - echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.bashrc
+    - echo '(command -v nodenv) && eval "$(nodenv init -)"' >> ~/.bashrc
+
 rbenv_cache: &rbenv_cache
   rbenv_cache:
     folder: $HOME/.rbenv
@@ -13,9 +19,6 @@ rbenv_cache: &rbenv_cache
       - cat .ruby-version
     populate_script:
       - git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-
-      - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-      - echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 
       - source ~/.bashrc
 
@@ -33,9 +36,6 @@ nodenv_cache: &nodenv_cache
       - cat .node-version
     populate_script:
       - git clone https://github.com/nodenv/nodenv.git ~/.nodenv
-
-      - echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.bashrc
-      - echo 'eval "$(nodenv init -)"' >> ~/.bashrc
 
       - source ~/.bashrc
 

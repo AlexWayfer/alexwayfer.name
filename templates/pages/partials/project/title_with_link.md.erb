@@ -1,11 +1,11 @@
 ### <%
-  if project.link
+  if project['link']
 %><%=
-    external_link project.title, project.link
+    external_link project['title'], project['link']
 %><%
   else
 %><%=
-    project.title
+    project['title']
 %><%
   end
 %>

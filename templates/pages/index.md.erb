@@ -74,8 +74,8 @@ I've made a long path from Delphi in 2011 through PHP and JavaScript to Ruby at 
 <div class="recent-projects not-for-print">
 Recent commercial projects I was working on:
 
-<% data.projects.commercial.first(2).each do |project| %>
-*   #### <%= project.title %>
+<% data['projects']['commercial'].first(2).each do |project| %>
+*   #### <%= project['title'] %>
 <% end %>
 
 [Complete list of significant projects and job tests](projects.html).
@@ -83,7 +83,7 @@ Recent commercial projects I was working on:
 {::options parse_block_html="false" /}
 
 <%=
-	render_partial :projects_list, projects: data.projects, section_classes: %w[only-for-print]
+	render_partial :projects_list, projects: data['projects'], section_classes: %w[only-for-print]
 %>
 
 ### Open-source projects and activity
@@ -93,13 +93,13 @@ here is my <%= external_link 'GitHub profile', 'https://github.com/AlexWayfer' %
 
 ## Tastes
 
-<% data.tastes.each do |taste| %>
+<% data['tastes'].each do |taste| %>
 *   <%= taste %>
 <% end %>
 
 ## Contacts
 
-<% data.contacts.each do |contact| %>
-*   <%= external_link contact.title, contact.link %><br>
-    <%= contact.description %>
+<% data['contacts'].each do |contact| %>
+*   <%= external_link contact['title'], contact['link'] %><br>
+    <%= contact['description'] %>
 <% end %>

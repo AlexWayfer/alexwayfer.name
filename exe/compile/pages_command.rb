@@ -53,7 +53,9 @@ module Compile
 
 		def render_page(file_name)
 			operation "Rendering #{relative_path file_name}" do
-				rendered_page = view_object_class.render_file file_name, profile: PROFILE, data: @data
+				rendered_page = view_object_class.render_file(
+					file_name, profile: PROFILE, additional_data: @data
+				)
 
 				page_file_basename = basename_without_extensions file_name
 

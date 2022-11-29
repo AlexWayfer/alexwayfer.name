@@ -1,14 +1,14 @@
 <picture>
-	<% profile[:photo][:additional].each do |format, relative_path| %>
+	<% data[:profile][:photo][:additional].each do |format, relative_path| %>
 		<source type="image/<%= format %>" srcset="<%= url_with_mtime relative_path %>">
 	<% end %>
-	<img src="<%= url_with_mtime profile[:photo][:main] %>" class="photo-of-me" alt="Photo of me" />
+	<img src="<%= url_with_mtime data[:profile][:photo][:main] %>" class="photo-of-me" alt="Photo of me" />
 </picture>
 
-Hello. My name is <%= profile[:first_name] %> (<%= profile[:raw_first_name] %>) <%= profile[:last_name] %>.
+Hello. My name is <%= data[:profile][:first_name] %> (<%= data[:profile][:raw_first_name] %>) <%= data[:profile][:last_name] %>.
 
 I'm <span class="age"><%=
-	Moments.difference(Date.new(2013, 8, 31), profile[:birthday]).in_years
+	Moments.difference(Date.new(2013, 8, 31), data[:profile][:birthday]).in_years
 %></span>
 years old, but I think person experience and opinions are more important than age.
 
@@ -74,8 +74,8 @@ I've made a long path from Delphi in 2011 through PHP and JavaScript to Ruby at 
 <div class="recent-projects not-for-print">
 Recent commercial projects I was working on:
 
-<% data['projects']['commercial'].first(2).each do |project| %>
-*   #### <%= project['title'] %>
+<% data[:projects][:commercial].first(2).each do |project| %>
+*   #### <%= project[:title] %>
 <% end %>
 
 [Complete list of significant projects and job tests](projects.html).
@@ -83,7 +83,7 @@ Recent commercial projects I was working on:
 {::options parse_block_html="false" /}
 
 <%=
-	render_partial :projects_list, projects: data['projects'], section_classes: %w[only-for-print]
+	render_partial :projects_list, projects: data[:projects], section_classes: %w[only-for-print]
 %>
 
 ### Open-source projects and activity
@@ -93,13 +93,13 @@ here is my <%= external_link 'GitHub profile', 'https://github.com/AlexWayfer' %
 
 ## Tastes
 
-<% data['tastes'].each do |taste| %>
+<% data[:tastes].each do |taste| %>
 *   <%= taste %>
 <% end %>
 
 ## Contacts
 
-<% data['contacts'].each do |contact| %>
-*   <%= external_link contact['title'], contact['link'] %><br>
-    <%= contact['description'] %>
+<% data[:contacts].each do |contact| %>
+*   <%= external_link contact[:title], contact[:link] %><br>
+    <%= contact[:description] %>
 <% end %>

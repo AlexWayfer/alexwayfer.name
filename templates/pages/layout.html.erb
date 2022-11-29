@@ -5,23 +5,23 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<title><%= site_title %></title>
+		<title><%= data[:site_title] %></title>
 
-		<meta property="og:title" content="<%= site_title %>" />
-		<meta property="og:description" content="Hello, my name is <%= profile[:first_name] %> <%= profile[:last_name] %> and I'm a Software Developer, mostly in Ruby." />
+		<meta property="og:title" content="<%= data[:site_title] %>" />
+		<meta property="og:description" content="Hello, my name is <%= data[:profile][:first_name] %> <%= data[:profile][:last_name] %> and I'm a Software Developer, mostly in Ruby." />
 		<meta property="og:type" content="profile" />
-		<meta property="og:profile:first_name" content="<%= profile[:first_name] %>" />
-		<meta property="og:profile:last_name" content="<%= profile[:last_name] %>" />
-		<meta property="og:profile:username" content="<%= profile[:username] %>" />
-		<meta property="og:profile:gender" content="<%= profile[:gender] %>" />
-		<meta property="og:image" content="<%= url_with_mtime profile[:photo_path] %>" />
+		<meta property="og:profile:first_name" content="<%= data[:profile][:first_name] %>" />
+		<meta property="og:profile:last_name" content="<%= data[:profile][:last_name] %>" />
+		<meta property="og:profile:username" content="<%= data[:profile][:username] %>" />
+		<meta property="og:profile:gender" content="<%= data[:profile][:gender] %>" />
+		<meta property="og:image" content="<%= url_with_mtime data[:profile][:photo_path] %>" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:url" content="https://alexwayfer.name/" />
 
 		<link rel="stylesheet" href="<%= url_with_mtime 'styles/main.css' %>" />
 
 		<script type="text/javascript">
-			window.birthday = Date.parse('<%= profile[:birthday].iso8601 %>')
+			window.birthday = Date.parse('<%= data[:profile][:birthday].iso8601 %>')
 
 			const osDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
 
@@ -37,7 +37,7 @@
 	<body>
 		<header>
 			<div class="container">
-				<h1><%= site_title %></h1>
+				<h1><%= data[:site_title] %></h1>
 
 				<button type="button" class="theme-toggle">
 					<%= svg_icon :brightness %>
@@ -47,7 +47,7 @@
 
 		<main>
 			<div class="container">
-				<%= page_content %>
+				<%= data[:page_content] %>
 			</div>
 		</main>
 
@@ -58,7 +58,7 @@
 				<%= external_link 'Source code', 'https://github.com/AlexWayfer/alexwayfer.name' %>.
 
 				<span class="not-for-print">
-					<a href="<%= pdf_path %>" download>Download as PDF file</a>.
+					<a href="<%= data[:pdf_path] %>" download>Download as PDF file</a>.
 				</span>
 		</footer>
 

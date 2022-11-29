@@ -6,7 +6,7 @@ require 'ostruct'
 
 module Compile
 	## View object for render
-	class ViewObject < OpenStruct
+	class ViewObject
 		# extend Forwardable
 		#
 		# def_delegators 'self.class', :render
@@ -39,9 +39,10 @@ module Compile
 			end
 		end
 
-		def initialize(**data)
-			@data = data
-			super
+		attr_reader :data
+
+		def initialize(additional_data: {}, **data)
+			@data = data.merge(additional_data)
 		end
 
 		define_bind_method

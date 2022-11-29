@@ -1,12 +1,12 @@
-*   <%= render_project_part :title_with_link, project %>
+*   <%= render_project_part :title_with_link, data[:project] %>
 
-    <%= render_project_part :dates_range, project %>
+    <%= render_project_part :dates_range, data[:project] %>
 
-    #### <%= project['position'] %>
+    #### <%= data[:project]['position'] %>
 
-    #### Team of <%= project['team'] %>
+    #### Team of <%= data[:project]['team'] %>
     {: .team }
 
-    <%= render_project_part :description, project %>
+    <%= render_project_part :description, data[:project] %>
 
-    <%= render_project_part :technologies, project %>
+    <%= render_project_part :technologies, data[:project] %>

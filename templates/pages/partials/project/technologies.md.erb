@@ -1,4 +1,4 @@
 Technologies:
-<% project['technologies'].each_pair do |type, technologies| %>
+<% data[:project][:technologies].each_pair do |type, technologies| %>
 *   <%= type %><% technologies.each do |technology| %>
     *   <%= technology %><% end %><% end %>

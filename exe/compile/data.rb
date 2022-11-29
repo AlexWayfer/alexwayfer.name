@@ -6,6 +6,8 @@ require 'yaml'
 module Compile
 	## Load data from YAML files
 	class Data < Hash
+		using GorillaPatch::Symbolize
+
 		def initialize(yaml_files_directory)
 			super()
 
@@ -18,6 +20,8 @@ module Compile
 
 				end_point_result[keys.last] = YAML.load_file file_name
 			end
+
+			symbolize_keys! deep: true
 		end
 	end
 end

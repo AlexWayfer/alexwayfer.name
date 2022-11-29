@@ -1,12 +1,12 @@
 {::options parse_block_html="true" /}
 
-<section class="<%= section_classes.join(' ') %>">
+<section class="<%= data[:section_classes].join(' ') %>">
 
 <% PROJECTS_TYPES.each do |projects_type, projects_type_title| %>
 
 ### <%= projects_type_title %>
 
-<% data['projects'][projects_type.to_s].each do |project| %>
+<% data[:projects][projects_type].each do |project| %>
 
 <%= render_partial "projects_list/#{projects_type}", project: project %>
 

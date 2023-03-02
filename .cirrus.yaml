@@ -5,13 +5,11 @@ os_setup: &os_setup
     - pacman -Sy # --noconfirm
     - pacman -S --noconfirm git gcc make
 
-    - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-    - echo 'if command -v rbenv; then eval "$(rbenv init -)"; fi' >> ~/.bashrc
-
-    - echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.bashrc
-    - echo 'if command -v nodenv; then eval "$(nodenv init -)"; fi' >> ~/.bashrc
 
 rbenv_cache: &rbenv_cache
+  rbenv_setup_script:
+    - echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    - echo 'if command -v rbenv; then eval "$(rbenv init -)"; fi' >> ~/.bashrc
   rbenv_cache:
     folder: $HOME/.rbenv
     fingerprint_script:
@@ -29,6 +27,9 @@ rbenv_cache: &rbenv_cache
       - rbenv install -s
 
 nodenv_cache: &nodenv_cache
+  nodenv_setup_script:
+    - echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.bashrc
+    - echo 'if command -v nodenv; then eval "$(nodenv init -)"; fi' >> ~/.bashrc
   nodenv_cache:
     folder: $HOME/.nodenv
     fingerprint_script:

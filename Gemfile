@@ -14,7 +14,7 @@ group :development do
 
 	gem 'bundler-audit'
 
-	gem 'rubocop', '~> 1.35.0'
+	gem 'rubocop', '~> 1.47.0'
 	gem 'rubocop-performance'
 
 	gem 'config_toys'

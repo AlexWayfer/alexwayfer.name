@@ -3,8 +3,7 @@ os_setup: &os_setup
     image: archlinux
   os_setup_script:
     - pacman -Sy # --noconfirm
-    - pacman -S --noconfirm git gcc make
-
+    - pacman -S --noconfirm git gcc make libyaml
 
 rbenv_cache: &rbenv_cache
   rbenv_setup_script:

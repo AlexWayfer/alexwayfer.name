@@ -7,6 +7,7 @@ gem 'ferrum'
 gem 'gorilla_patch'
 gem 'kramdown'
 gem 'moments'
+gem 'psych'
 
 group :development do
 	gem 'filewatcher-matrix'

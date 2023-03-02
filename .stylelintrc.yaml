@@ -4,23 +4,6 @@ plugins:
   - stylelint-no-unsupported-browser-features
 
 rules:
-  indentation:
-    - tab
-
-  max-line-length:
-    - 100
-    - ignorePattern: /// https?:///
-
-  block-closing-brace-newline-after:
-    - always
-    - ignoreAtRules:
-        - if
-        - else
-
-  declaration-colon-newline-after: null
-
-  function-comma-newline-after: null
-
   declaration-empty-line-before:
     - always
     - except:
@@ -32,9 +15,6 @@ rules:
   declaration-block-no-redundant-longhand-properties:
     - true
     - severity: warning
-
-  declaration-colon-space-after:
-    - always-single-line
 
   ## This selectors could not be sorted by specificity:
   # .scrollable { // 0-1-0

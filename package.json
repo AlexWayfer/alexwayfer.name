@@ -15,9 +15,9 @@
 		"date-fns": "^2.29.3"
 	},
 	"devDependencies": {
-		"@rollup/plugin-node-resolve": "^15.0.1",
+		"@rollup/plugin-node-resolve": "^15.0.2",
 		"autoprefixer": "^10.4.14",
-		"eslint": "^8.36.0",
+		"eslint": "^8.37.0",
 		"postcss": "^8.4.21",
 		"postcss-at-rules-variables": "^0.3.0",
 		"postcss-cli": "^10.1.0",
@@ -27,8 +27,8 @@
 		"remark-gfm": "^3.0.1",
 		"remark-preset-lint-recommended": "^6.1.2",
 		"rollup": "^3.20.2",
-		"stylelint": "^15.3.0",
-		"stylelint-config-standard": "^31.0.0",
+		"stylelint": "^15.4.0",
+		"stylelint-config-standard": "^32.0.0",
 		"stylelint-no-unsupported-browser-features": "^6.1.0",
 		"yaml": "^2.2.1"
 	},

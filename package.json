@@ -30,7 +30,7 @@
 		"stylelint": "^15.5.0",
 		"stylelint-config-standard": "^33.0.0",
 		"stylelint-no-unsupported-browser-features": "^6.1.0",
-		"yaml": "^2.2.1"
+		"yaml": "^2.2.2"
 	},
 	"scripts": {
 		"lint:markdown": "remark -f .",

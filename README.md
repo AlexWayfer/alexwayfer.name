@@ -35,7 +35,6 @@ Edit and run `exe/deploy.sh`.
 *   Install and configure `nginx` (with symbolic links from `config/nginx.conf`)
 *   Install `letsencrypt` and generate certificates
     *   Including `openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096`
-    in network errors reports
 
 -----
 

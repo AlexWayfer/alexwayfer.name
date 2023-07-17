@@ -33,7 +33,7 @@ Edit and run `exe/deploy.sh`.
 *   Add UNIX-user for project: `adduser <%= @app_name %>`
 *   Make symbolic link of project directory to `/var/www/<%= @app_name %>`
 *   Install and configure `nginx` (with symbolic links from `config/nginx.conf`)
-*   Install `letsencrypt` and generate certificates
+*   Install [Certbot](https://certbot.eff.org/) and generate certificates
     *   Including `openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096`
 
 -----

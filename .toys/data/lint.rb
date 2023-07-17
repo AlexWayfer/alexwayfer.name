@@ -1,36 +1,80 @@
 # frozen_string_literal: true
 
-self::REQUIRED_PROJECT_FIELDS = %w[title description technologies begin_date end_date].freeze
+self::COMMON_REQUIRED_FIELDS = %w[title description technologies].freeze
+
+self::SPECIFIC_REQUIRED_FIELDS = {
+	project: %w[begin_date end_date].freeze,
+	job_test: %w[date duration].freeze
+}.freeze
+
+desc 'Lint project dates in data'
 
 def run
 	require 'yaml'
 
 	result = true
 
-	projects.each.with_index(1) do |project, index|
-		raw_title = project['title']
-		title = raw_title ? "Project \"#{raw_title}\"" : "Project ##{index}"
+	commercial_projects = load_projects 'commercial'
 
-		result &&= lint_required_fields project, title
+	result = false unless lint_projects commercial_projects, 'Commercial'
 
-		result &&= lint_dates title, project.slice('begin_date', 'end_date')
-	end
+	personal_projects = load_projects 'personal'
 
-	puts 'Everything is OK.' if result
+	result = false unless lint_projects personal_projects, 'Personal'
+
+	result = false unless lint_job_tests
 
 	exit result ? 0 : 1
 end
 
 private
 
-def projects
-	@projects ||= YAML.load_file "#{context_directory}/data/projects.yaml"
+def load_projects(type)
+	YAML.load_file "#{context_directory}/data/projects/#{type}.yaml"
 end
 
-def lint_required_fields(project, title)
+def lint_projects(projects, projects_type)
 	result = true
 
-	self.class::REQUIRED_PROJECT_FIELDS.each do |key|
+	projects.each do |project|
+		title = "#{projects_type} project \"#{project['title']}\""
+
+		result = false unless lint_required_fields project, title, type: :project
+
+		result = false unless lint_dates title, project.slice('begin_date', 'end_date')
+	end
+
+	puts "#{projects_type} projects are OK." if result
+
+	result
+end
+
+def lint_job_tests
+	job_tests = load_projects 'job_tests'
+
+	result = true
+
+	job_tests.each do |job_test|
+		title = "Job test \"#{job_test['title']}\""
+
+		result = false unless lint_required_fields job_test, title, type: :job_test
+
+		result = false unless lint_dates title, job_test.slice('date')
+
+		result = false unless lint_duration title, job_test['duration']
+	end
+
+	puts 'Job tests are OK.' if result
+
+	result
+end
+
+def lint_required_fields(project, title, type:)
+	result = true
+
+	required_fields = self.class::COMMON_REQUIRED_FIELDS + self.class::SPECIFIC_REQUIRED_FIELDS[type]
+
+	required_fields.each do |key|
 		next if project[key]
 
 		warn "#{title} has no #{key}"
@@ -51,6 +95,8 @@ self::DATE_REGEXP = /
 	$
 /x.freeze
 
+self::DURATION_REGEXP = /^\d+(\.\d{1,2})? (hours|days|weeks)$/.freeze
+
 def lint_dates(title, dates)
 	result = true
 
@@ -62,4 +108,12 @@ def lint_dates(title, dates)
 	end
 
 	result
+end
+
+def lint_duration(title, value)
+	return true if value.match? self.class::DURATION_REGEXP
+
+	warn "#{title} has incorrect duration format"
+
+	false
 end

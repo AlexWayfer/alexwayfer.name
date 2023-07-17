@@ -27,7 +27,7 @@
 		"remark-gfm": "^3.0.1",
 		"remark-preset-lint-recommended": "^6.1.2",
 		"rollup": "^3.20.7",
-		"stylelint": "^15.6.0",
+		"stylelint": "^15.10.1",
 		"stylelint-config-standard": "^33.0.0",
 		"stylelint-no-unsupported-browser-features": "^6.1.0",
 		"yaml": "^2.2.2"

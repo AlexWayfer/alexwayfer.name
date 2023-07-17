@@ -3,7 +3,8 @@
 self::COMMON_REQUIRED_FIELDS = %w[title description technologies].freeze
 
 self::SPECIFIC_REQUIRED_FIELDS = {
-	project: %w[begin_date end_date].freeze,
+	commercial: %w[position team begin_date end_date].freeze,
+	personal: %w[begin_date end_date].freeze,
 	job_test: %w[date duration].freeze
 }.freeze
 
@@ -39,7 +40,7 @@ def lint_projects(projects, projects_type)
 	projects.each do |project|
 		title = "#{projects_type} project \"#{project['title']}\""
 
-		result = false unless lint_required_fields project, title, type: :project
+		result = false unless lint_required_fields project, title, type: projects_type.downcase.to_sym
 
 		result = false unless lint_dates title, project.slice('begin_date', 'end_date')
 	end

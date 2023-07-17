@@ -81,7 +81,7 @@ remark_task:
     - source ~/.bashrc
     - npm run lint:markdown
 
-  only_if: ($CIRRUS_BRANCH == 'master') ||
+  only_if: ($CIRRUS_BRANCH == 'main') ||
     changesInclude(
       '.cirrus.yaml', '.gitignore', '.node-version', 'package.json', 'package-lock.json',
       '.remarkrc.yaml', '**.md'
@@ -99,7 +99,7 @@ stylelint_task:
     - source ~/.bashrc
     - npm run lint:styles
 
-  only_if: ($CIRRUS_BRANCH == 'master') ||
+  only_if: ($CIRRUS_BRANCH == 'main') ||
     changesInclude(
       '.cirrus.yaml', '.gitignore', '.node-version', 'package.json', 'package-lock.json',
       'browserslist', '.stylelintrc.yaml', 'assets/styles/**'
@@ -117,7 +117,7 @@ eslint_task:
     - source ~/.bashrc
     - npm run lint:scripts
 
-  only_if: ($CIRRUS_BRANCH == 'master') ||
+  only_if: ($CIRRUS_BRANCH == 'main') ||
     changesInclude(
       '.cirrus.yaml', '.gitignore', '.node-version', 'package.json', 'package-lock.json',
       'browserslist', '.eslintrc.yaml', '.eslintignore', 'assets/scripts/**'
@@ -135,7 +135,7 @@ bundle-audit_task:
     - source ~/.bashrc
     - bundle audit check --update
 
-  only_if: ($CIRRUS_BRANCH == 'master') ||
+  only_if: ($CIRRUS_BRANCH == 'main') ||
     changesInclude(
       '.cirrus.yaml', '.gitignore', '.ruby-version', 'Gemfile', 'Gemfile.lock'
     )
@@ -152,7 +152,7 @@ rubocop_task:
     - source ~/.bashrc
     - bundle exec rubocop
 
-  only_if: ($CIRRUS_BRANCH == 'master') ||
+  only_if: ($CIRRUS_BRANCH == 'main') ||
     changesInclude(
       '.cirrus.yaml', '.gitignore', '.ruby-version', 'Gemfile', 'Gemfile.lock',
       '.rubocop.yml', '**.rb'

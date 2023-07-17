@@ -123,6 +123,24 @@ eslint_task:
       'browserslist', '.eslintrc.yaml', '.eslintignore', 'assets/scripts/**'
     )
 
+data-lint_task:
+  <<: *os_setup
+
+  always:
+    <<: *rbenv_cache
+
+  <<: *bundle_cache
+
+  lint_script:
+    - source ~/.bashrc
+    - toys data lint
+
+  only_if: ($CIRRUS_BRANCH == 'main') ||
+    changesInclude(
+      '.cirrus.yaml', '.ruby-version', 'Gemfile', 'Gemfile.lock', '.rubocop.yml',
+      '.toys/**', 'data/**'
+    )
+
 bundle-audit_task:
   <<: *os_setup
 

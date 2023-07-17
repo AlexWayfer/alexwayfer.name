@@ -3,7 +3,7 @@
 include :bundler, static: true
 
 require 'config_toys'
-expand ConfigToys::Template, config_dir: "#{__dir__}/config"
+expand ConfigToys::Template, config_dir: "#{__dir__}/../config"
 
 require 'icomoon_toys'
 expand IcoMoonToys::Template,

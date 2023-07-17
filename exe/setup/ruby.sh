@@ -27,3 +27,5 @@ fi
 if ! bundle check
 then exe bundle install
 fi
+
+rbenv rehash

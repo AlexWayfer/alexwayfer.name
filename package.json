@@ -29,7 +29,7 @@
 		"rollup": "^3.20.7",
 		"stylelint": "^15.10.1",
 		"stylelint-config-standard": "^33.0.0",
-		"stylelint-no-unsupported-browser-features": "^6.1.0",
+		"stylelint-no-unsupported-browser-features": "^7.0.0",
 		"yaml": "^2.2.2"
 	},
 	"scripts": {

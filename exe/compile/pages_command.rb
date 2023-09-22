@@ -108,6 +108,10 @@ module Compile
 				result = render_partial "project/#{part_name}", project: project
 				result.split("\n").join("\n    ")
 			end
+
+			def project_header_id(project)
+				project[:title].tr(' ', '_')
+			end
 		end
 	end
 end

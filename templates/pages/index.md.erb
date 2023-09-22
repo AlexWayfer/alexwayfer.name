@@ -77,7 +77,7 @@ I've made a long path from Delphi in 2011 through PHP and JavaScript to Ruby at 
 Recent commercial projects I was working on:
 
 <% data[:projects][:commercial].first(3).each do |project| %>
-*   #### [<%= project[:title] %>](projects.html#<%= project[:title] %>)
+*   #### [<%= project[:title] %>](projects.html#<%= project_header_id project[:title] %>)
 <% end %>
 
 [Complete list of significant projects and job tests](projects.html).

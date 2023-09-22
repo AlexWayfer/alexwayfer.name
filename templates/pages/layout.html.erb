@@ -7,6 +7,8 @@
 
 		<title><%= data[:site_title] %></title>
 
+		<link rel="canonical" href="<%= canonical_url %>" />
+
 		<meta property="og:title" content="<%= data[:site_title] %>" />
 		<meta property="og:description" content="Hello, my name is <%= data[:profile][:first_name] %> <%= data[:profile][:last_name] %> and I'm a Software Developer, mostly in Ruby." />
 		<meta property="og:type" content="profile" />

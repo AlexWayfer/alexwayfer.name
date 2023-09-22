@@ -61,8 +61,11 @@ module Compile
 
 				lint_markdown_page page_file_basename, rendered_page
 
+				page_file_name = "#{page_file_basename}.html"
+
 				File.write(
-					"#{COMPILED_DIR}/#{page_file_basename}.html", render_page_with_layout(rendered_page)
+					"#{COMPILED_DIR}/#{page_file_name}",
+					render_page_with_layout(page_file_name, rendered_page)
 				)
 			end
 		end
@@ -74,8 +77,9 @@ module Compile
 			File.delete markdown_temp_file_name
 		end
 
-		def render_page_with_layout(rendered_page)
+		def render_page_with_layout(page_file_name, rendered_page)
 			view_object_class.render_erb @pages_layout_erb,
+				page_file_name:,
 				site_title: @site_title,
 				profile: PROFILE,
 				page_content: Kramdown::Document.new(rendered_page).to_html,
@@ -94,6 +98,12 @@ module Compile
 
 			def render_partial(file_name, base_dir: PAGES_TEMPLATES_DIR, **options)
 				super
+			end
+
+			def canonical_url
+				page = data[:page_file_name]
+				page = '' if page == 'index.html'
+				"https://alexwayfer.name/#{page}"
 			end
 
 			def svg_icon(name)

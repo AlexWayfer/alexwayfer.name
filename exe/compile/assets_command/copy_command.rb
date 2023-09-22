@@ -4,7 +4,7 @@ module Compile
 	class AssetsCommand < BaseCommand
 		## CLI command for raw assets copying
 		class CopyCommand < BaseCommand
-			ASSETS_DIRECTORY = "#{ROOT_DIR}/assets"
+			ASSETS_DIRECTORY = "#{ROOT_DIR}/assets".freeze
 
 			def execute
 				%w[images/**/*.{jp{,e}g,webp,svg}].each do |pattern|

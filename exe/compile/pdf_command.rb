@@ -3,8 +3,8 @@
 module Compile
 	## CLI command for PDF compiling
 	class PDFCommand < BaseCommand
-		PDF_TEMPLATES_DIR = "#{TEMPLATES_DIR}/pdf"
-		PDF_PARTIALS_TEMPLATES_DIR = "#{PDF_TEMPLATES_DIR}/partials"
+		PDF_TEMPLATES_DIR = "#{TEMPLATES_DIR}/pdf".freeze.freeze
+		PDF_PARTIALS_TEMPLATES_DIR = "#{PDF_TEMPLATES_DIR}/partials".freeze
 
 		STATIC_PDF_OPTIONS = {
 			path: PDF_PATH,

@@ -11,9 +11,9 @@ module Compile
 	## Base command for compilation with helpers and constants
 	class BaseCommand < Clamp::Command
 		ROOT_DIR = File.expand_path "#{__dir__}/../.."
-		CONFIG_DIR = "#{ROOT_DIR}/config"
-		TEMPLATES_DIR = "#{ROOT_DIR}/templates"
-		COMPILED_DIR = "#{ROOT_DIR}/compiled"
+		CONFIG_DIR = "#{ROOT_DIR}/config".freeze
+		TEMPLATES_DIR = "#{ROOT_DIR}/templates".freeze
+		COMPILED_DIR = "#{ROOT_DIR}/compiled".freeze
 
 		using GorillaPatch::Symbolize
 
@@ -23,7 +23,7 @@ module Compile
 
 		PROFILE = YAML.load_file(profile_config_file_path).symbolize_keys
 
-		PDF_PATH = "#{COMPILED_DIR}/#{PROFILE[:first_name]} #{PROFILE[:last_name]}.pdf"
+		PDF_PATH = "#{COMPILED_DIR}/#{PROFILE[:first_name]} #{PROFILE[:last_name]}.pdf".freeze
 
 		private
 

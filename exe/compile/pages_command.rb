@@ -12,7 +12,7 @@ module Compile
 	class PagesCommand < BaseCommand
 		extend Forwardable
 
-		PAGES_TEMPLATES_DIR = "#{TEMPLATES_DIR}/pages"
+		PAGES_TEMPLATES_DIR = "#{TEMPLATES_DIR}/pages".freeze
 		PROFILE[:birthday] = Date.new(1994, 9, 1)
 
 		PROFILE_PHOTO_PATH_JPEG = 'images/photo.jpeg'
@@ -97,7 +97,7 @@ module Compile
 			end
 
 			def svg_icon(name)
-				render_partial :svg_icon, name: name, remove_newlines: true
+				render_partial :svg_icon, name:, remove_newlines: true
 			end
 
 			def url_with_mtime(path)
@@ -105,7 +105,7 @@ module Compile
 			end
 
 			def render_project_part(part_name, project)
-				result = render_partial "project/#{part_name}", project: project
+				result = render_partial("project/#{part_name}", project:)
 				result.split("\n").join("\n    ")
 			end
 

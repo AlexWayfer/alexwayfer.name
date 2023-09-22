@@ -53,9 +53,8 @@ module Compile
 
 		def render_page(file_name)
 			operation "Rendering #{relative_path file_name}" do
-				rendered_page = view_object_class.render_file(
-					file_name, profile: PROFILE, additional_data: @data
-				)
+				rendered_page =
+					view_object_class.render_file(file_name, profile: PROFILE, additional_data: @data)
 
 				page_file_basename = basename_without_extensions file_name
 
@@ -63,10 +62,9 @@ module Compile
 
 				page_file_name = "#{page_file_basename}.html"
 
-				File.write(
-					"#{COMPILED_DIR}/#{page_file_name}",
-					render_page_with_layout(page_file_name, rendered_page)
-				)
+				rendered_page = render_page_with_layout(page_file_name, rendered_page)
+
+				File.write "#{COMPILED_DIR}/#{page_file_name}", rendered_page
 			end
 		end
 

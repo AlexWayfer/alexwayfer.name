@@ -16,9 +16,9 @@
 	},
 	"devDependencies": {
 		"@rollup/plugin-node-resolve": "^15.2.1",
-		"autoprefixer": "^10.4.15",
-		"eslint": "^8.49.0",
-		"postcss": "^8.4.29",
+		"autoprefixer": "^10.4.16",
+		"eslint": "^8.50.0",
+		"postcss": "^8.4.30",
 		"postcss-at-rules-variables": "^0.3.0",
 		"postcss-cli": "^10.1.0",
 		"postcss-mixins": "^9.0.4",

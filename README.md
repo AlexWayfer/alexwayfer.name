@@ -1,13 +1,14 @@
 # AlexWayfer's Site
 
+[![Cirrus CI - Base Branch Build Status](https://img.shields.io/cirrus/github/AlexWayfer/alexwayfer.name?style=flat-square)](https://cirrus-ci.com/github/AlexWayfer/alexwayfer.name)
+[![Depfu](https://img.shields.io/depfu/AlexWayfer/alexwayfer.name?style=flat-square)](https://depfu.com/repos/github/AlexWayfer/alexwayfer.name)
+
 ## Tech stack
 
 *   [**Ruby** scripts](https://www.ruby-lang.org/)
 *   [**Kramdown** render](https://kramdown.gettalong.org/)
 *   [**IcoMoon** icons](https://icomoon.io/)
 *   [**Rollup** JS](https://rollupjs.org/)
-
------
 
 ## Development setup
 
@@ -35,8 +36,6 @@ Edit and run `exe/deploy.sh`.
 *   Install and configure `nginx` (with symbolic links from `config/nginx.conf`)
 *   Install [Certbot](https://certbot.eff.org/) and generate certificates
     *   Including `openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096`
-
------
 
 ## Update external resources
 

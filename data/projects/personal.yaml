@@ -74,6 +74,10 @@
 
     Also I've created a separated gem for auithentication: <%= external_link '`twitch_oauth2`', 'https://github.com/AlexWayfer/twitch_oauth2' %>.
 
+    And since Twitch moved from v5 to v6 API, I've contributed
+    to <%= external_link '`twitch-api` gem', 'https://github.com/mauricew/ruby-twitch-api' %>
+    and became maintainer of it.
+
     Also it has integrations with third-party services, like Steam,
     I've created <%= external_link 'a PR to the gem', 'https://github.com/bhaberer/steam-api/pull/10' %> with improvements.
 

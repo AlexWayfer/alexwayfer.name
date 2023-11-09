@@ -94,9 +94,9 @@ self::DATE_REGEXP = /
 			now
 		)
 	$
-/x.freeze
+/x
 
-self::DURATION_REGEXP = /^\d+(\.\d{1,2})? (hours|days|weeks)$/.freeze
+self::DURATION_REGEXP = /^\d+(\.\d{1,2})? (hours|days|weeks)$/
 
 def lint_dates(title, dates)
 	result = true

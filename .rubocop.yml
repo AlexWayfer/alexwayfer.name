@@ -36,6 +36,8 @@ Layout/MultilineHashBraceLayout:
 
 AllCops:
   NewCops: enable
+  Include:
+    - '.toys/**/*.rb'
 
 Metrics/BlockLength:
   Exclude:

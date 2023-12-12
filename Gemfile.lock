@@ -37,7 +37,7 @@ GEM
       alt_memery (~> 2.0)
       rubyzip (~> 2.0)
       toys-core (~> 0.15.3)
-    json (2.7.0)
+    json (2.7.1)
     kramdown (2.4.0)
       rexml
     language_server-protocol (3.17.0.3)
@@ -58,9 +58,9 @@ GEM
     public_suffix (5.0.3)
     racc (1.7.3)
     rainbow (3.1.1)
-    regexp_parser (2.8.2)
+    regexp_parser (2.8.3)
     rexml (3.2.6)
-    rubocop (1.58.0)
+    rubocop (1.59.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -103,7 +103,7 @@ DEPENDENCIES
   kramdown
   moments
   pry-byebug
-  rubocop (~> 1.58.0)
+  rubocop (~> 1.59.0)
   rubocop-performance
   toys
 

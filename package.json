@@ -16,6 +16,7 @@
 	},
 	"devDependencies": {
 		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@stylistic/stylelint-config": "^1.0.1",
 		"autoprefixer": "^10.4.16",
 		"eslint": "^8.56.0",
 		"postcss": "^8.4.32",

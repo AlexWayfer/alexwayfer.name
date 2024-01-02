@@ -1,9 +1,16 @@
-extends: stylelint-config-standard
+extends:
+  - stylelint-config-standard
+  - '@stylistic/stylelint-config'
 
 plugins:
   - stylelint-no-unsupported-browser-features
 
 rules:
+  '@stylistic/indentation':
+    - tab
+
+  '@stylistic/declaration-colon-newline-after': null
+
   declaration-empty-line-before:
     - always
     - except:

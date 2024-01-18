@@ -13,7 +13,7 @@ group :development do
 
 	gem 'bundler-audit'
 
-	gem 'rubocop', '~> 1.59.0'
+	gem 'rubocop', '~> 1.60.1'
 	gem 'rubocop-performance'
 
 	gem 'config_toys'

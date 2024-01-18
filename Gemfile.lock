@@ -46,7 +46,7 @@ GEM
     moments (0.3.0)
     paint (2.3.0)
     parallel (1.24.0)
-    parser (3.2.2.4)
+    parser (3.3.0.4)
       ast (~> 2.4.1)
       racc
     pry (0.14.2)
@@ -58,13 +58,13 @@ GEM
     public_suffix (5.0.4)
     racc (1.7.3)
     rainbow (3.1.1)
-    regexp_parser (2.8.3)
+    regexp_parser (2.9.0)
     rexml (3.2.6)
-    rubocop (1.59.0)
+    rubocop (1.60.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
-      parser (>= 3.2.2.4)
+      parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
@@ -103,7 +103,7 @@ DEPENDENCIES
   kramdown
   moments
   pry-byebug
-  rubocop (~> 1.59.0)
+  rubocop (~> 1.60.1)
   rubocop-performance
   toys
 

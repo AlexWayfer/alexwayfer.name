@@ -54,3 +54,12 @@ rules:
 
   ## There are variables from `postcss-mixins`
   function-no-unknown: null
+
+overrides:
+  - files:
+      - '**/*.pcss'
+    rules:
+      plugin/no-unsupported-browser-features:
+        - true
+        - ignore:
+          - css-nesting

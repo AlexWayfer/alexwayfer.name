@@ -1,3 +1,46 @@
+- title: uniCULT
+
+  link: https://unicult.ru/
+
+  begin_date: November 2023
+  end_date: December 2023
+
+  position: Senior back-end developer
+  team: 3–8 engineers
+
+  description: |
+    Marketplace of clothes and accessories from Russian designers.
+
+    The project was in development for 2 years, but has been poorly made.
+    After tech consulting from a third-party expert a decision has been made:
+    disband almost all developers. And I've come as the first back-end developer of the new team.
+
+    I was fixing a lot of errors, bug reports, completing basic feature requests, etc.
+
+    Unfortunately, after 1 month of my work there the whole project has been closed in one day,
+    although promises of many months sponsorship were made to everyone, including myself.
+
+  technologies:
+    Back-end:
+      - Ruby
+      - Ruby on Rails
+      - PostgreSQL
+      - ActiveRecord
+      - Redis
+    Front-end:
+      - JavaScript
+      - CoffeeScript
+    Integrations:
+      - Bank Tochka
+      - Pochta.ru
+      - A few other delivery services
+    Error tracking:
+      - Sentry
+    Code management:
+      - GitLab
+    Task management:
+      - Yandex Tracker
+
 - title: Yasno.live
 
   link: https://yasno.live/

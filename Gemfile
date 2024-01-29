@@ -21,6 +21,6 @@ end
 group :development, :lint do
 	gem 'bundler-audit'
 
-	gem 'rubocop', '~> 1.60.1'
+	gem 'rubocop'
 	gem 'rubocop-performance'
 end

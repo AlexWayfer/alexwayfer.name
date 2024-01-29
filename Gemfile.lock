@@ -103,7 +103,7 @@ DEPENDENCIES
   kramdown
   moments
   pry-byebug
-  rubocop (~> 1.60.1)
+  rubocop
   rubocop-performance
   toys
 

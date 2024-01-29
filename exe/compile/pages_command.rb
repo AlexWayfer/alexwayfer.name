@@ -71,7 +71,7 @@ module Compile
 		def lint_markdown_page(page_file_basename, rendered_page)
 			markdown_temp_file_name = "#{COMPILED_DIR}/#{page_file_basename}.md"
 			File.write markdown_temp_file_name, rendered_page
-			abort unless system "npm run lint:markdown -- #{markdown_temp_file_name} --no-stdout"
+			abort unless system "npm exec -- remark -f #{markdown_temp_file_name} --no-stdout"
 			File.delete markdown_temp_file_name
 		end
 

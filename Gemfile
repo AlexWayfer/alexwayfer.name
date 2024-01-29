@@ -11,14 +11,16 @@ gem 'moments'
 group :development do
 	gem 'filewatcher-matrix'
 
-	gem 'bundler-audit'
-
-	gem 'rubocop', '~> 1.60.1'
-	gem 'rubocop-performance'
-
 	gem 'config_toys'
 	gem 'icomoon_toys'
 	gem 'toys'
 
 	gem 'pry-byebug'
+end
+
+group :development, :lint do
+	gem 'bundler-audit'
+
+	gem 'rubocop', '~> 1.60.1'
+	gem 'rubocop-performance'
 end

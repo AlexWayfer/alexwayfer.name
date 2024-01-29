@@ -9,3 +9,5 @@
 !/config/**/*.erb
 
 /.idea/
+
+/spec/examples.txt

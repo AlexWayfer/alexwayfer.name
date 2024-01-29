@@ -24,3 +24,7 @@ group :development, :lint do
 	gem 'rubocop'
 	gem 'rubocop-performance'
 end
+
+group :development, :test do
+	gem 'rspec'
+end

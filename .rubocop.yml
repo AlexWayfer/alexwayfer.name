@@ -1,5 +1,6 @@
 require:
   - rubocop-performance
+  - rubocop-rspec
 
 inherit_mode:
   merge:
@@ -44,3 +45,7 @@ Metrics/BlockLength:
     - .toys.rb
     - .toys/.toys.rb
     - .toys/*.rb
+
+RSpec/DescribeClass:
+  Exclude:
+    - '**/spec/compilation/**/*'

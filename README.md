@@ -20,13 +20,22 @@
 
 [1]: https://en.wikibooks.org/wiki/Guide_to_Unix/Environment_Variables#EDITOR
 
-## Compile
+## Compilation
 
 Run `exe/compile.rb`.
 
+It's an one-time compilation command. Most often, you won't need this.
+
+## Development watcher
+
+Run `exe/dev.rb`.
+
+It'll compile current files and launch [filewatchers](https://github.com/filewatcher/filewatcher)
+for re-compilation on any related file change.
+
 ## Deploy
 
-Edit and run `exe/deploy.sh`.
+Run `exe/deploy.rb` to copy all pre-compiled files to servers from config.
 
 ## Production setup (optional)
 

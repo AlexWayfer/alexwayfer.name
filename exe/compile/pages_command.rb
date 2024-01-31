@@ -13,8 +13,6 @@ module Compile
 
 		PAGES_TEMPLATES_DIR = "#{TEMPLATES_DIR}/pages".freeze
 
-		PROFILE_PHOTO_PATH_JPEG = 'images/photo.jpeg'
-
 		def_delegators :view_object_class, :render_partial
 
 		def execute
@@ -26,28 +24,12 @@ module Compile
 
 			@site_title = "#{PROFILE[:username]}'s Site"
 
-			fill_profile_photo_data
-
 			Dir.glob("#{PAGES_TEMPLATES_DIR}/*.md{,.erb}").each do |page_file_name|
 				render_page page_file_name
 			end
 		end
 
 		private
-
-		def fill_profile_photo_data
-			PROFILE[:photo] = {
-				main: PROFILE_PHOTO_PATH_JPEG,
-				additional: %i[webp].each_with_object({}) do |ext, result|
-					relative_path = PROFILE_PHOTO_PATH_JPEG.sub(/\.\w+$/, ".#{ext}")
-					full_path = "#{COMPILED_DIR}/#{relative_path}"
-
-					next unless File.exist? full_path
-
-					result[ext] = relative_path
-				end
-			}.freeze
-		end
 
 		def render_page(file_name)
 			operation "Rendering #{relative_path file_name}" do

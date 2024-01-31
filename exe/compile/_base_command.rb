@@ -24,6 +24,20 @@ module Compile
 
 		PROFILE = YAML.load_file(profile_config_file_path, permitted_classes: [Date]).symbolize_keys
 
+		profile_photo_path_jpeg = 'images/photo.jpeg'
+
+		PROFILE[:photo] = {
+			main: profile_photo_path_jpeg,
+			additional: %i[webp].each_with_object({}) do |ext, result|
+				relative_path = profile_photo_path_jpeg.sub(/\.\w+$/, ".#{ext}")
+				full_path = "#{COMPILED_DIR}/#{relative_path}"
+
+				next unless File.exist? full_path
+
+				result[ext] = relative_path
+			end
+		}.freeze
+
 		PDF_PATH = "#{COMPILED_DIR}/#{PROFILE[:first_name]} #{PROFILE[:last_name]}.pdf".freeze
 
 		private

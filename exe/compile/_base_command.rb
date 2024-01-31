@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'clamp'
+require 'date'
 require 'erb'
 require 'gorilla_patch/symbolize'
 require 'yaml'
@@ -21,7 +22,7 @@ module Compile
 
 		abort unless File.exist?(profile_config_file_path) || system('toys config check')
 
-		PROFILE = YAML.load_file(profile_config_file_path).symbolize_keys
+		PROFILE = YAML.load_file(profile_config_file_path, permitted_classes: [Date]).symbolize_keys
 
 		PDF_PATH = "#{COMPILED_DIR}/#{PROFILE[:first_name]} #{PROFILE[:last_name]}.pdf".freeze
 

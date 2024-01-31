@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'date'
 require 'forwardable'
 require 'kramdown'
 require 'moments'
@@ -13,7 +12,6 @@ module Compile
 		extend Forwardable
 
 		PAGES_TEMPLATES_DIR = "#{TEMPLATES_DIR}/pages".freeze
-		PROFILE[:birthday] = Date.new(1994, 9, 1)
 
 		PROFILE_PHOTO_PATH_JPEG = 'images/photo.jpeg'
 

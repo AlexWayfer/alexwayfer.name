@@ -28,8 +28,6 @@ def run
 	exit result ? 0 : 1
 end
 
-private
-
 def load_projects(type)
 	YAML.load_file "#{context_directory}/data/projects/#{type}.yaml"
 end
@@ -40,9 +38,9 @@ def lint_projects(projects, projects_type)
 	projects.each do |project|
 		title = "#{projects_type} project \"#{project['title']}\""
 
-		result = false unless lint_required_fields project, title, type: projects_type.downcase.to_sym
+		result = false unless valid_required_fields? project, title, type: projects_type.downcase.to_sym
 
-		result = false unless lint_dates title, project.slice('begin_date', 'end_date')
+		result = false unless valid_dates? title, project.slice('begin_date', 'end_date')
 	end
 
 	puts "#{projects_type} projects are OK." if result
@@ -58,11 +56,11 @@ def lint_job_tests
 	job_tests.each do |job_test|
 		title = "Job test \"#{job_test['title']}\""
 
-		result = false unless lint_required_fields job_test, title, type: :job_test
+		result = false unless valid_required_fields? job_test, title, type: :job_test
 
-		result = false unless lint_dates title, job_test.slice('date')
+		result = false unless valid_dates? title, job_test.slice('date')
 
-		result = false unless lint_duration title, job_test['duration']
+		result = false unless valid_duration? title, job_test['duration']
 	end
 
 	puts 'Job tests are OK.' if result
@@ -70,7 +68,7 @@ def lint_job_tests
 	result
 end
 
-def lint_required_fields(project, title, type:)
+def valid_required_fields?(project, title, type:)
 	result = true
 
 	required_fields = self.class::COMMON_REQUIRED_FIELDS + self.class::SPECIFIC_REQUIRED_FIELDS[type]
@@ -98,7 +96,7 @@ self::DATE_REGEXP = /
 
 self::DURATION_REGEXP = /^\d+(\.\d{1,2})? (hours|days|weeks)$/
 
-def lint_dates(title, dates)
+def valid_dates?(title, dates)
 	result = true
 
 	dates.each do |key, value|
@@ -111,7 +109,7 @@ def lint_dates(title, dates)
 	result
 end
 
-def lint_duration(title, value)
+def valid_duration?(title, value)
 	return true if value.match? self.class::DURATION_REGEXP
 
 	warn "#{title} has incorrect duration format"

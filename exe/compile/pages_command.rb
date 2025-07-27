@@ -74,6 +74,8 @@ module Compile
 				job_tests: 'Job tests'
 			}.freeze
 
+			private_constant :PROJECTS_TYPES
+
 			def render_partial(file_name, base_dir: PAGES_TEMPLATES_DIR, **options)
 				super
 			end

@@ -94,8 +94,6 @@ self::DATE_REGEXP = /
 	$
 /x
 
-private_constant :DATE_REGEXP
-
 self::DURATION_REGEXP = /^\d+(\.\d{1,2})? (hours|days|weeks)$/
 
 def valid_dates?(title, dates)
@@ -110,8 +108,6 @@ def valid_dates?(title, dates)
 
 	result
 end
-
-private_constant :DURATION_REGEXP
 
 def valid_duration?(title, value)
 	return true if value.match? self.class::DURATION_REGEXP

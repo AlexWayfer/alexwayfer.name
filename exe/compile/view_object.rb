@@ -57,7 +57,7 @@ module Compile
 			file_name, base_dir:, remove_newlines: false, **variables
 		)
 			file_name = Dir.glob("#{base_dir}/partials/#{file_name}.*.erb").first
-			result = self.class.render_file(file_name, **@data.merge(variables))
+			result = self.class.render_file(file_name, **@data, **variables)
 			result.gsub!(/\n[\t ]*/, '') if remove_newlines
 			result
 		end

@@ -1,5 +1,6 @@
 {
 	"private": true,
+	"type": "module",
 	"description": "AlexWayfer's Site",
 	"repository": {
 		"type": "git",

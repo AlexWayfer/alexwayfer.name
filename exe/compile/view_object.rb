@@ -2,7 +2,6 @@
 
 require 'erb'
 require 'forwardable'
-require 'ostruct'
 
 module Compile
 	## View object for render

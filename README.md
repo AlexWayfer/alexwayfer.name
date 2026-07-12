@@ -1,6 +1,6 @@
 # AlexWayfer's Site
 
-[![Cirrus CI - Base Branch Build Status](https://img.shields.io/cirrus/github/AlexWayfer/alexwayfer.name?style=flat-square)](https://cirrus-ci.com/github/AlexWayfer/alexwayfer.name)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/AlexWayfer/alexwayfer.name/:workflow?style=flat-square)](https://github.com/AlexWayfer/alexwayfer.name/actions)
 [![Depfu](https://img.shields.io/depfu/AlexWayfer/alexwayfer.name?style=flat-square)](https://depfu.com/repos/github/AlexWayfer/alexwayfer.name)
 
 ## Tech stack

@@ -1,0 +1,156 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      remark: ${{ steps.filter.outputs.remark }}
+      stylelint: ${{ steps.filter.outputs.stylelint }}
+      eslint: ${{ steps.filter.outputs.eslint }}
+      data-lint: ${{ steps.filter.outputs.data-lint }}
+      bundle-audit: ${{ steps.filter.outputs.bundle-audit }}
+      rubocop: ${{ steps.filter.outputs.rubocop }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            remark:
+              - '.github/workflows/ci.yml'
+              - '.gitignore'
+              - '.node-version'
+              - 'package.json'
+              - 'package-lock.json'
+              - '.remarkrc.yaml'
+              - '**.md'
+            stylelint:
+              - '.github/workflows/ci.yml'
+              - '.gitignore'
+              - '.node-version'
+              - 'package.json'
+              - 'package-lock.json'
+              - 'browserslist'
+              - '.stylelintrc.yaml'
+              - 'assets/styles/**'
+            eslint:
+              - '.github/workflows/ci.yml'
+              - '.gitignore'
+              - '.node-version'
+              - 'package.json'
+              - 'package-lock.json'
+              - 'browserslist'
+              - '.eslintrc.yaml'
+              - '.eslintignore'
+              - 'assets/scripts/**'
+            data-lint:
+              - '.github/workflows/ci.yml'
+              - '.ruby-version'
+              - 'Gemfile'
+              - 'Gemfile.lock'
+              - '.rubocop.yml'
+              - '.toys/**'
+              - 'data/**'
+            bundle-audit:
+              - '.github/workflows/ci.yml'
+              - '.gitignore'
+              - '.ruby-version'
+              - 'Gemfile'
+              - 'Gemfile.lock'
+            rubocop:
+              - '.github/workflows/ci.yml'
+              - '.gitignore'
+              - '.ruby-version'
+              - 'Gemfile'
+              - 'Gemfile.lock'
+              - '.rubocop.yml'
+              - '**.rb'
+
+  remark:
+    needs: changes
+    if: github.ref_name == 'main' || needs.changes.outputs.remark == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint:markdown
+
+  stylelint:
+    needs: changes
+    if: github.ref_name == 'main' || needs.changes.outputs.stylelint == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint:styles
+
+  eslint:
+    needs: changes
+    if: github.ref_name == 'main' || needs.changes.outputs.eslint == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint:scripts
+
+  data-lint:
+    needs: changes
+    if: github.ref_name == 'main' || needs.changes.outputs.data-lint == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version-file: '.ruby-version'
+          bundler-cache: true
+      - run: toys data lint
+
+  bundle-audit:
+    needs: changes
+    if: github.ref_name == 'main' || needs.changes.outputs.bundle-audit == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version-file: '.ruby-version'
+          bundler-cache: true
+      - run: bundle audit check --update
+
+  rubocop:
+    needs: changes
+    if: github.ref_name == 'main' || needs.changes.outputs.rubocop == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version-file: '.ruby-version'
+          bundler-cache: true
+      - run: bundle exec rubocop

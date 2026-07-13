@@ -1,8 +1,13 @@
-module.exports = {
+import postcssMixins from 'postcss-mixins'
+import postcssNested from 'postcss-nested'
+import autoprefixer from 'autoprefixer'
+import postcssAtRulesVariables from 'postcss-at-rules-variables'
+
+export default {
 	plugins: [
-		require('postcss-mixins'),
-		require('postcss-nested'),
-		require('autoprefixer'),
-		require('postcss-at-rules-variables')({ atRules: ['media'] })
+		postcssMixins,
+		postcssNested,
+		autoprefixer,
+		postcssAtRulesVariables({ atRules: ['media'] })
 	]
 }

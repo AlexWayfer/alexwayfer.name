@@ -1,3 +1,75 @@
+- title: Flant
+
+  link: https://flant.ru/
+
+  begin_date: April 2024
+  end_date: June 2026
+
+  position: Senior back-end developer
+  team: 5–10 engineers, all remote
+
+  description: |
+    Large professional b2b company with k8s products and services.
+
+    I was working on Deckhouse Commander, it's UI for clusters management
+    with its own backend and database.
+    There was collaboration with strong front-end and Golang developers.
+
+    We had distribution of releases from different stability channels,
+    so I've got a lot of expierence with backward compatibility, safe migrations,
+    non-managed (by us) servers, etc.
+
+    I've developed powerful RBAC-like permissions system on different levels.
+    It was not simple, and it took long time, so I've also got experience
+    of big epics self-management and communication with team and managers.
+
+    I've made a lot of refactoring, tech stack improvements, dependencies updates, etc.
+
+    Having separate front-end, we were working on different APIs: for UI and integrations.
+
+    We had Swagger documentation, for both APIs, and I've improved it a lot,
+    but could not do much with Grape stack (a lot of outdated and non-supported dependencies).
+
+    Also I've wrote thousands of RSpec tests, not always perfect and very readable,
+    but constantly improving it. And optimizations with parallelism in CI, of course.
+
+    Sometimes I helped with infrastructure, like Redis + ActiveCable stability,
+    migration to distro-less images, even a tool for scrapping licenses from dependencies.
+
+    We've done migration from `audited` gem to our own solution for our needs
+    (with custom actions, snapshots, etc.), and now I understand the difference between
+    "history of changes" and "actions attempts".
+
+    After updating to Ruby on Rails 8 there were difficulties with encryption migration
+    from SHA1 to SHA256, without any information and guides on the internet,
+    but with colleagues we've done it after a few attempts.
+
+    I've took a part in security improvements, adding TTL and auto-rotation for tokens,
+    rate limits, etc.
+
+  technologies:
+    Back-end:
+      - Ruby
+      - Ruby on Rails
+      - Grape
+      - Interactor
+      - Swagger
+      - PostgreSQL
+      - ActiveRecord
+      - Redis
+      - RSpec
+    Front-end:
+      - TypeScript
+      - Vue.js
+    Integrations:
+      - Prometheus
+    Error tracking:
+      - Sentry
+    Code management:
+      - GitLab
+    Task management:
+      - Kaiten
+
 - title: uniCULT
 
   link: https://unicult.ru/

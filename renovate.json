@@ -1,0 +1,35 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"config:recommended",
+		":disableDependencyDashboard",
+		"group:stylelint",
+		"group:postcss",
+		"group:remark"
+	],
+	"packageRules": [
+		{
+			"matchPackageNames": ["@stylistic/stylelint-**"],
+			"matchDatasources": ["npm"],
+			"groupName": "stylelint packages"
+		},
+		{
+			"matchPackageNames": ["bundler*"],
+			"matchDatasources": ["rubygems"],
+			"groupName": "Bundler packages"
+		},
+		{
+			"matchPackageNames": ["rubocop*"],
+			"matchDatasources": ["rubygems"],
+			"groupName": "RuboCop packages"
+		},
+		{
+			"matchPackageNames": [
+				"toys*",
+				"*_toys"
+			],
+			"matchDatasources": ["rubygems"],
+			"groupName": "Toys packages"
+		}
+	]
+}

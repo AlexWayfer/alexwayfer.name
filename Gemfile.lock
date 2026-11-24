@@ -24,7 +24,7 @@ GEM
       diffy (~> 3.0)
       highline (~> 3.0)
       paint (~> 2.0)
-    ferrum (0.20.2)
+    ferrum (0.21.0)
       addressable (~> 2.5)
       base64 (~> 0.2)
       concurrent-ruby (~> 1.1)

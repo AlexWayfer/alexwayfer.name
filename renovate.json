@@ -4,18 +4,14 @@
 		"config:recommended",
 		":disableDependencyDashboard",
 		"group:stylelint",
-		"group:postcss"
+		"group:postcss",
+		"group:remark"
 	],
 	"packageRules": [
 		{
 			"matchPackageNames": ["@stylistic/stylelint-**"],
 			"matchDatasources": ["npm"],
 			"groupName": "stylelint packages"
-		},
-		{
-			"matchPackageNames": ["remark*"],
-			"matchDatasources": ["npm"],
-			"groupName": "remark packages"
 		},
 		{
 			"matchPackageNames": ["bundler*"],

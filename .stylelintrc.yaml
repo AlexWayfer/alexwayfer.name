@@ -48,6 +48,12 @@ rules:
       - define-mixin
       - mixin
 
+  at-rule-prelude-no-invalid:
+    - true
+    - ignoreAtRules:
+      - define-mixin
+      - mixin
+
   plugin/no-unsupported-browser-features:
     - true
     - severity: warning
